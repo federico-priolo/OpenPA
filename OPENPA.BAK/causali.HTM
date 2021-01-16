@@ -1,0 +1,385 @@
+<html>  
+  <head>         
+    <meta charset="UTF-8">         
+    <title>Gestione archivio causali
+    </title>             
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/demo/demo.css">
+    <script type="text/javascript" src="/openpa/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.easyui.min.js"></script>
+   
+    </head>
+    <body>
+	<font color="blue">
+	
+        <div style="margin:20px 0;"></div>
+        <div id="w" class="easyui-panel" title="Tabella Causali rilevazione" 
+             data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
+		     style="width:100%;height:75%;padding:20px;">
+ <div class="easyui-tabs" data-options="tabWidth:168,tabHeight:60" style="width:1000px;height:300px">
+            <div title="Dati generali">
+			        <p>
+    <div style="margin:20px 0">
+	<fieldset>
+	
+	 <div style="margin:20px 0;">
+          </div>		  
+        <span>Tipo causale:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>1-ASSENZA</option>
+            <option>2-PRESENZA</option>
+            <option>3-PRESENZA 1/2 GIORNATA</option>
+			<option>4-FIGURATIVA</option>
+        </select>
+<div style="margin:20px 0;">
+          </div>
+		<span>Categoria:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>A-ALTRA CATEGORIA</option>
+            <option>F-FERIE</option>
+            <option>L-LAVORO ORDINARIO</option>
+			<option>M-MALATTIA</option>
+			<option>P-SCIOPERO</option>
+			<option>R-RECUPERI</option>
+			<option>S-STRAORDINARIO</option>
+			<option>T-TRASFERTA</option>
+        </select>
+<div style="margin:20px 0;">
+          </div>
+		<span>Icona:</span>
+		
+        <div class="easyui-searchbox" data-options="prompt:'Seleziona icona da visualizzare',searcher:doSearch" style="width:22%">
+    </div>
+    <script>
+        function doSearch(value){
+            alert('You input: ' + value);
+        }
+    </script>
+	<span>Tipo ripartizione orario:</span>
+        <select onchange="changeAnimation(this.value)">
+            <option>         </option>
+			<option>2-nessuna ripartizione</option>
+            <option>3-ripartizione fest,nott,nott-fest</option>
+            <option>4-ripartizione solo su indennita'</option>
+        </select>
+    </div>
+	</font>
+	</fieldset>
+	
+    </p>
+    </div>
+
+             <div title="Parametri presenza">
+			 <font color="blue">
+			 <div style="margin:20px 0">
+			 <fieldset>
+	
+	 <div style="margin:20px 0;">
+          </div>	
+			        <p>
+    <div style="margin:20px 0">
+        <span>Tipo conteggio:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>2-Uscita/Entrata. - Entrata dopo da - Uscita prima per</option>
+            <option>3-Coppia Entrata Uscita nell'ordine specificato</option>
+            <option>4-Entrata/Uscita. Entrata prima per - Uscita dopo per</option>
+			<option>5-Conteggio da complementare</option>
+        </select>
+<div style="margin:20px 0;">
+          </div>
+		<span>Tipo contatore orario:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>2-Esclusione dalle ore normali di lavoro</option>
+            <option>3-Somma nelle ore normali di lavoro</option>
+            <option>4-Sottrae dalle ore normali di lavoro</option>
+			        </select>
+    </div>
+    </p>
+	</div>
+	</font>
+	</fieldset>
+    </div>
+	 <div title="Parametri assenza">
+			 <font color="blue">
+			 <div style="margin:20px 0">
+			 <fieldset>
+	
+	 <div style="margin:20px 0;">
+          </div>	
+			        <p>
+    <div style="margin:20px 0">
+        <span>Conteggi su festivo:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>2-Non considera conteggio ore e giorni</option>
+            <option>3-Considera giorni e conteggio orario</option>
+            <option>4-Considera solo conteggio giorno assenza</option>
+        </select>
+<div style="margin:20px 0;">
+          </div>
+		<span>Valore assenza:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>2-Monte orario da contratto</option>
+            <option>3-Dovuto del giorno</option>
+            <option>4-Nessun valore</option>
+			<option>5-Monte ore settimanale diviso 6</option>
+			<option>6-Valore indicato dall'operatore</option>
+			        </select>
+            <input id="dt" class="easyui-timespinner" label="Valore:" labelPosition="left" value="01:20" style="width:18%;">
+<div style="margin:20px 0;">
+          </div>
+		<span>Tipo conteggio:</span>
+         <select onchange="changeAnimation(this.value)">
+		 <option>         </option>
+			<option>2-Aumenta le ore lavorate</option>
+            <option>3-Nessuna valorizzazione</option>
+            <option>4-Decrementa le ore lavorate</option>
+        </select>
+<div style="margin:20px 0;">
+          </div>
+	<span>Assenze da...a...:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>2-Considera tutta la settimana</option>
+            <option>3-Considera solo i lavorativi</option>
+            <option>4-Considera i lavorativi su 6 giorni</option>
+        </select>
+    </div>
+	
+    </p>
+	</div>
+	</font>
+	</fieldset>
+    </div>
+            <div title="Regole">
+			<font color="blue">
+			 <div style="margin:20px 0">
+			 <fieldset>
+	
+	 <div style="margin:20px 0;">
+          </div>
+                <p>
+				<form id="ff">
+        <div style="margin-bottom:20px">
+            
+			<div style="margin-bottom:20px">
+			<input class="easyui-checkbox" name="causali" value="Stampa"  data-options="label:'Stampa su cartellino:', labelWidth:'380px'">
+			</div>
+						
+						<div style="margin-bottom:20px">
+			<input class="easyui-checkbox" name="causali" value="Dettaglio" data-options="label:'Dettaglio su cartellino:', labelWidth:'380px'">
+        </div>
+		
+						<div style="margin-bottom:20px">
+			<input class="easyui-checkbox" name="causali" value="Compensa" data-options="label:'Compensa crediti mese precedente:', labelWidth:'380px'">
+			        </div>
+
+        </div>
+        <div style="margin-bottom:20px">
+		<a href="#" style="color:blue;" class="easyui-tooltip" title="Se e' presente un rientro da profilo e il dipendente ESCE con la causale indicata allora la considera anche per il rientro">
+            <input class="easyui-checkbox" name="causali" value="Giustifica" data-options="label:'Giustifica mancato rientro:', labelWidth:'380px'">
+        </a>
+		</div>
+		<div style="margin-bottom:20px">
+		<div style="margin-bottom:20px">
+		<input class="easyui-checkbox" name="causali" value="NoEsportazione" data-options="label:'Non esportare su file paghe:', labelWidth:'380px'">
+    </div>
+	<div style="margin-bottom:20px">
+            <input class="easyui-checkbox" name="causali" value="Saldo" data-options="label:'Riporta saldo anno precedente:', labelWidth:'380px'">
+			</div>
+			<div style="margin-bottom:20px">
+        <input class="easyui-checkbox" name="causali" value="Esportazione" data-options="label:'Esportare su UniEMENS:', labelWidth:'380px'">
+    </div>
+	<div style="margin-bottom:20px">
+            <input class="easyui-checkbox" name="causali" value="SiMensa" data-options="label:'Assegna pausa mensa:', labelWidth:'380px'">
+			</div>
+			<div style="margin-bottom:20px">
+        <input class="easyui-checkbox" name="causali" value="Malattia" data-options="label:'Riduzione malattia:', labelWidth:'380px'">
+		</div>
+		<div style="margin-bottom:20px">
+		<input class="easyui-checkbox" name="causali" value="Collega" data-options="label:'Collega alla successiva con la presente causale:', labelWidth:'380px'">
+    </div>
+	</div>
+	<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Cliccare per escludere SEMPRE la pausa mensa se presente la presente causale">
+            <input class="easyui-checkbox" name="causali" value="NoPausa" data-options="label:'Escludi pausa:', labelWidth:'380px'">
+			</a>
+</div>
+
+<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title=" ">
+            <input class="easyui-checkbox" name="causali" value="NoPausa" data-options="label:'Causale cessata:', labelWidth:'380px'">
+			</a>
+</div>	
+	
+	<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title=" ">
+            <input class="easyui-checkbox" name="causali" value="Liquidazioni" data-options="label:'Accetta liquidazioni:', labelWidth:'380px'">
+			</a>
+</div>
+			<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title=" ">
+        <input class="easyui-checkbox" name="causali" value="Compensazioni" data-options="label:'Abilita compensazioni:', labelWidth:'380px'">
+		</a>
+</div>
+			<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title=" ">
+		<input class="easyui-checkbox" name="causali" value="NoIndennitaGiornaliera" data-options="label:'Escludi assenza GIORNALIERA calcolo indennità:', labelWidth:'380px'">
+		</a>
+</div>
+	<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title=" ">
+            <input class="easyui-checkbox" name="causali" value="Saldo" data-options="label:'Saldo:', labelWidth:'380px'"></a>
+			
+			<select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>D-Decremento</option>
+            <option>I-Incremento</option>
+            <option>G-Giornaliero</option>
+			<option>O-Orario</option>
+        </select>
+		
+</div>		
+<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title=" ">
+		<input class="easyui-checkbox" name="causali" value="NoIndennitaOraria" data-options="label:'Escludi assenza ORARIA calcolo delle indennità:', labelWidth:'380px'">
+</a>
+</div>
+	<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Azzera il flag fuori fascia se presente timbratura sul calcolo delle indennità">
+            <input class="easyui-checkbox" name="causali" value="Fascia" data-options="label:'Su indennità memorizza solo periodi in fascia:', labelWidth:'380px'">
+			</a>
+			</div>
+			<div style="margin-bottom:20px">
+			<a href="#" style="color:blue;" class="easyui-tooltip" title="Per inserire esempio missione oraria...o altro">
+        <input class="easyui-checkbox" name="causali" value="Coppia" data-options="label:'Considera coppia giornaliera come da...a...:', labelWidth:'380px'">
+    </a>
+	</div>
+	<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Consente di definire dove archiviare la voce (DEVE ESSERE UNA VOCE FIGURATIVA)">
+	<span>Archivia su:</span></a>
+			
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>DIURNO</option>
+            <option>NOTTURNO</option>
+            <option>FESTIVO</option>
+			<option>FEST.+ NOTT.</option>
+        </select>
+	</div>
+	<div style="margin-bottom:20px">
+		<a href="#" style="color:blue;" class="easyui-tooltip" title="La causale contabilizza eventuali debiti emersi nella mattinata con le eccedenze pomeridiane">
+            <input class="easyui-checkbox" name="causali" value="Contabilizza" data-options="label:'Contabilizza FINO a compensazione debiti giornalieri:', labelWidth:'380px'">
+    </a>
+	</div>
+	<div style="margin-bottom:20px">
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Azzera il dovuto e il reso del giorno (come se fosse una giornata festiva) se abilitata relativa opzione sul profilo">
+            <input class="easyui-checkbox" name="causali" value="Azzera" data-options="label:'Se abilitato da profilo azzera dovuto/reso:', labelWidth:'380px'">
+    </a> 
+	</div>
+	<div style="margin-bottom:20px">
+<a href="#" style="color:blue;" class="easyui-tooltip" title="La causale non contabilizza eventuali flessibilità">	
+		<input class="easyui-checkbox" name="causali" value="Flessibilita'" data-options="label:'Ignora flessibilità su uscita anticipata:', labelWidth:'380px'">
+   </a> 
+	</div>
+	</form>
+				</p>
+            </font>
+			</div>
+			</fieldset>
+			</div>
+<div title="Altro">
+			 <font color="blue">
+			 <div style="margin:20px 0">
+			 <fieldset>
+			 <div style="margin:20px 0;">
+          </div>
+                <p>
+				<input id="dt" class="easyui-timespinner" data-options="label:'Minimo ammesso:', labelWidth:'140px'" labelPosition="left"   value="01:20" style="width:25%;">
+				<input id="dt" class="easyui-timespinner" data-options="label:'Massimo ammesso:', labelWidth:'150px'" labelPosition="left" value="01:20" style="width:25%;">
+				<input class="easyui-checkbox" name="causali" value="Giornaliero'" data-options="label:'Giornaliero:', labelWidth:'90px'">
+				<input class="easyui-checkbox" name="causali" value="Mensile'" data-options="label:'Mensile:', labelWidth:'65px'">
+				<div style="margin-bottom:20px">
+<a href="#" style="color:blue;" class="easyui-tooltip" title="La causale contabilizza eventuali debiti emersi nella mattinata con le eccedenze pomeridiane">	
+		<input class="easyui-checkbox" name="causali" value="Netto'" data-options="label:'Calcola al NETTO di eventuali debiti che vengono contabilizzati nella causale di seguito indicata:', labelWidth:'675px'">
+   </a>
+   <div style="margin:20px 0;">
+          </div>
+		  
+   <input class="easyui-textbox" data-options="label:'Registra eccedenza o debito recuperato in:', labelWidth:'325px', width:'415px'">
+<div style="margin:20px 0;">
+          </div>
+   <input class="easyui-checkbox" name="causali" value="Personalizzato'" data-options="label:'Mod. personalizzato:', labelWidth:'155px'">
+   <div style="margin:20px 0;">
+          </div>
+   <input class="easyui-checkbox" name="causali" value="Web'" data-options="label:'Autorizza WEB:', labelWidth:'155px'">
+   <div style="margin:20px 0;">
+        <span>Conto Annuale:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>         </option>
+			<option>FERIE</option>
+            <option>ASSENZE PER MALATTIA RETRIBUITE</option>
+            <option>CONGEDI RETRIBUITI AI SENSI DELL'ART.42,C.5,DLGS 151/2001</option>
+			<option>LEGGE 104/92</option>
+			<option>ASS.RETRIB.: MATERNITA',CONGEDO PARENT.,MALATTIA FIGLIO</option>
+			<option>ALTRI PERMESSI ED ASSENZE RETRIBUITE</option>
+			<option>SCIOPERO</option>
+			<option>ALTRE ASSENZE NON RETRIBUITE</option>
+			<option>FORMAZIONE</option>
+        </select>
+		<div style="margin:20px 0;">
+          </div>
+		<span>Gruppo:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>                 </option>
+		</select>
+		<div style="margin:20px 0;">
+          </div>
+   <input class="easyui-textbox" data-options="label:'Sigla di stampa ridotta:', labelWidth:'280px', width:'350px'">
+<div style="margin:20px 0;">
+          </div>
+		  <span>Su WEB:</span>
+        <select onchange="changeAnimation(this.value)">
+		<option>                 </option>
+		<option>Autorizzazione automatica</option>
+		<option>Singola autorizzazione</option>
+		<option>Doppia autorizzazione</option>
+		<option>Esclusa da web</option>
+		</select>
+		<div style="margin:20px 0;">
+          </div>
+		   <input class="easyui-textbox" data-options="label:'Sostituisci con (solo su acquisizione):', labelWidth:'280px', width:'350px'">
+          <div style="margin:20px 0;">
+          </div>
+		   <input class="easyui-textbox" data-options="label:'Conteggia su:', labelWidth:'280px', width:'350px'">
+		   <div style="margin:20px 0;">
+          </div>
+		   <input class="easyui-textbox" data-options="label:'Duplica su:', labelWidth:'280px', width:'350px'">
+		  
+		  </div>
+		  
+	</div>
+				</p>
+            </div>
+        </div>
+						
+			
+			</fieldset>
+			
+			</div>
+			<div style="text-align:center;padding:15px 0">
+
+           <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
+
+     <a href="#" class="easyui-linkbutton"  onclick="history.back()" data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a> </div>
+        <div><a href="http://www.tp-one.it" >tp-one.it</a></div>
+			</div>
+       
+    </body>
+    </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Elenco Causali
+    </title>
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/demo/demo.css">
+    <script type="text/javascript" src="/openpa/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/locale/easyui-lang-it.js"></script>
+
+
+<script type="text/javascript">
+    $(function(){
+    $('#open_form').on('submit', function(e){
+
+    if ($(this).form('validate')){
+     return true;
+     }
+        return false;
+    })
+    })
+
+</script>
+ 
+</head>
+        <body>
+
+        <form>
+
+        <div id="w" class="easyui-panel" title="Tabella Orari profili"
+             data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
+                     style="width:100%;height:125%;padding:20px;">
+
+         @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+                     
+        <div style="margin:20px 0;"></div>
+
+            <div title="Elenco Causali" style="padding:10px">
+            <font color="blue">
+ 
+        <table class="easyui-datagrid" title="Orari disponibili" style="width:'100%';height:450px"
+
+                data-options="singleSelect:true,rownumbers:true,singleSelect:true,pagination:true
+								,url:
+                                   @FILE-JSON@
+                                    ,remoteSort:false
+				                 ,method:'get'">
+            <thead>
+                <tr>
+                    <th data-options="field:'ELEMENTO',width:'15%',sortable:true">Codice</th>
+                    <th data-options="field:'DESC',width:'45%',sortable:true">Descrizione</th>
+                    <th data-options="field:'DESC1',width:'05%',sortable:true">TIPO</th>
+                    <th data-options="field:'DESC2',width:'15%',sortable:true">TESTO</th>
+                    <th data-options="field:'MODIFICA',width:'10%',align:'center'">Modifica</th>
+                    <th data-options="field:'CANCELLA',width:'10%',align:'center'">Elimina</th>                             
+                     
+               </tr>
+            </thead>
+        </table>
+            </font>
+            </div>
+            <input name="MK-KEY" size="1" style="visibility: hidden" value=
+            @SECTION-WEB@
+            >
+            <div style="text-align:left;padding:15px 0">
+
+             <a href="openinse.exe?MK-KEY=$SECTION-WEB$"
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Nuova</span></a>
+
+            <a href="openpa00.exe?MK-KEY=$SECTION-WEB$"
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>
+
+            <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a>
+
+        </div>
+        </form>
+        </body>
+        </html>

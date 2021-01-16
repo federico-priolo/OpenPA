@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>  
+  <head>         
+    <meta charset="UTF-8">         
+    <title>Elimina tabelle
+    </title>             
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/demo/demo.css">
+    <script type="text/javascript" src="/openpa/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/locale/easyui-lang-it.js"></script>
+
+
+<script type="text/javascript">
+    $(function(){
+    $('#open_form').on('submit', function(e){
+
+    if ($(this).form('validate')){
+     return true;
+     }
+        return false;
+    })
+    })
+</script>
+
+
+
+</head>  
+        <body>
+    
+        <form id="open_form" name="open_form" method="post" action="/cgi-open/opendele.exe?MK-KEY=$SECTION-WEB$&MK-ITEM=$MK-ITEM$&MK-FILE=$MK-FILE$">
+        
+
+        <div id="w" class="easyui-panel" title="Conferma cancellazione" 
+             data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
+		     style="width:100%;height:105%;padding:20px;"> 
+       
+     @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+                     
+       
+        <div style="margin:20px 0;"></div>
+
+
+            <div title="ELIMINA" style="padding:10px">
+            
+          <fieldset>
+          
+            <div style="text-align:left;padding:15px 0">
+            <font color="red">
+
+            
+            <h2><center> Stai cancellando definitivamente il record dal flusso :
+            $FLUSSO-DELETE$
+            <div style="text-align:left;padding:15px 0">
+            <fieldset>
+            <center>
+            $CHIAVE-DELETE$
+            </center>
+            </fieldset>
+            </div>
+            </center></h2>
+
+            </font>            
+          </div>
+                      
+         </fieldset>
+
+        
+            </div>
+			
+			
+
+            <input name="MK-KEY" size="1" style="visibility: hidden" value=
+            @SECTION-WEB@
+            >                                                                                                             
+       
+            
+            <div style="text-align:center;padding:15px 0">
+
+             
+            <button class="easyui-linkbutton"  
+            onclick="return confirm('Confermi la CANCELLAZIONE dei dati?')" 
+            type="submit" 
+            data-options="iconCls:'icon-cancel'" 
+            style="padding:5px 0px;width:15%; margin-left:20px">Elimina</button>
+			
+			 
+                $GOBACK$
+            
+     </div>
+       
+        </form> 
+      
+        </body>
+        </html>
+   
+       

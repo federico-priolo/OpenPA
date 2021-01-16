@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+ <!--                   VERSIONE 1.0.4         -->
+<html>  
+  <head>         
+    <meta charset="UTF-8">         
+    <title>Archivio voci
+    </title>             
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/demo/demo.css">
+    <script type="text/javascript" src="/openpa/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/locale/easyui-lang-it.js"></script>
+
+
+<script type="text/javascript">
+    $(function(){
+    $('#open_form').on('submit', function(e){
+
+    if ($(this).form('validate')){
+     return true;
+     }
+        return false;
+    })
+    })
+</script>
+
+
+
+</head>  
+        <body>
+    
+        <form id="open_form" name="open_form" method="post" action="/cgi-open/openreca.exe">
+        
+
+        <div id="w" class="easyui-panel" title="Tabella causali"
+             data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
+		     style="width:100%;height:105%;padding:20px;"> 
+        
+        @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+      
+         <div style="margin:20px 0;"></div>
+         <div style="margin:20px 0 10px 0;"></div>
+         
+        <div class="easyui-accordion" style="width:'98%';height:500px;">
+        <div title="Configurazione" data-options="iconCls:'icon-configura'" style="overflow:auto;padding:10px;">
+           
+           <font color="blue">
+          <fieldset>
+          <legend> <font color="red">Dati generali </legend></font>
+            <div style="text-align:left;padding:10px 0">
+            
+            <input class="easyui-textbox" label="Descrizione" name="DESC-CAUS" prompt="descrizione causale" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
+            @DESC-CAUS@
+            ">
+
+            <a href="#" class="easyui-tooltip" title="Indicare una sigla breve per esposizione su cartellino ">            
+            <input class="easyui-textbox" label="&nbsp;Sigla" name="SIGLA-CAUS" prompt="sigla causale" style="width:200PX;height:34px;padding:10px;" data-options="labelWidth:'30%',required:true,missingMessage:'Campo obbligatorio' ,value:
+            @SIGLA-CAUS@
+            "></a>            
+            
+            </div>
+            </fieldset>
+            </font>
+
+
+          <font color="blue">
+          <fieldset>
+          <legend> <font color="red">Tipo causale</legend></font>
+            
+            
+        <div style="margin-bottom:10px;margin-left:30px">
+
+         
+        <a href="#" class="easyui-tooltip" title="Indicare il tipo della causale ">                    
+        <input class="easyui-radiobutton" name="TIPO-CAUS" value="1" width="150px" labelWidth="100px"
+            @TIPO-CAUS1@
+            label="Assenza"></a>
+    
+        <input class="easyui-radiobutton" name="TIPO-CAUS" value="2" width="150px" labelWidth="100px"
+            @TIPO-CAUS2@        
+         label="Presenza"> 
+    
+        <input class="easyui-radiobutton" name="TIPO-CAUS" value="4"  width="150px" labelWidth="100px"
+            @TIPO-CAUS4@        
+         label="Figurativa">
+            </div>
+          
+            
+            
+            </fieldset>
+            </font>
+
+
+          <font color="blue">
+          
+          
+          <fieldset>
+          <legend> <font color="red">Categoria causale</legend></font>
+            <div style="text-align:left;padding:10px 0">
+        
+        <p>questa sezione  introduce i soli elementi di base della causale. In assenza di altri parametri valgono quelli standar per la cateriga assegnata
+            che possiamo riassumere come segue:<br></p>
+                
+        
+        <div style="margin-bottom:10px ">
+        
+        
+        <div>
+        <strong>
+        <a href="#" class="easyui-tooltip" title="Natura causale lavoro ordinario">                    
+        <input class="easyui-radiobutton" name="NATURA-CAUS" value="1" width="100px" labelWidth="150px"
+             $NATURA-CAUS1$
+            label="Lavoro ordinario"> </a>
+        </strong>
+        <p>le ore lavorate fatte nel profilo del dipendente vengono conteggiate senza alcuna 
+            ripartizione di orario ossia sono sempre considerate diurne la causale deve iniziare in entrata
+            e terminare in uscita. L'Uscita puo' avvenire anche il giorno seguente con altra causale di straordinario
+            o con la medesima. Le ore concorrono a formare il lavorato del dipendente. Qualora il profilo sia libero
+            sono tutte conteggiate a concorrenza del dovuto (giornaliero o settimana o mensile a seconda dei criteri del profilo)
+         </p>
+        
+        </div>
+    <div>
+    <strong>
+        <input class="easyui-radiobutton" name="NATURA-CAUS" value="2" width="100px" labelWidth="150px"
+             $NATURA-CAUS2$     
+         label="Straordinario"> 
+         </strong>
+         <p>le ore lavorate fatte nel profilo del dipendente vengono conteggiate sempre
+            con ripartizione di orario (diurno notturno festivo festivo notturno.
+            L'Uscita puo' avvenire anche il giorno seguente con la medesima causale
+            Le ore concorrono sono conteggite nel contatore di straordinario del dipendente e della causale.
+            La causale ammette la sequenza ENTRATA e USCITA oppure entrata prima per uscita dopo per...
+          </p>
+    
+    </div>
+    
+    <div>
+    <strong>
+        <input class="easyui-radiobutton" name="NATURA-CAUS" value="3"  width="100px" labelWidth="150px"
+             $NATURA-CAUS3$   
+         label="Ferie">
+         </strong>
+             <p>le giornate vengono contabilizzate nella sezione delle ferie, sono contabilizzate le solo giornate di presenza orario da profilo </p>
+    
+    </div>    
+    
+    <div>
+    <strong>
+           <a href="#" class="easyui-tooltip" title="Natura causale MALATTIA">                    
+        <input class="easyui-radiobutton" name="NATURA-CAUS" value="4" width="100px" labelWidth="150px"
+             $NATURA-CAUS4$
+            label="Malattia"></a>
+            </strong>
+            <p>le giornate vengono contabilizzate in malattia ,sono contabilizzate tutte le giornate di calendario </p>
+            </div>
+            </div>
+           
+            </div>
+          
+
+    <div>
+    <div style="margin-bottom:10px"></div>
+    <strong>
+        <input class="easyui-radiobutton" name="NATURA-CAUS" value="5" width="100px" labelWidth="150px"
+             $NATURA-CAUS5$     
+         label="Trasferta"> 
+         </strong>
+                  <p>le giornate vengono contabilizzate nel lavorato, sono contabilizzate le solo giornate di presenza orario da profilo </p>
+    
+    </div>
+    
+    <div>
+    
+                 <div style="margin-bottom:10px"></div>
+           <strong>      
+        <input class="easyui-radiobutton" name="NATURA-CAUS" value="6" width="100px" labelWidth="150px"
+             $NATURA-CAUS6$     
+         label="Sciopero"> 
+         </strong>
+        <p>le giornate vengono contabilizzate nel lavorato, sono contabilizzate le solo giornate di presenza orario da profilo 
+            la decurtazione avviene sulla busta paga lato economico
+        </p>
+    </div>
+    <div>
+    <div style="margin-bottom:10px"></div>
+    <strong>
+        <input class="easyui-radiobutton" name="NATURA-CAUS" value="7"  width="100px" labelWidth="150px"
+             $NATURA-CAUS7$   
+         label="Altro">
+     </strong>    
+         <p>le giornate vengono contabilizzate nel lavorato, sono contabilizzate le solo giornate di presenza orario da profilo 
+         
+        </p>
+         
+     </div>
+ 
+            </fieldset>
+            
+             <fieldset>
+             <legend> <font color="red">Tipo ripartizione orario </legend></font>
+             
+             <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="RIP-CONT-CAUS" value="2" width="300px" labelWidth="400px"
+             $RIP-CONT-CAUS2$     
+         label="La causale e' di assenza">     </strong>
+
+            </div>
+             
+             <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="RIP-CONT-CAUS" value="2" width="300px" labelWidth="400px"
+             $RIP-CONT-CAUS2$     
+         label="Nessuna ripartizione">     </strong>
+
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="RIP-CONT-CAUS" value="3" width="300px" labelWidth="400px"
+             $RIP-CONT-CAUS3$     
+         label="Ripartizione in feriale,notturno,festivo+notturno">     </strong>
+
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="RIP-CONT-CAUS" value="4" width="300px" labelWidth="400px"
+             $RIP-CONT-CAUS4$     
+         label="Ripartizione solo su indennita'">     </strong>
+
+            </div>
+            
+            </font>
+        </div>
+        
+        <div title="Parametri di PRESENZA" data-options="iconCls:'icon-man2'" style="padding:10px;">
+       <font color="blue">
+            <fieldset>
+           
+            <legend> <font color="red">Tipo conteggio causali in PRESENZA </legend></font>
+             
+
+         <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="TIPO-CONT-CAUS" value="1" width="300px" labelWidth="300px"
+             $TIPO-CONT-CAUS1$     
+         label="La causale e' di assenza">     </strong>
+
+            </div>
+
+         <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="TIPO-CONT-CAUS" value="2" width="300px" labelWidth="300px"
+             $TIPO-CONT-CAUS2$     
+         label="Tipo USCITA e ENTRATA">  </strong>
+            
+            <p>il tipo conteggio prevede che la causale inizi per USCITA e poi  termini in ENTRATA
+            esempio: si esce per permesso e poi si rientra.
+            E' altresì possibile che si entri direttamente dopo l'orario da profilo in questo caso la causale si
+            intende come entra dopo da ...(esempio si entra dopo da servizio). In questo caso da quando si sarebbe
+            dovuti entrare alla entrata effettivamente rilevata viene contabilizzato tutto a questa causale.
+            Inoltre e'  possibile che si esca prima dell'orario da profilo in questo caso la causale si
+            intende come da quando si esce alla uscita teoria  ...(esempio si esce per servizio e non si rientra). 
+            In questo caso da quando si esce alla ucita da profilo  viene contabilizzato tutto a questa causale.
+            
+            </p>         
+            </div>
+            
+            
+             <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="TIPO-CONT-CAUS" value="3" width="300px" labelWidth="300px"
+             $TIPO-CONT-CAUS3$     
+         label="Coppia ENTRATA e USCITA">  </strong>
+            
+            <p>il tipo conteggio prevede che la causale inizi per ENTRATA e poi termini in USCITA
+            
+            </p>         
+            </div>
+           
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="TIPO-CONT-CAUS" value="4" width="300px" labelWidth="300px"
+             $TIPO-CONT-CAUS4$     
+         label="Tipo ENTRATA e USCITA">  </strong>
+            
+            <p>il tipo conteggio prevede che la causale inizi per ENTRATA e poi  termini in USCITA
+            esempio: si entra prima per straordinario o si esce dopo per straordinario .
+            E' altresì possibile che si entri prima l'orario da profilo in questo caso la causale si
+            intende come entra prima da ...(esempio si entra prima per straordinario). In questo caso dall'entrata effettivamente rilevata 
+            a quando si sarebbe dovuti entrare viene contabilizzato tutto a questa causale.
+            Inoltre e'  possibile che si esca dopo dell'orario da profilo in questo caso la causale si
+            intende come dall'uscita teorica da profilo a quella rilevata dalla timbratura  ...(esempio si esce dopo l'orario di lavoro). 
+            In questo caso dall'uscita da profilo a quando si esce effettivamente  viene contabilizzato tutto a questa causale.
+            
+            </p>         
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="TIPO-CONT-CAUS" value="5" width="300px" labelWidth="300px"
+             $TIPO-CONT-CAUS5$     
+         label="Conteggio da complementare">  </strong>
+            
+            <p>il tipo conteggio prevede l'inserimento del valore orario della causale nella tabella complementare
+            
+            </p>         
+            </div>
+            </fieldset>
+            
+            <fieldset>
+            <legend> <font color="red">Tipo contatore orario </legend></font>
+            <p></p>
+                   <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="CONSIDERA-CAUS" value="1" width="300px" labelWidth="320px"
+             $CONSIDERA-CAUS1$     
+         label="La causale e' di assenza">  </strong>
+                 
+            </div>
+            
+              <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="CONSIDERA-CAUS" value="2" width="300px" labelWidth="320px"
+             $CONSIDERA-CAUS2$     
+         label="Esclusione dalle ore normali di lavoro">  </strong>
+                 <p>i conteggi delle timbrature con la causale vengono escluse dalle ore lavorative</p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="CONSIDERA-CAUS" value="3" width="300px" labelWidth="320px"
+             $CONSIDERA-CAUS3$     
+         label="Somma nelle ore normali di lavoro">  </strong>
+                 <p>i conteggi delle timbrature con la causale vengono sommate nelle ore lavorative</p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="CONSIDERA-CAUS" value="4" width="300px" labelWidth="320px"
+             $CONSIDERA-CAUS4$     
+         label="Sottrae dalle ore normali di lavoro">  </strong>
+                 <p>i conteggi delle timbrature con la causale vengono sottratte dalle ore lavorative</p>
+            </div>
+            
+            </fieldset>
+            </font>
+        
+            
+        </div>
+        <div title="Parametri di ASSENZA" data-options="iconCls:'icon-man1'" style="padding:10px;">   
+         <font color="blue">
+            <fieldset>
+           
+            <legend> <font color="red">Conteggi su festivo</legend></font>
+             
+
+         <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="TRAT-FEST-CAUS" value="1" width="300px" labelWidth="340px"
+             $TRAT-FEST-CAUS1$     
+         label="La causale e' di presenza">     </strong>
+
+            </div>
+
+         <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="TRAT-FEST-CAUS" value="2" width="300px" labelWidth="340px"
+             $TRAT-FEST-CAUS2$     
+         label="Non considera conteggio ore e giorni">  </strong>
+            
+            <p>ad esempio le Ferie</p>         
+            </div>
+            
+            
+             <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="TRAT-FEST-CAUS" value="3" width="300px" labelWidth="340px"
+             $TRAT-FEST-CAUS3$     
+         label="Considera giorni e conteggio orario">  </strong>
+            
+            <p>ad esempio la malattia di turnista su giorno festivo coincidente con riposo...</p>         
+            </div>
+           
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="TRAT-FEST-CAUS" value="4" width="300px" labelWidth="340px"
+             $TRAT-FEST-CAUS4$     
+         label="Considera solo conteggio giorno assenza">  </strong>
+            
+            <p>ad esempio aspettativa per malattia</p>         
+            </div>
+            
+            </fieldset>
+            
+            <fieldset>
+            <legend> <font color="red">Valore assenza</legend></font>
+            <p></p>
+                   <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="VAL-ASS-CAUS" value="1" width="300px" labelWidth="320px"
+             $VAL-ASS-CAUS1$     
+         label="La causale e' di presenza">  </strong>
+                 
+            </div>
+            
+              <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="VAL-ASS-CAUS" value="2" width="300px" labelWidth="320px"
+             $VAL-ASS-CAUS2$     
+         label="Monte orario da contratto">  </strong>
+                 <p></p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="VAL-ASS-CAUS" value="3" width="300px" labelWidth="320px"
+             $VAL-ASS-CAUS3$     
+         label="Dovuto del giorno">  </strong>
+                 <p></p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="VAL-ASS-CAUS" value="4" width="300px" labelWidth="320px"
+             $VAL-ASS-CAUS4$     
+         label="Nessun valore">  </strong>
+                 <p></p>
+            </div>
+            
+                        <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="VAL-ASS-CAUS" value="5" width="300px" labelWidth="320px"
+             $VAL-ASS-CAUS5$     
+         label="Monte ore settimanale diviso 6">  </strong>
+                 <p></p>
+            </div>
+            
+                        <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="VAL-ASS-CAUS" value="6" width="300px" labelWidth="320px"
+             $VAL-ASS-CAUS6$     
+         label="Valore indicato dall'operatore">  </strong> 
+                 <p></p>
+            </div>
+            
+            </fieldset>
+            
+            <fieldset>
+            <legend> <font color="red">Tipo conteggio</legend></font>
+            <p></p>
+                   <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="ASS-CONT-CAUS" value="1" width="300px" labelWidth="320px"
+             $ASS-CONT-CAUS1$     
+         label="La causale e' di presenza">  </strong>
+                 
+            </div>
+            
+              <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="ASS-CONT-CAUS" value="2" width="300px" labelWidth="320px"
+             $ASS-CONT-CAUS2$     
+         label="Aumenta le ore lavorate">  </strong>
+                 <p></p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="ASS-CONT-CAUS" value="3" width="300px" labelWidth="320px"
+             $ASS-CONT-CAUS3$     
+         label="Nessuna valorizzazione">  </strong>
+                 <p></p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="ASS-CONT-CAUS" value="4" width="300px" labelWidth="320px"
+             $ASS-CONT-CAUS4$     
+         label="Decrementa le ore lavorate">  </strong>
+                 <p></p>
+            </div>
+                        
+            </fieldset>
+            
+                        <fieldset>
+            <legend> <font color="red">Assenze da... a...</legend></font>
+            <p></p>
+                   <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="GIORNI-ASS-CAUS" value="1" width="300px" labelWidth="320px"
+             $GIORNI-ASS-CAUS1$     
+         label="La causale e' di presenza">  </strong>
+                 
+            </div>
+            
+              <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="GIORNI-ASS-CAUS" value="2" width="300px" labelWidth="320px"
+             $GIORNI-ASS-CAUS2$     
+         label="Considera tutta la settimana">  </strong>
+                 <p></p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="GIORNI-ASS-CAUS" value="3" width="300px" labelWidth="320px"
+             $GIORNI-ASS-CAUS3$     
+         label="Considera solo i lavorativi">  </strong>
+                 <p></p>
+            </div>
+            
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+             <strong>
+   
+           <input class="easyui-radiobutton" name="GIORNI-ASS-CAUS" value="4" width="300px" labelWidth="320px"
+             $GIORNI-ASS-CAUS4$     
+         label="Considera i lavorativi su 6 giorni">  </strong>
+                 <p></p>
+            </div>
+                        
+            </fieldset>
+            
+            </font>
+            
+        </div>
+        <div title="Regole" data-options="iconCls:'icon-rules'" style="padding:10px;">   
+         <font color="blue">
+         </div>
+         </font>
+         <div title="Altro" data-options="iconCls:'icon-more'" style="padding:10px;">   
+         <font color="blue">
+         </div>
+         </font>
+    </div>
+            
+        
+        
+            <input name="MK-KEY" size="1" style="visibility: hidden" value=
+            @SECTION-WEB@
+            >                                                                                                             
+            <div style="text-align:center;padding:15px 0">
+            <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
+			 <a href="opencaus.exe?MK-KEY=$SECTION-WEB$" 
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
+            <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 
+            </div>
+        </form> 
+        </body>
+        </html>
+   
+       
