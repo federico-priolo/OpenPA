@@ -107,8 +107,8 @@
 001070           INVALID KEY
 001080           MOVE "NO"      TO ESITO.
 001090
-001100          IF STATUS-VIEW = LOCK-STATUS
-001110           MOVE "Record in uso presso altro terminale"
+001100           IF STATUS-VIEW = LOCK-STATUS
+001110            MOVE "Record in uso presso altro terminale"
 001120            TO MESSAGGIO
 001130            PERFORM VIS-MESS     THRU EX-VIS-MESS
 001140             GO TO LEGGO-VIEW.

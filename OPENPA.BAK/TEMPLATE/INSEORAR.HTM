@@ -3,7 +3,7 @@
 <html>  
   <head>         
     <meta charset="UTF-8">         
-    <title>Archivio voci
+    <title>Archivio orari
     </title>             
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
@@ -30,7 +30,7 @@
 </head>  
         <body>
     
-        <form id="open_form" name="open_form" method="post" action="/cgi-open/openreca.exe">
+        <form id="open_form" name="open_form" method="post" action="/cgi-open/openreor.exe">
         
 
         <div id="w" class="easyui-panel" title="Tabella causali"
@@ -42,7 +42,7 @@
          <div style="margin:20px 0;"></div>
          <div style="margin:20px 0 10px 0;"></div>
          
-        <!-- <div class="easyui-accordion" style="width:'98%';height:500px;"> -->
+        <div class="easyui-accordion" style="width:'98%';height:500px;">
         <div title="Configurazione" data-options="iconCls:'icon-configura'" style="overflow:auto;padding:10px;">
            
            <font color="blue">
@@ -50,13 +50,13 @@
           <legend> <font color="red">Dati generali </legend></font>
             <div style="text-align:left;padding:10px 0">
             
-            <input class="easyui-textbox" label="Descrizione" name="DESC-CAUS" prompt="descrizione causale" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            @DESC-CAUS@
+            <input class="easyui-textbox" label="Descrizione" name="DESC-ORA" prompt="descrizione orario" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
+            @DESC-ORA@
             ">
 
             <a href="#" class="easyui-tooltip" title="Indicare una sigla breve per esposizione su cartellino ">            
             <input class="easyui-textbox" label="&nbsp;Sigla" name="SIGLA-CAUS" prompt="sigla causale" style="width:200PX;height:34px;padding:10px;" data-options="labelWidth:'30%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            @SIGLA-CAUS@
+            @TESTO-ORA@
             "></a>            
             
             </div>
@@ -66,24 +66,29 @@
 
           <font color="blue">
           <fieldset>
-          <legend> <font color="red">Tipo causale</legend></font>
+          <legend> <font color="red">Tipo orario</legend></font>
             
             
         <div style="margin-bottom:10px;margin-left:30px">
 
          
-        <a href="#" class="easyui-tooltip" title="Indicare il tipo della causale ">                    
-        <input class="easyui-radiobutton" name="TIPO-CAUS" value="1" width="150px" labelWidth="100px"
-            @TIPO-CAUS1@
-            label="Assenza"></a>
+        <a href="#" class="easyui-tooltip" title="Indicare il tipo orario ">                    
+        <input class="easyui-radiobutton" name="TIPO-ORA" value="C" width="150px" labelWidth="100px"
+            @TIPO-ORAC@
+            label="Continuato"></a>
     
-        <input class="easyui-radiobutton" name="TIPO-CAUS" value="2" width="150px" labelWidth="100px"
-            @TIPO-CAUS2@        
-         label="Presenza"> 
+        <input class="easyui-radiobutton" name="TIPO-ORA" value="A" width="150px" labelWidth="100px"
+            @TIPO-ORAA@        
+         label="Articolato"> 
     
-        <input class="easyui-radiobutton" name="TIPO-CAUS" value="4"  width="150px" labelWidth="100px"
-            @TIPO-CAUS4@        
-         label="Figurativa">
+        <input class="easyui-radiobutton" name="TIPO-ORA" value="T"  width="150px" labelWidth="100px"
+            @TIPO-ORAT@        
+         label="Turno">
+            </div>
+          
+        <input class="easyui-radiobutton" name="TIPO-ORA" value="L"  width="150px" labelWidth="100px"
+            @TIPO-ORAL@        
+         label="Libero">
             </div>
           
             
@@ -206,7 +211,7 @@
              <strong>
 
          <input class="easyui-radiobutton" name="RIP-CONT-CAUS" value="2" width="300px" labelWidth="400px"
-             $RIP-CONT-CAUS1$     
+             $RIP-CONT-CAUS2$     
          label="La causale e' di assenza">     </strong>
 
             </div>
@@ -596,7 +601,7 @@
          <font color="blue">
          </div>
          </font>
-    <!-- </div> -->
+    </div>
             
         
         
