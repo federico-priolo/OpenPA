@@ -42,7 +42,7 @@
          <div style="margin:20px 0;"></div>
          <div style="margin:20px 0 10px 0;"></div>
          
-        <!-- <div class="easyui-accordion" style="width:'98%';height:500px;"> -->
+        <div class="easyui-accordion" style="width:'98%';height:500px;"> 
         <div title="Configurazione" data-options="iconCls:'icon-configura'" style="overflow:auto;padding:10px;">
            
            <font color="blue">
@@ -67,23 +67,36 @@
           <font color="blue">
           <fieldset>
           <legend> <font color="red">Tipo causale</legend></font>
-            
+            <p></p>
             
         <div style="margin-bottom:10px;margin-left:30px">
 
-         
+ <strong>         
         <a href="#" class="easyui-tooltip" title="Indicare il tipo della causale ">                    
-        <input class="easyui-radiobutton" name="TIPO-CAUS" value="1" width="150px" labelWidth="100px"
+        <input class="easyui-radiobutton" name="TIPO-CAUS" value="1" width="150px" labelWidth="150px,required:true,missingMessage:'Campo obbligatorio',validType:'checked[\'#TIPO-CAUS\']'"
             @TIPO-CAUS1@
             label="Assenza"></a>
-    
-        <input class="easyui-radiobutton" name="TIPO-CAUS" value="2" width="150px" labelWidth="100px"
+          </strong>   
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+     <strong>
+        <input class="easyui-radiobutton" name="TIPO-CAUS" value="2" width="150px" labelWidth="150px,required:true,missingMessage:'Campo obbligatorio',validType:'checked[\'#TIPO-CAUS\']'"
             @TIPO-CAUS2@        
-         label="Presenza"> 
-    
-        <input class="easyui-radiobutton" name="TIPO-CAUS" value="4"  width="150px" labelWidth="100px"
+         label="Presenza">  </strong>
+                     </diV>
+            <div style="margin-bottom:10px; margin-left:30px ">
+
+     <strong>
+        <input class="easyui-radiobutton" name="TIPO-CAUS" value="4"  width="150px" labelWidth="150px,required:true,missingMessage:'Campo obbligatorio',validType:'checked[\'#TIPO-CAUS\']'"
             @TIPO-CAUS4@        
          label="Figurativa">
+          </strong>
+          <p>Le causali figurative sono utilizzate per collegare i calcoli di una voce di indennità
+          ad uno specifio codice voce. Tutti i flag eventualmente indicati non assumono alcun significato
+          in quanto la loro gestione e' completamente a carico degli algoritmi del software
+
+         </p>
+        
             </div>
           
             
@@ -97,8 +110,8 @@
           
           <fieldset>
           <legend> <font color="red">Categoria causale</legend></font>
-            <div style="text-align:left;padding:10px 0">
-        
+            <!-- <div style="text-align:left;padding:10px 0"> -->
+            <div style="margin-bottom:10px; margin-left:30px ">        
         <p>questa sezione  introduce i soli elementi di base della causale. In assenza di altri parametri valgono quelli standar per la cateriga assegnata
             che possiamo riassumere come segue:<br></p>
                 
@@ -161,7 +174,7 @@
           
 
     <div>
-    <div style="margin-bottom:10px"></div>
+    <div style="margin-bottom:10px; margin-left:30px ">
     <strong>
         <input class="easyui-radiobutton" name="NATURA-CAUS" value="5" width="100px" labelWidth="150px"
              $NATURA-CAUS5$     
@@ -173,7 +186,7 @@
     
     <div>
     
-                 <div style="margin-bottom:10px"></div>
+                 <div style="margin-bottom:10px; margin-left:30px ">
            <strong>      
         <input class="easyui-radiobutton" name="NATURA-CAUS" value="6" width="100px" labelWidth="150px"
              $NATURA-CAUS6$     
@@ -184,7 +197,7 @@
         </p>
     </div>
     <div>
-    <div style="margin-bottom:10px"></div>
+    <div style="margin-bottom:10px; margin-left:30px ">
     <strong>
         <input class="easyui-radiobutton" name="NATURA-CAUS" value="7"  width="100px" labelWidth="150px"
              $NATURA-CAUS7$   
@@ -200,9 +213,10 @@
             
              <fieldset>
              <legend> <font color="red">Tipo ripartizione orario </legend></font>
+             <p></p>
              
              <div style="margin-bottom:10px; margin-left:30px ">
-<p></p>
+
              <strong>
 
          <input class="easyui-radiobutton" name="RIP-CONT-CAUS" value="2" width="300px" labelWidth="400px"
@@ -590,13 +604,277 @@
         </div>
         <div title="Regole" data-options="iconCls:'icon-rules'" style="padding:10px;">   
          <font color="blue">
+         <fieldset>
+         <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name=" " value="1" width="300px" labelWidth="500px"
+             $ 1$     
+         label="Stampa su cartellino">     </strong>
+        </div>
+        
+        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+        <strong>
+         <input class="easyui-radiobutton" name=" " value="2" width="300px" labelWidth="500px"
+             $ 2$     
+         label="Dettaglio su cartellino">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+<a href="#" style="color:blue;" class="easyui-tooltip" title="Se e' presente un rientro da profilo e il dipendente ESCE con la causale indicata allora la considera anche per il rientro">
+         <input class="easyui-radiobutton" name="GIUST-CAUS" value="3" width="300px" labelWidth="500px"
+             $GIUST-CAUS3$     
+         label="Giustifica mancato rientro se l'ultima del giorno">     </strong>
+</a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name=" " value="4" width="300px" labelWidth="500px"
+             $ 4$     
+         label="Riporta saldo anno precedente">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="USA-MENSA-CAUS" value="5" width="300px" labelWidth="500px"
+             $USA-MENSA-CAUS5$     
+         label="Assegna pausa mensa">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="BRUNETTA-CAUS" value="6" width="300px" labelWidth="500px"
+             $BRUNETTA-CAUS6$     
+         label="Riduzione malattia">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Cliccare per escludere SEMPRE la pausa mensa se presente la presente causale">
+         <input class="easyui-radiobutton" name=" " value="7" width="300px" labelWidth="500px"
+             $ 7$     
+         label="Escludi pausa">     </strong>
+</a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="USA-LIQ-CAUS" value="8" width="300px" labelWidth="500px"
+             $USA-LIQ-CAUS8$     
+         label="Accetta liquidazioni">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name="USA-COMP-CAUS" value="9" width="300px" labelWidth="500px"
+             $USA-COMP-CAUS9$     
+         label="Abilita compensazioni">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name=" " value="10" width="300px" labelWidth="500px"
+             $ 10$     
+         label="Saldo ad Incremento">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name=" " value="11" width="300px" labelWidth="500px"
+             $ 11$     
+         label="Saldo a Decremento">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name=" " value="12" width="300px" labelWidth="500px"
+             $ 12$     
+         label="Saldo Giornaliero">     </strong>
+
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name=" " value="13" width="300px" labelWidth="500px"
+             $ 13$     
+         label="Saldo Orario">     </strong>
+
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+
+         <input class="easyui-radiobutton" name=" " value="14" width="300px" labelWidth="500px"
+             $ 14$     
+         label="Saldo Orario">     </strong>
+
+            </div>
+
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Azzera il flag fuori fascia se presente timbratura sul calcolo delle indennità">
+         <input class="easyui-radiobutton" name=" " value="15" width="300px" labelWidth="500px"
+             $ 15$     
+         label="Su indennità memorizza solo periodi in fascia">     </strong>
+</a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Consente di definire dove archiviare la voce (DEVE ESSERE UNA VOCE FIGURATIVA)">
+         <input class="easyui-radiobutton" name=" " value="16" width="300px" labelWidth="500px"
+             $ 16$     
+         label="Archivia su Diurno">     </strong>
+</a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Consente di definire dove archiviare la voce (DEVE ESSERE UNA VOCE FIGURATIVA)">
+         <input class="easyui-radiobutton" name=" " value="17" width="300px" labelWidth="500px"
+             $ 17$     
+         label="Archivia su Notturno">     </strong>
+</a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Consente di definire dove archiviare la voce (DEVE ESSERE UNA VOCE FIGURATIVA)">
+         <input class="easyui-radiobutton" name=" " value="18" width="300px" labelWidth="500px"
+             $ 18$     
+         label="Archivia su Festivo">     </strong>
+</a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Consente di definire dove archiviare la voce (DEVE ESSERE UNA VOCE FIGURATIVA)">
+         <input class="easyui-radiobutton" name=" " value="19" width="300px" labelWidth="500px"
+             $ 19$     
+         label="Archivia su Festivo + Notturno">     </strong>
+</a>
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+	<a href="#" style="color:blue;" class="easyui-tooltip" title="Azzera il dovuto e il reso del giorno (come se fosse una giornata festiva) se abilitata relativa opzione sul profilo">
+         <input class="easyui-radiobutton" name="AZZERA-CAUS" value="20" width="300px" labelWidth="500px"
+             $AZZERA-CAUS20$     
+         label="Se abilitato da profilo azzera dovuto/reso">     </strong>
+</a>
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+         <input class="easyui-radiobutton" name=" " value="21" width="300px" labelWidth="500px"
+             $ 21$     
+         label="Compensa sui crediti del mese precedente prima dell'attuale">     </strong>
+         
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+         <input class="easyui-radiobutton" name="NOPAGHE-CAUS" value="22" width="300px" labelWidth="500px"
+             $NOPAGHE-CAUS22$     
+         label="Non esportare su file paghe">     </strong>
+         
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+         <input class="easyui-radiobutton" name="EMENS-CAUS" value="23" width="300px" labelWidth="500px"
+             $EMENS-CAUS23$     
+         label="Esportare su UniEMENS">     </strong>
+         
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+         <input class="easyui-radiobutton" name="COLLEGA-CAUS" value="24" width="300px" labelWidth="500px"
+             $COLLEGA-CAUS24$     
+         label="Collega alla successiva con la presente causale">     </strong>
+         
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+         <input class="easyui-radiobutton" name="CESSATA-CAUS" value="25" width="300px" labelWidth="500px"
+             $CESSATA-CAUS25$     
+         label="La causale è cessata viene sostituita con (000)">     </strong>
+         
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+         <input class="easyui-radiobutton" name=" " value="26" width="300px" labelWidth="500px"
+             $ 26$     
+         label="Escludi l'assenza GIORNALIERA dal calcolo delle indennità">     </strong>
+         
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+         <input class="easyui-radiobutton" name=" " value="27" width="300px" labelWidth="500px"
+             $ 27$     
+         label="Escludi l'assenza ORARIA dal calcolo delle indennità">     </strong>
+         
+            </div>
+                        <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+             <a href="#" style="color:blue;" class="easyui-tooltip" title="Per inserire esempio missione oraria...o altro">
+         <input class="easyui-radiobutton" name=" " value="28" width="300px" labelWidth="500px"
+             $ 28$     
+         label="Considera coppia giornaliera come da... a...">     </strong>
+         </a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+             <a href="#" style="color:blue;" class="easyui-tooltip" title="La causale contabilizza eventuali debiti emersi nella mattinata con le eccedenze pomeridiane">
+         <input class="easyui-radiobutton" name=" " value="29" width="300px" labelWidth="500px"
+             $ 29$     
+         label="Contabilizza FINO a compensazione debiti giornalieri">     </strong>
+         </a>
+            </div>
+            <div style="margin-bottom:10px; margin-left:30px ">
+<p></p>
+             <strong>
+             <a href="#" style="color:blue;" class="easyui-tooltip" title="La causale non contabilizza eventuali flessibilità">
+         <input class="easyui-radiobutton" name="FLESS-CAUS" value="30" width="300px" labelWidth="500px"
+             $FLESS-CAUS30$     
+         label="Ignora flessibilità su uscita anticipata">     </strong>
+         </a>
+            </div>
          </div>
          </font>
          <div title="Altro" data-options="iconCls:'icon-more'" style="padding:10px;">   
          <font color="blue">
          </div>
          </font>
-    <!-- </div> -->
+     </div> 
             
         
         
