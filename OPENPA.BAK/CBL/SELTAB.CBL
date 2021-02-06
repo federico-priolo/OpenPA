@@ -1,7 +1,7 @@
 000010*
 000020***********               Select flusso anagrafico TABELLE
 000030*      *
-000031* Copyright (C) 2010-2021 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
+000031* Copyright (C) 2010-2020 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
 000032*
 000033* This program is free software; you can redistribute it and/or modify
 000034* it under the terms of the GNU General Public License as published by
@@ -25,3 +25,4 @@
 000080          LOCK MODE    IS AUTOMATIC WITH LOCK ON RECORD
 000090          FILE STATUS  IS STATUS-TAB.
 000100
+

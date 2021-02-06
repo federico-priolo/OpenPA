@@ -1,5 +1,5 @@
 000010*
-000011* Copyright (C) 2010-2021 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
+000011* Copyright (C) 2010-2020 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
 000012*
 000013* This program is free software; you can redistribute it and/or modify
 000014* it under the terms of the GNU General Public License as published by

@@ -14,13 +14,4 @@
 000250          IF ESITO-NOK
 000260            PERFORM VIS-LOGIN  THRU EX-VIS-LOGIN
 000270		      GO TO FINE.
-
-                MOVE "MK-ENTITA"   	 TO NOME-VIEW
-000612          PERFORM LEGGO-VIEW   THRU EX-LEGGO-VIEW.
-                MOVE STRINGA-VIEW    TO ENTITA-WEB.
-                
-                MOVE "MK-FUNZIONE" 	 TO NOME-VIEW
-000612          PERFORM LEGGO-VIEW   THRU EX-LEGGO-VIEW.
-                MOVE STRINGA-VIEW    TO FUNZIONE-WEB.
-                
-
+000280

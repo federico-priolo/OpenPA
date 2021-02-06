@@ -16,12 +16,21 @@
 000025* the Free Software Foundation, 51 Franklin Street, Fifth Floor
 000026* Boston, MA 02110-1301 USA
 000027*
-000028*
-000029***********                      Select anagrafica ABILITAZIONI
-000030*
-000040          SELECT ARKABI ASSIGN TO  FILE-ABI
-000050          ORGANIZATION IS INDEXED
-000060          ACCESS MODE  IS DYNAMIC
-000070          RECORD KEY   IS  CHIAVE-ABI
-000080          LOCK MODE    IS AUTOMATIC WITH LOCK ON RECORD
-000090          FILE STATUS  IS STATUS-ABI.
+000028
+000029right (C) 2010-2020 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
+000030
+000040 program is free software; you can redistribute it and/or modify
+000050nder the terms of the GNU General Public License as published by
+000060Free Software Foundation; either version 2, or (at your option)
+000070later version.
+000080
+000090 program is distributed in the hope that it will be useful,
+000100WITHOUT ANY WARRANTY; without even the implied warranty of
+000110HANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+000120General Public License for more details.
+000130
+000140should have received a copy of the GNU General Public License
+000150g with this software; see the file COPYING.  If not, write to
+000160Free Software Foundation, 51 Franklin Street, Fifth Floor
+000170on, MA 02110-1301 USA
+000180

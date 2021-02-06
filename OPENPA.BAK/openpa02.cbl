@@ -1,5 +1,5 @@
 000010*
-000011* Copyright (C) 2010-2021 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
+000011* Copyright (C) 2010-2020 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
 000012*
 000013* This program is free software; you can redistribute it and/or modify
 000014* it under the terms of the GNU General Public License as published by
@@ -20,8 +20,9 @@
 000029 PROGRAM-ID       OPENPA02.
 000030 ENVIRONMENT      DIVISION.
 000040 CONFIGURATION    SECTION.
-000070			COPY "SPECIAL.CBL".
-000071 INPUT-OUTPUT     SECTION.
+000050 SPECIAL-NAMES.
+000060          DECIMAL-POINT IS COMMA.
+000070 INPUT-OUTPUT     SECTION.
 000080 FILE-CONTROL.
 000090
 000100          COPY "SELWEB.CBL".

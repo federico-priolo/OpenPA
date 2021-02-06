@@ -1,6 +1,6 @@
 000010
 000020*
-000030* Copyright (C) 2010-2021 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
+000030* Copyright (C) 2010-2020 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
 000040*
 000050* This program is free software; you can redistribute it and/or modify
 000060* it under the terms of the GNU General Public License as published by
@@ -22,7 +22,8 @@
 000220
 000230*
 000240  01 JSON.
-000250      02 DATI-JSON           PIC X(512).
+000250      02 DATI-JSON           PIC X(8192).
 000260
 000270
 000280
+

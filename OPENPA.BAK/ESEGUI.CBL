@@ -1,6 +1,6 @@
 000010 @OPTIONS ALPHAL(WORD)
 000011*
-000012* Copyright (C) 2010-2021 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
+000012* Copyright (C) 2010-2020 Federico Priolo TP ONE SRL federico.priolo@tp-one.it
 000013*
 000014* This program is free software; you can redistribute it and/or modify
 000015* it under the terms of the GNU General Public License as published by
