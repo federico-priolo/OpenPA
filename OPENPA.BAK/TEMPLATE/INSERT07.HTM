@@ -29,7 +29,7 @@
 </head>  
         <body>
     
-        <form id="open_form" name="open_form" class="appnitro" method="post" action="/cgi-open/openRE01.exe">
+        <form id="open_form" name="open_form" method="post" action="/cgi-open/openreta.exe">
         
 
         <div id="w" class="easyui-panel" title="Tabella qualifiche" 
@@ -67,12 +67,33 @@
           
             <div style="text-align:left;padding:15px 0">
 
-            <input class="easyui-textbox" label="Descrizione" name="DESC-ENTE-001" prompt="Denominazione" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
+            <input class="easyui-textbox" label="Descrizione" name="DESC-QUAL-007" prompt="Denominazione" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
             @DESC-QUAL-007@
             ">
           </div>
           
-            
+                
+    
+        <div style="margin-bottom:20px">
+            <select class="easyui-combogrid" name="CONTO-007" style="width:75%" data-options="value:
+		  @CONTO-007@
+		   ,remoteSort:false,            
+			panelWidth: 500,
+                    idField: 'CODICE',
+                    textField: 'CODICE',
+                    url: '/openpa/files/arkqual.json',
+                    method: 'get',
+                    columns: [[
+                        {field:'CODICE',title:'Codice SICO',width:'20%',sortable:true},
+                        {field:'DESCRIZ',title:'Descrizione',width:'80%',sortable:true}
+                                    ]],
+                    fitColumns: true,
+                    label: 'Seleziona la codifica SICO opportuna:',labelWidth:'50%',
+                    labelPosition: 'top',
+					labelPosition: 'left'
+                ">
+            </select>
+        
                       
         </fieldset>
             </font>
@@ -91,8 +112,9 @@
              
             <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
 			
-			<a href="openpa00.exe?MK-KEY=$SECTION-WEB$"
-                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a> 
+			 
+			 <a href="opentabe.exe?MK-KEY=$SECTION-WEB$&MK-ENTITA=$MK-ENTITA$&MK-FUNZIONE=$MK-FUNZIONE$" 
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
             
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 
             

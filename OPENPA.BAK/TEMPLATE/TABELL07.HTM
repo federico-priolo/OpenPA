@@ -22,95 +22,67 @@
         return false;
     })
     })
+
 </script>
+
+
 
 
 
 </head>
         <body>
 
-        <form id="open_form" name="open_form" class="appnitro" method="post" action="/cgi-open/openRE02.exe">
-
+        <form>
 
         <div id="w" class="easyui-panel" title="Tabella Qualifiche dipendenti"
              data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
                      style="width:100%;height:125%;padding:20px;">
-        <div>
 
-        <input class="easyui-textbox" label="Ente" iconWidth="28" style="width:45%;height:34px;padding:10px;" data-options="disabled:true, value:
-        @DESC-ENTE@
-        ">
-        <input class="easyui-textbox" label="Utente" iconWidth="28" style="width:20%;height:34px;padding:10px;" data-options="disabled:true, value:
-         @UTENTE@
-         ,labelAlign:'center'">
-        <input class="easyui-textbox" label="Accesso" iconWidth="28" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
-         @OGGI@
-         ,labelAlign:'center'">
-
-        <input class="easyui-textbox" label="Scadenza sessione" iconWidth="28" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
-         @SCADENZA@
-         ,labelAlign:'center'">
-
-
-        </div>
-
+         @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+                     
         <div style="margin:20px 0;"></div>
-
 
             <div title="Elenco qualifiche" style="padding:10px">
             <font color="blue">
 
-          
+
+
+        <table class="easyui-datagrid" title="Elementi tabella" style="width:'100%';height:450px"
             
-        <table class="easyui-datagrid" title="Basic DataGrid" style="width:'100%';height:250px"
-				
-                data-options="singleSelect:true,url:
-				@FILE-JSON@
-				,method:'get'">
+
+                data-options="singleSelect:true,rownumbers:true,singleSelect:true,pagination:true
+								,url:
+                                   @FILE-JSON@
+                                    ,remoteSort:false
+				                 ,method:'get'">
             <thead>
                 <tr>
-                    <th data-options="field:'itemid',width:80">Item ID</th>
-                    <th data-options="field:'productid',width:100">Product</th>
-                    <th data-options="field:'listprice',width:80,align:'right'">List Price</th>
-                    <th data-options="field:'unitcost',width:80,align:'right'">Unit Cost</th>
-                    <th data-options="field:'attr1',width:250">Attribute</th>
-                    <th data-options="field:'status',width:60,align:'center'">Status</th>
-                </tr>
+                    <th data-options="field:'ELEMENTO',width:'15%',sortable:true">Codice</th>
+                    <th data-options="field:'DESC',width:'45%',sortable:true">Qualifiche</th>
+                    <th data-options="field:'DESC1',width:'05%',sortable:true">TIPO</th>
+                    <th data-options="field:'DESC2',width:'15%',sortable:true">SICO</th>
+                    <th data-options="field:'MODIFICA',width:'10%',align:'center'">Modifica</th>
+                    <th data-options="field:'CANCELLA',width:'10%',align:'center'">Elimina</th>                             
+                     
+               </tr>
             </thead>
         </table>
-
             </font>
-
             </div>
-
-
-
             <input name="MK-KEY" size="1" style="visibility: hidden" value=
             @SECTION-WEB@
             >
-
-
-
             <div style="text-align:left;padding:15px 0">
 
-			<a href="openin07.exe?MK-KEY=$SECTION-WEB$"
-                  class="easyui-linkbutton"  data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Nuovo</span></a> 
-            
-			
+             <a href="openinse.exe?MK-KEY=$SECTION-WEB$"
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Nuovo</span></a>
+
             <a href="openpa00.exe?MK-KEY=$SECTION-WEB$"
-                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a> 
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>
 
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a>
 
-           </div>
- 
-        
- 
-
+        </div>
         </form>
-
         </body>
         </html>
-
-
-

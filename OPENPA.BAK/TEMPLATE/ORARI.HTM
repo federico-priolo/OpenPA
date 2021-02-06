@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Elenco Causali
+    <title>Elenco Orari 
     </title>
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
@@ -32,13 +32,13 @@
 
         <div id="w" class="easyui-panel" title="Tabella Orari profili"
              data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
-                     style="width:100%;height:125%;padding:20px;">
+                     style="width:100%;height:105%;padding:20px;">
 
          @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
                      
         <div style="margin:20px 0;"></div>
 
-            <div title="Elenco Causali" style="padding:10px">
+            <div title="Elenco Orari" style="padding:10px">
             <font color="blue">
  
         <table class="easyui-datagrid" title="Orari disponibili" style="width:'100%';height:450px"
@@ -52,8 +52,8 @@
                 <tr>
                     <th data-options="field:'ELEMENTO',width:'15%',sortable:true">Codice</th>
                     <th data-options="field:'DESC',width:'45%',sortable:true">Descrizione</th>
-                    <th data-options="field:'DESC1',width:'05%',sortable:true">TIPO</th>
-                    <th data-options="field:'DESC2',width:'15%',sortable:true">TESTO</th>
+                    <th data-options="field:'TIPO',width:'05%',sortable:true">TIPO</th>
+                    <th data-options="field:'DESC1',width:'15%',sortable:true">TESTO</th>
                     <th data-options="field:'MODIFICA',width:'10%',align:'center'">Modifica</th>
                     <th data-options="field:'CANCELLA',width:'10%',align:'center'">Elimina</th>                             
                      
@@ -78,4 +78,5 @@
         </div>
         </form>
         </body>
+
         </html>
