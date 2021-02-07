@@ -51,7 +51,7 @@
             <div style="margin-bottom:10px;margin-left:30px">
             
             <input class="easyui-textbox" label="Descrizione" name="DESC-ORA" prompt="descrizione orario" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'15%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            '<cobol>DESC-ORA'<cobol>
+            '<cobol>DESC-ORA</cobol>'
             ">
 
             
@@ -65,42 +65,17 @@
           <legend> <font color="red">Tipo orario</legend></font>
             
                <div>
-               
-               <cobol value="C" title="indicare il tipo orario" label="continuato" template="radio.htm">TIPO-ORA</cobol>
-        <cobol>prova</cobol>
-        
-        <div style="margin-bottom:10px;margin-left:30px">
-
              
-        <a href="#" class="easyui-tooltip" title="Indicare il tipo orario ">                    
-        <input class="easyui-radiobutton" name="TIPO-ORA" value="C" width="150px" labelWidth="100px"
-            $TIPO-ORAC$
-            label="Continuato"></a>
+        
+       
+        <cobol template=RADIO.HTM label="Continuato" title="Orario continuato" value="C">TIPO-ORA</cobol>
+        <cobol template=RADIO.HTM label="Articolato" title="Orario con rientro" value="A">TIPO-ORA</cobol>
+        <cobol template=RADIO.HTM label="Turno" title="Orario turni" value="T">TIPO-ORA</cobol>
+        <cobol template=RADIO.HTM label="Libero" title="Orario libero" value="L">TIPO-ORA</cobol>
+
+       
             </div>
-            
-            
-    <div style="margin-bottom:10px;margin-left:30px">
-        <input class="easyui-radiobutton" name="TIPO-ORA" value="A" width="150px" labelWidth="100px"
-            $TIPO-ORAA$
-         label="Articolato"> 
-    </div>
-    <div style="margin-bottom:10px;margin-left:30px">
-        <input class="easyui-radiobutton" name="TIPO-ORA" value="T"  width="150px" labelWidth="100px"
-            $TIPO-ORAT$
-         label="Turno">
-    
-    </div>    
-    <div style="margin-bottom:10px;margin-left:30px">
-          
-        <input class="easyui-radiobutton" name="TIPO-ORA" value="L"  width="150px" labelWidth="100px"
-            $TIPO-ORAL$        
-         label="Libero">
-         <div>
-            </div>
-          
-            
-            
-            </fieldset>
+             </fieldset>
             </font>
 
 

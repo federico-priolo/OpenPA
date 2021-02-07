@@ -55,7 +55,7 @@
             <div style="text-align:left;padding:15px 0">
 
             <input class="easyui-textbox" label="Descrizione" name="DESC-LIV-048" prompt="Descrizione" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'31%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            'DESCRIZIONE'
+            '<cobol>DESC-LIV-048</cobol>'
             ">
           </div>
           
@@ -66,7 +66,7 @@
 		    <a href="#" class="easyui-tooltip" title="Minimo flessibilita' autorizzabile">
 
                 <input name="MINIMO-048" style="color:blue;"  class="easyui-numberspinner" data-options="label:'Minimo flessibilita autorizzabile:',min:0,max:99999, labelWidth:'250px', width:'350px', value:
-                '100'
+            '<cobol>MINIMO-048</cobol>'
                 "></a>
 				
         <div style="margin-bottom:20px">
@@ -76,7 +76,7 @@
 		    <a href="#" class="easyui-tooltip" title="Codice indennita">
 
                 <input name="VOCE-048" style="color:blue;"  class="easyui-numberspinner" data-options="label:'Codice indennita:',min:0,max:99999, labelWidth:'250px', width:'350px', value:
-                '100'
+            '<cobol>VOCE-048</cobol>'
                 "></a>
 				<div style="margin-bottom:20px">
           <p>
@@ -85,7 +85,7 @@
 		    <a href="#" class="easyui-tooltip" title="Escludi il livello dal calcolo del conto annuale">
 
                 <input name="NOCONTO-048" style="color:blue;"  class="easyui-checkbox" name="noconto" value="noconto"  data-options="label:'Escludi dal conto annuale:', labelWidth:'250px'"></a>
-        
+                '<cobol>NOCONTO-048</cobol>'
 		
 		<div style="margin-bottom:20px">
           <p>
@@ -93,7 +93,7 @@
 		  
 
             <input class="easyui-textbox" label="Descrizione conto" name="DESC-CONTO-048" prompt="Descrizione su conto" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'31%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            'DESCRIZIONE CONTO'">
+            '<cobol>DESCO-CONTO-048</cobol>'
                       
         </fieldset>
             </font>
@@ -103,7 +103,7 @@
 			
 
             <input name="MK-KEY" size="1" style="visibility: hidden" value=
-            "SECTION"
+            '<cobol>SECTION-WEB</cobol>'
             >                                                                                                             
        
             
@@ -113,7 +113,7 @@
             <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
 			
 			 
-		<a href="opentabe.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=$MK-ENTITA$&MK-FUNZIONE=$MK-FUNZIONE$" 
+		<a href="opentabe.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=<cobol>MK-ENTITA</cobol>&MK-FUNZIONE=<cobol>MK-FUNZIONE</cobol>" 
                   class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
             
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 

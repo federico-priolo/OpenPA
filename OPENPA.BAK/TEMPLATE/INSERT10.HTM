@@ -2,8 +2,7 @@
 <html>  
   <head>         
     <meta charset="UTF-8">         
-    <title>Elenco funzioni
-    </title>             
+    <title>Elenco Centri di Costo</title>             
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/demo/demo.css">
@@ -50,7 +49,7 @@
             <div style="text-align:left;padding:15px 0">
 
             <input class="easyui-textbox" label="Centro di costo" name="DESC-COSTO-010" prompt="Inserisci il centro di costo" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            '<cobol>DESC-COSTO-010'<cobol>
+            '<cobol>DESC-COSTO-010</cobol>'
             ">
           </div>
           
@@ -75,7 +74,7 @@
             <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
 			
 			 
-            <a href="opentabe.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=$MK-ENTITA$&MK-FUNZIONE=$MK-FUNZIONE$" 
+            <a href="opentabe.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=<cobol>MK-ENTITA</cobol>&MK-FUNZIONE=<cobol>MK-FUNZIONE</cobol>" 
                   class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
             
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 
