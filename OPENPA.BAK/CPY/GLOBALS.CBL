@@ -220,6 +220,7 @@
 002150   07 IND3-WEB         	PIC 9(9)    VALUE ZERO.
 002160   07 IND4-WEB         	PIC 9(9)    VALUE ZERO.
          07 SIZE-WEB            PIC 9(9)    VALUE ZERO.
+         07 POS-WEB             PIC 9(9)    VALUE ZERO.
 
 002210   07 IND-LIB          	PIC 99999   VALUE ZERO.
 002220   07 IND1-LIB         	PIC 99999   VALUE ZERO.

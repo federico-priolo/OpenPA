@@ -41,17 +41,17 @@
         
 
         <input class="easyui-textbox" label="Ente" iconWidth="28" style="width:45%;height:34px;padding:10px;" data-options="disabled:true, value:
-        @DESC-ENTE@
+        '<cobol>DESC-ENTE'<cobol>
         ">                 
         <input class="easyui-textbox" label="Utente" iconWidth="28" style="width:20%;height:34px;padding:10px;" data-options="disabled:true, value:
-         @UTENTE@
+         '<cobol>UTENTE'<cobol>
          ,labelAlign:'center'">                 
         <input class="easyui-textbox" label="Accesso" iconWidth="28" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
-         @OGGI@
+         '<cobol>OGGI'<cobol>
          ,labelAlign:'center'">                 
         
         <input class="easyui-textbox" label="Scadenza sessione" iconWidth="28" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
-         @SCADENZA@
+         '<cobol>SCADENZA'<cobol>
          ,labelAlign:'center'">                 
         
         
@@ -68,7 +68,7 @@
             <div style="text-align:left;padding:15px 0">
 
             <input class="easyui-textbox" label="Descrizione" name="DESC-QUAL-007" prompt="Denominazione" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            @DESC-QUAL-007@
+            '<cobol>DESC-QUAL-007'<cobol>
             ">
           </div>
           
@@ -76,7 +76,7 @@
     
         <div style="margin-bottom:20px">
             <select class="easyui-combogrid" name="CONTO-007" style="width:75%" data-options="value:
-		  @CONTO-007@
+		  '<cobol>CONTO-007'<cobol>
 		   ,remoteSort:false,            
 			panelWidth: 500,
                     idField: 'CODICE',
@@ -103,7 +103,7 @@
 			
 
             <input name="MK-KEY" size="1" style="visibility: hidden" value=
-            @SECTION-WEB@
+            '<cobol>SECTION-WEB</cobol>'
             >                                                                                                             
        
             
@@ -113,7 +113,7 @@
             <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
 			
 			 
-			 <a href="opentabe.exe?MK-KEY=$SECTION-WEB$&MK-ENTITA=$MK-ENTITA$&MK-FUNZIONE=$MK-FUNZIONE$" 
+			 <a href="opentabe.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=$MK-ENTITA$&MK-FUNZIONE=$MK-FUNZIONE$" 
                   class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
             
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 

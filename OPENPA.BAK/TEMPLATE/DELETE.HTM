@@ -29,14 +29,14 @@
 </head>  
         <body>
     
-        <form id="open_form" name="open_form" method="post" action="/cgi-open/opendele.exe?MK-KEY=$SECTION-WEB$&MK-ITEM=$MK-ITEM$&MK-FILE=$MK-FILE$">
+        <form id="open_form" name="open_form" method="post" action="/cgi-open/opendele.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ITEM=<cobol>MK-ITEM</cobol>&MK-FILE=<cobol>MK-FILE</cobol>">
         
 
         <div id="w" class="easyui-panel" title="Conferma cancellazione" 
              data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
 		     style="width:100%;height:105%;padding:20px;"> 
        
-     @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+     <cobol include=template/intesta.htm></cobol>
                      
        
         <div style="margin:20px 0;"></div>
@@ -72,7 +72,7 @@
 			
 
             <input name="MK-KEY" size="1" style="visibility: hidden" value=
-            @SECTION-WEB@
+            '<cobol>SECTION-WEB</cobol>'
             >                                                                                                             
        
             

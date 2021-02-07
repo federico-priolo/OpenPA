@@ -39,7 +39,7 @@
         
         <div>
         
-        @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+        <cobol include=template/intesta.htm></cobol>
 
         
         <div style="margin:20px 0;"></div>
@@ -113,7 +113,7 @@
             <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
 			
 			 
-		<a href="opentabe.exe?MK-KEY=$SECTION-WEB$&MK-ENTITA=$MK-ENTITA$&MK-FUNZIONE=$MK-FUNZIONE$" 
+		<a href="opentabe.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=$MK-ENTITA$&MK-FUNZIONE=$MK-FUNZIONE$" 
                   class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
             
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 

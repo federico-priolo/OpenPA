@@ -37,7 +37,7 @@
              data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
 		     style="width:100%;height:105%;padding:20px;"> 
         
-        @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+        <cobol include=template/intesta.htm></cobol>
       
          <div style="margin:20px 0;"></div>
          <div style="margin:20px 0 10px 0;"></div>
@@ -51,12 +51,12 @@
             <div style="text-align:left;padding:10px 0">
             
             <input class="easyui-textbox" label="Descrizione" name="DESC-CAUS" prompt="descrizione causale" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            @DESC-CAUS@
+            '<cobol>DESC-CAUS'<cobol>
             ">
 
             <a href="#" class="easyui-tooltip" title="Indicare una sigla breve per esposizione su cartellino ">            
             <input class="easyui-textbox" label="&nbsp;Sigla" name="SIGLA-CAUS" prompt="sigla causale" style="width:200PX;height:34px;padding:10px;" data-options="labelWidth:'30%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            @SIGLA-CAUS@
+            '<cobol>SIGLA-CAUS'<cobol>
             "></a>            
             
             </div>
@@ -74,21 +74,21 @@
  <strong>         
         <a href="#" class="easyui-tooltip" title="Indicare il tipo della causale ">                    
         <input class="easyui-radiobutton" name="TIPO-CAUS" value="1" width="150px" labelWidth="150px,required:true,missingMessage:'Campo obbligatorio',validType:'checked[\'#TIPO-CAUS\']'"
-            @TIPO-CAUS1@
+            '<cobol>TIPO-CAUS1'<cobol>
             label="Assenza"></a>
           </strong>   
             </div>
             <div style="margin-bottom:10px; margin-left:30px ">
      <strong>
         <input class="easyui-radiobutton" name="TIPO-CAUS" value="2" width="150px" labelWidth="150px,required:true,missingMessage:'Campo obbligatorio',validType:'checked[\'#TIPO-CAUS\']'"
-            @TIPO-CAUS2@        
+            '<cobol>TIPO-CAUS2'<cobol>        
          label="Presenza">  </strong>
                      </diV>
             <div style="margin-bottom:10px; margin-left:30px ">
 
      <strong>
         <input class="easyui-radiobutton" name="TIPO-CAUS" value="4"  width="150px" labelWidth="150px,required:true,missingMessage:'Campo obbligatorio',validType:'checked[\'#TIPO-CAUS\']'"
-            @TIPO-CAUS4@        
+            '<cobol>TIPO-CAUS4'<cobol>        
          label="Figurativa">
           </strong>
           <p>Le causali figurative sono utilizzate per collegare i calcoli di una voce di indennità
@@ -912,11 +912,11 @@
         
         
             <input name="MK-KEY" size="1" style="visibility: hidden" value=
-            @SECTION-WEB@
+            '<cobol>SECTION-WEB</cobol>'
             >                                                                                                             
             <div style="text-align:center;padding:15px 0">
             <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
-			 <a href="opencaus.exe?MK-KEY=$SECTION-WEB$" 
+			 <a href="opencaus.exe?MK-KEY=<cobol>SECTION-WEB</cobol>" 
                   class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 
             </div>

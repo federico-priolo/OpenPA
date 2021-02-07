@@ -43,7 +43,7 @@
             <font color="blue">
             
 
-            @INCLUDE@FILE=TEMPLATE/INTESTA.HTM
+            <cobol include=template/intesta.htm></cobol>
             
             <div style="margin:20px 0;"></div>
 
@@ -51,7 +51,7 @@
 
                 data-options="singleSelect:true,rownumbers:true,singleSelect:true,pagination:true
 								,url:
-                                 @FILE-JSON@
+                                 '<cobol>FILE-JSON'<cobol>
 								 ,remoteSort:false
 				                 ,method:'get'">
             <thead>
@@ -67,14 +67,14 @@
             </font>
             </div>
             <input name="MK-KEY" size="1" style="visibility: hidden" value=
-            @SECTION-WEB@
+            '<cobol>SECTION-WEB</cobol>'
             >
             <div style="text-align:left;padding:15px 0">
 
-            <a href="openinse.exe?MK-KEY=$SECTION-WEB$"
+            <a href="openinse.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
                   class="easyui-linkbutton"  data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Nuovo</span></a>
 
-            <a href="openpa00.exe?MK-KEY=$SECTION-WEB$"
+            <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
                   class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>
 
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a>
