@@ -13,4 +13,19 @@ intuitivi, la configurazione di alcuni aspetti anche piuttosto complessi.
 
 OpenPA usa file isam cobol con un dizionario dati che consente in modo estremamente dinamico di configurare le maschere e i layout. E' stata scelta
 la libreria EASYUI https://www.jeasyui.com per la particolare versatilità. 
+La componente html integra completamente la libreria di openpa che prevede i seguenti tag
+
+<cobol>VARIABILE</cobol>  sostituisce il tag con l'equivalente valore cobol
+
+oppure per widget piu' importanti
+
+<cobol template=nometemplate.htm variabili="proprietà"...>VARIABILE</cobol> sostituisce il tag con la struttura in template 
+
+e' altresi possibile includere sezioni di html con il tag
+
+<cobol include=/template/pagina.htm></cobol>
+
+
+
+
 
