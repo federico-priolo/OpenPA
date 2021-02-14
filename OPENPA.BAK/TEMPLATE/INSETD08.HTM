@@ -1,9 +1,8 @@
 <!DOCTYPE html>
- <!--                   VERSIONE 1.0.4         -->
 <html>  
   <head>         
     <meta charset="UTF-8">         
-    <title>Archivio orari
+    <title>Elenco Sedi di Lavoro
     </title>             
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
@@ -30,71 +29,61 @@
 </head>  
         <body>
     
-        <form id="open_form" name="open_form" method="post" action="/cgi-open/openreor.exe">
+        <form id="open_form" name="open_form" method="post" action="/cgi-open/openreta.exe">
         
 
-        <div id="w" class="easyui-panel" title="Tabella orari"
+        <div id="w" class="easyui-panel" title="Tabella sedi di lavoro" 
              data-options="iconCls:'icon-edit',collapsible:false,closable:false,minimizable:false,maximizable:true"
 		     style="width:100%;height:105%;padding:20px;"> 
-        
-        <cobol include=template/intesta.htm></cobol>
-      
-         <div style="margin:20px 0;"></div>
-         <div style="margin:20px 0 10px 0;"></div>
          
         
-        <div title="Configurazione orari" data-options="iconCls:'icon-configura'" style="overflow:auto;padding:10px;">
-           
-           <font color="blue">
-          <fieldset>
-          <legend> <font color="red">Dati generali </legend></font>
-            <div style="margin-bottom:10px;margin-left:30px">
-            
-            <input class="easyui-textbox" label="Descrizione" name="DESC-ORA" prompt="descrizione orario" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'15%',required:true,missingMessage:'Campo obbligatorio' ,value:
-            '<cobol>DESC-ORA</cobol>'
-            ">
-
-            
-            </div>
-            </fieldset>
-            </font>
-
-
-          <font color="blue">
-          <fieldset>
-          <legend> <font color="red">Tipo orario</legend></font>
-            
-               <div>
-             
+        <cobol include=template/intesta.htm></cobol>
         
-       
-        <cobol template=RADIO.HTM label="Continuato"  value="C" labelWidth="150px" >TIPO-ORA</cobol>
-        <cobol template=RADIO.HTM label="Articolato" title="Orario con rientro" value="A">TIPO-ORA</cobol>
-        <cobol template=RADIO.HTM label="Turno" title="Orario turni" value="T">TIPO-ORA</cobol>
-        <cobol template=RADIO.HTM label="Libero" title="Orario libero" value="L">TIPO-ORA</cobol>
-
-       
-            </div>
-             </fieldset>
-            </font>
+        <div style="margin:20px 0;"></div>
 
 
-          <font color="blue">
+            <div title="Dati sede di lavooro" style="padding:10px">
+            <font color="blue">
+        
+          <fieldset>
           
-        
+            <div style="text-align:left;padding:15px 0">
+
+            <input class="easyui-textbox" label="Descrizione" name="DESC-UFF-008" prompt="Denominazione" style="width:70%;height:34px;padding:10px;" data-options="labelWidth:'20%',required:true,missingMessage:'Campo obbligatorio' ,value:
+            '<cobol>DESC-UFF-008</cobol>'
+            ">
+          </div>
+          
+                
             
+                      
+        </fieldset>
+            </font>
         
-        
+            </div>
+			
+			
+
             <input name="MK-KEY" size="1" style="visibility: hidden" value=
             '<cobol>SECTION-WEB</cobol>'
             >                                                                                                             
+       
+            
             <div style="text-align:center;padding:15px 0">
+
+             
             <button class="easyui-linkbutton"  onclick="return confirm('Confermi la memorizzazione dei dati?')" type="submit" data-options="iconCls:'icon-ok'" style="padding:5px 0px;width:15%; margin-left:20px">Salva</button>
-			 <a href="openorar.exe?MK-KEY=<cobol>SECTION-WEB</cobol>" 
+			
+			 
+             <a href="opentabe.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=<cobol>MK-ENTITA</cobol>&MK-FUNZIONE=<cobol>MK-FUNZIONE</cobol>" 
                   class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>  
+            
             <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 
-            </div>
+            
+     </div>
+       
         </form> 
+      
         </body>
         </html>
    
