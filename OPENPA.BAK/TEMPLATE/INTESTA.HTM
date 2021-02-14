@@ -1,22 +1,25 @@
-     
-        <div>
 
-        <input class="easyui-textbox" label="Ente" iconWidth="28" style="width:42%;height:34px;padding:10px;" data-options="disabled:true, value:
+        <font color="blue">
+     
+        <div  title="La scadenza identifica l'orario oltre il quale l'utente viene disconnesso in assenza di attività." class="easyui-tooltip">
+
+        <input class="easyui-textbox" label="Ente"  labelWidth="40px" iconWidth="28" style="width:42%;height:34px;padding:5px;" data-options="disabled:true, value:
         '<cobol>DESC-ENTE</cobol>'
         ">
-        <input class="easyui-textbox" label="Utente" iconWidth="28" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
+        <input class="easyui-textbox" label="Utente" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
         '<cobol>UTENTE</cobol>'
          ,labelAlign:'center'">
         <input class="easyui-textbox" label="Accesso" iconWidth="28" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
          '<cobol>OGGI</cobol>'
          ,labelAlign:'center'">
 
-        <input class="easyui-textbox" label="Scadenza"  labelWidth="120px" iconWidth="28" style="width:17%;height:34px;padding:10px;" data-options="disabled:true, value:
-         
+        
+ 
+        <input class="easyui-textbox" label="Scadenza"  labelWidth="110px" iconWidth="28" style="width:15%;height:34px;padding:10px;" data-options="disabled:true, value:
         '<cobol>SCADENZA</cobol>'
          ,labelAlign:'center'">
 
-     
+   
         <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
                   class="easyui-linkbutton easyui-tooltip" 
                   title="ritorna al menu operatore"
@@ -30,7 +33,17 @@
                   data-options="iconCls:'icon-man1'" 
                   style="padding:5px 0px;width:3%"></a>  
 
+        <a href="#" 
+        
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="ricarica il form"
+                  onclick="return location.reload(true)" 
+                  data-options="iconCls:'icon-reload'" 
+                  style="padding:5px 0px;width:3%"></a>
+                  
+                  
                   
         </div>
         
-
+        </font>
+            

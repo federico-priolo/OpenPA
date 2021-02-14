@@ -87,7 +87,7 @@
 000771			 SECTION-WEB DELIMITED BY SIZE
 000772			'" class="easyui-linkbutton" data-options="iconCls:'
 000773			"'icon-undo'"
-000774			'" style="padding:5px 0px;width:45%; margin-left:20px">'
+000774			'" style="padding:5px 0px;width:25%; margin-left:20px">'
 000775			' <span style="font-size:14px;">Indietro</span></a>'  
 000776			DELIMITED BY SIZE INTO STRINGA-VIEW.
 000777
