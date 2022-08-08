@@ -1,0 +1,15 @@
+      *
+      ***********               Select flusso anagrafico MATRICOLE
+      *
+                SELECT ARKMATR ASSIGN TO FILE-MATR
+                ORGANIZATION IS INDEXED
+                ACCESS MODE  IS DYNAMIC
+                RECORD KEY   IS CHIAVE-MATR
+                ALTERNATE RECORD KEY IS GENERALITA-MATR DUPLICATES
+                ALTERNATE RECORD KEY IS BADGE-MATR      DUPLICATES
+                ALTERNATE RECORD KEY IS CHIAVE-SEC-MATR DUPLICATES
+                ALTERNATE RECORD KEY IS BADGE-PROV-MATR DUPLICATES
+                LOCK MODE    IS AUTOMATIC WITH LOCK ON RECORD
+                FILE STATUS  IS STATUS-MATR.
+
+
