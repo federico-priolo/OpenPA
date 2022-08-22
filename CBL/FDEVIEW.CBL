@@ -35,6 +35,6 @@
 000350              09 MM-VIEW                   PIC 99.
 000360              09 GG-VIEW                   PIC 99.
 000370           05 EDIT-VIEW                    PIC X(1024).
-000380           05 VIS-VIEW                     PIC -.---.---.--9,99.
+000380           05 VIS-VIEW                PIC -.---.---.--9,99.
 000390           05 FILLER                       PIC X(1928).
 
