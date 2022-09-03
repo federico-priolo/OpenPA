@@ -16,8 +16,6 @@ la libreria EASYUI https://www.jeasyui.com per la particolare versatilità.
 
 La libreria EASYUI viene integrata in un framework cobol che la invoca usando script e consentendo la generazione delle maschere con pochissimi tag
 
-il framework stesso e' documentato su  https://www.gnucobol.altervista.org
-
-
+il framework stesso e' documentato su  https://gnucobol.altervista.org/
 
 
