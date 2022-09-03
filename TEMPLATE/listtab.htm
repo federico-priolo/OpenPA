@@ -1,0 +1,21 @@
+
+        <table class="easyui-datagrid" title="Elementi" style="width:'100%';height:450px"
+            
+
+                data-options="singleSelect:true,rownumbers:true,singleSelect:true,pagination:true
+								,url:
+                                   '<cobol>FILE-JSON</cobol>'
+                                    ,remoteSort:false
+				                 ,method:'get'">
+            <thead>
+                <tr>
+                    <th data-options="field:'ELEMENTO',width:'10%',sortable:true">Codice</th>
+                    <th data-options="field:'DESC',width:'40%',sortable:true">Descrizione</th>
+                    <th data-options="field:'DESC1',width:'15%',sortable:true"> Elemento 1</th>
+                    <th data-options="field:'DESC2',width:'15%',sortable:true"> Elemento 2</th>
+                    <th data-options="field:'MODIFICA',width:'10%',align:'center'">Modifica</th>
+                    <th data-options="field:'CANCELLA',width:'10%',align:'center'">Elimina</th>                             
+                     
+               </tr>
+            </thead>
+        </table>
