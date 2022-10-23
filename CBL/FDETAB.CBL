@@ -100,6 +100,12 @@
 001000           03  FILLER             PIC X.
 001010           03  EURO-002           PIC 9(4)V99.
 001020
+001160*
+001170* area gruppi abilitazioni 03)
+001180*
+001190
+001200          02 TABELLA-003 REDEFINES DATI-TAB.
+001210            03 DESC-ABI-003       PIC X(35).
 001030
 001040*
 001050* area definizione tabelle qualifica                      (07)

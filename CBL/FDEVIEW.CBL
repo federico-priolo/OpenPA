@@ -36,5 +36,14 @@
 000360              09 GG-VIEW                   PIC 99.
 000370           05 EDIT-VIEW                    PIC X(1024).
 000380           05 VIS-VIEW                PIC -.---.---.--9,99.
-000390           05 FILLER                       PIC X(1928).
-
+000390           05 DESC-VIEW                    PIC X(100).
+000400           05 KEY-VIEW                     PIC X(50).
+000410           05 KEY1-VIEW                    PIC X(50).
+000420           05 USA-DEFAULT-VIEW             PIC X.
+000430           05 DEFAULT-VIEW                 PIC X(20).
+000440           05 FILLER                       PIC X(1707).
+000450
+000460
+000470
+000480
+000490			COPY "FDEDATO.CBL".

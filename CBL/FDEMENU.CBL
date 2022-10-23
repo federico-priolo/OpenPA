@@ -26,8 +26,9 @@
 000080    05 NUM-MENU                  PIC 9(7).
 000090   02 CHIAVE-SEC-MENU.
 000100    05 MOD-MENU                  PIC XX.
-000110    05 ENT-MENU                  PIC XX.
-000120    05 FUNZ-MENU                 PIC XX.
+          05 CHIAVE-TER-MENU.
+000110     15 ENT-MENU                 PIC XX.
+000120     15 FUNZ-MENU                PIC XX.
 000130   02 ENT-PROG-MENU              PIC XX.
 000140   02 FUNZ-PROG-MENU             PIC XX.
 000150   02 DESC-MENU                  PIC X(40).

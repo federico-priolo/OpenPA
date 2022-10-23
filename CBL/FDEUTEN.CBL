@@ -20,11 +20,12 @@
 000029** tracciato record archivio anagrafiche UTENTI PROCEDURA
 000030*
 000040  FD ARKUTEN 
-000050           RECORD CONTAINS 1024 CHARACTERS EXTERNAL.
+000050           RECORD CONTAINS 2048 CHARACTERS EXTERNAL.
 000060  01 UTENTE.
 000070          02 CHIAVE-UTEN.
-000080           05 NOME-UTEN                    PIC X(50).
-000090          02 DATI-BASE.
+                 05 PROG-UTEN                    PIC 9(7).
+                02 NOME-UTEN                     PIC X(50).
+ 00090          02 DATI-BASE.
 000100           05 PASSWORD-UTEN                PIC X(30).
 000110           05 VOLTE-UTEN                   PIC 9999.
 000120           05 MAX-VOLTE-UTEN               PIC 9999.
@@ -54,9 +55,9 @@
 000360          02 ANNO-UTEN                     PIC 9999.
 000370          02 INIZIO-UTEN                   PIC 9999.
 000380          02 IP-REG-UTEN                   PIC X(32).
-000390          02 FILLER-UTEN                   PIC X(52).
+000390          02 FILLER-UTEN                   PIC X(50).
 000400          02 TIPO-UTEN                     PIC X.
-000410          02 GRUPPO-UTEN                   PIC 9999.
+000410          02 GRUPPO-UTEN                   PIC 9(6).
 000420          02 SW-LAVORO-UTEN                PIC X.
 000430          02 DATA-SCAD-UTEN.
 000440            09 AA-SCAD-UTEN                PIC 9999.
@@ -66,4 +67,19 @@
 000480          02 TIMEOUT-UTEN                  PIC 999.
 000490          02 MINUTI-ACC-UTEN               PIC 9(9).
 000500          02 SCADUTO-UTEN                  PIC 9.
-000510          02 FILLER-UTEN                   PIC X(479).
+                02 MOSTRA-MENU-UTEN              PIC X.
+                02 NO-SCADE-UTEN                 PIC X.
+                02 FLAG1-UTEN                    PIC X.
+                02 FLAG2-UTEN                    PIC X.
+                02 FLAG3-UTEN                    PIC X.
+                02 FLAG4-UTEN                    PIC X.
+                02 FLAG5-UTEN                    PIC X.
+                02 FLAG6-UTEN                    PIC X.
+                02 FLAG7-UTEN                    PIC X.
+                02 FLAG8-UTEN                    PIC X.
+                02 FLAG9-UTEN                    PIC X.
+                02 FLAG10-UTEN                   PIC X.
+                
+000510          02 FILLER-UTEN                   PIC X(460).        
+            
+                02 filler1-UTEN                  PIC X(1024).
