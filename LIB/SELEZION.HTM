@@ -1,0 +1,49 @@
+**** Riga commento  
+
+debug(enabled="NO")
+
+iniziali(title="Seleziona matricola 0.1.0")
+
+openform(program="openvedi.exe")
+
+
+pannello(title="Gestione <cobol>MENU</cobol> versione 0.1.0")
+
+intesta(other=",disabled:true")
+
+  
+frame(title="Seleziona matricola <cobol>MENU</cobol>")
+
+search(label="Seleziona" SIZE="800px" name="ID")
+
+endframe()
+
+frame(title="Seleziona periodo")
+
+icon(type="calendar-days") 
+
+table(size="300px")
+
+Month(label="Mese:" name="MESE")
+
+year(label="Anno:" name="ANNO" from="2000" to="2100")
+
+
+endtable()
+
+addline()
+
+endframe()
+
+
+
+endpannello()
+ 
+
+ 
+key()
+ 
+keyvedi()
+
+closeform()
+fine()

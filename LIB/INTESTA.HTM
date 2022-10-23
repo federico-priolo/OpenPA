@@ -1,0 +1,102 @@
+****** ****** intesta START
+
+<div style="width:'100%';height:'100%';padding:5px; background-color:#eceff1">
+
+ <font color="blue"> 
+ 
+    <fieldset><legend><strong>Dati di accesso</strong></legend>
+
+     
+        <div style="padding:05px;margin:10px 0; ">
+
+        <input class="easyui-textbox" label="Ente"  labelWidth="40px"  style="width:42%;height:34px;padding:5px;" data-options="editable:false, value:
+        '<cobol>DESC-ENTE</cobol>'
+        ">
+        
+        <input class="easyui-textbox" label="Utente" labelWidth="60px" style="width:15%;height:34px;padding:10px;" data-options="editable:false, value:
+        '<cobol>UTENTE</cobol>'
+         ,labelAlign:'center'">
+         
+        <input class="easyui-textbox" label="Data" labelWidth="40px"  style="width:11%;height:34px;padding:10px;" data-options="editable:false, value:
+         '<cobol>ACCESSO</cobol>'
+         ,labelAlign:'center'">
+
+        
+                
+        <input class="easyui-textbox"   label="Logout"  labelWidth="60px" style="width:9%;height:34px;padding:10px;" data-options="editable:false, value:
+        '<cobol>SCADENZA</cobol>'
+         ,labelAlign:'center'"> 
+        
+        &nbsp 
+        <i class="fa-solid fa-hourglass-start fa-lg  "></i>
+        &nbsp&nbsp&nbsp 
+   
+        <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="ritorna al menu operatore"
+                  data-options="iconCls:'icon-more' {Other1}" 
+                  style="padding:5px 0px;width:2%"></a>  
+
+
+        <a href="openpa99.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="Logout"
+                  data-options="iconCls:'icon-man1'" 
+                  style="padding:5px 0px;width:2%"></a>  
+                  
+                  
+        <a href="openpa09.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="Cambio password"
+                  data-options="iconCls:'icon-configura'" 
+                  style="padding:5px 0px;width:2%"></a>  
+
+        <a href="openpa11.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="Gestione stampe differite"
+                  data-options="iconCls:'icon-print', disabled:true" 
+                  style="padding:5px 0px;width:2%"></a>  
+
+                            
+
+        <a href="#" 
+        
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="ricarica il form"
+                  onclick="return location.reload(true)" 
+                  data-options="iconCls:'icon-reload'" 
+                  style="padding:5px 0px;width:2%"></a>
+
+               
+        <a href="openpa88.exe?MK-PAGINA=<cobol>PAGINA-HTM</cobol>&MK-KEY=<cobol>SECTION-WEB</cobol>"
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="File pagina&nbsp <cobol>PAGINA-HTM</cobol>"
+                  data-options="iconCls:'icon-rules', disabled:false" 
+                  style="padding:5px 0px;width:2%"></a>  
+
+     
+        
+        <button
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="Salva"
+                  onclick="return confirm('Confermi la memorizzazione dei dati?')" 
+                  type="submit"
+                  data-options="iconCls:'icon-ok' {Other}" 
+                  style="padding:5px 0px;width:2%">
+          
+                  
+        </div>
+        
+        </font>
+            
+        
+                
+   </fieldset>
+   
+   </div>
+   
+                
+        
+
+            
+************ intesta END

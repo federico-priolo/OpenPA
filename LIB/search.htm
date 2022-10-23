@@ -1,0 +1,42 @@
+************ start search
+
+<td style="{size} padding:-5px 0px;" >  
+
+* La stringa viene letta da MAKEFORM perche serve avere la variabile in memoria lasciare il commento html
+                     <!-- '<cobol>{name}</cobol>' -->
+
+
+
+<i class="fa-solid fa-business-time fa-lg"></i>
+
+     
+ 
+            <input class="easyui-combobox" name="{name}" style="{size}" 
+                   
+                   data-options="required:true,url:
+                    '<cobol>FILE-JSON-MATR</cobol>'
+                    ,method:'get',
+                    valueField:'ID',
+                    textField:'NOME',
+                    panelHeight: '400px',
+                    label: '{label}',
+                    formatter: formatItem{name},
+                    labelPosition: 'top'
+                    ">
+
+<i class="fa-solid fa-user fa-lg"></i>
+<div style="text-align:left;padding:5px 0"></div>                     
+
+     <script type="text/javascript">
+        function formatItem{name}(row)
+        {
+            var s = '<span style="font-weight:bold">' + row.NOME + '</span><br/>' +
+                    '<span style="color:#888">' + row.CF + '</span><br/>' +
+                    '<span style="color:#888">' +  "badge n." + '<font color="red">' + row.BADGE + '</font></span>';
+            return s;
+        }
+    </script>
+			
+</td>     
+     
+************ end search

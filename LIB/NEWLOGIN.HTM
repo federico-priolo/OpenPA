@@ -1,0 +1,48 @@
+**** Riga commento  
+
+debug(enabled="NO")
+
+iniziali(title="Cambio password 0.1.0")
+
+    openform(program="openpa10.exe")
+
+        pannello(title="Cambio password utente")
+
+        intesta()
+  
+
+            frame(title="Dati utente")
+
+            outputedit(name="UTENTE" label="Utente" size="300px")
+
+            addline()
+            
+            password(name="PASSWORD" label="Password attuale" size="300px")
+            tooltip(label="?" title="Inserire la password di login attuale")
+            
+            addline()
+
+            password(name="PASSWORD1" label="Nuova password" size="300px")
+            tooltip(label="?" title="Inserire la nuova password ")
+            
+            addline()
+
+            password(name="PASSWORD2" label="Ripeti nuova password" size="300px")
+            tooltip(label="?" title="Ripeti la password..")
+            
+            addline()
+
+           
+            key()       
+   
+            endframe()
+
+
+        endpannello()
+	   
+	   
+        save()       
+       
+    closeform()
+
+fine()

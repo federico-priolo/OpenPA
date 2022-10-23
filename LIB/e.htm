@@ -1,0 +1,25 @@
+IF EXIST %1.CBL GOTO CBL
+
+IF EXIST FDE%1.CBL GOTO CBL1
+
+
+
+start  C:\PROGRA~2\Notepad++\notepad++.exe   %1
+
+GOTO FINE
+
+:CBL
+
+start  C:\PROGRA~2\Notepad++\notepad++.exe   %1.CBL
+
+GOTO FINE
+
+:CBL1
+
+start  C:\PROGRA~2\Notepad++\notepad++.exe   FDE%1.CBL
+GOTO FINE
+
+:FINE
+
+
+:FINE

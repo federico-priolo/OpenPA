@@ -1,0 +1,29 @@
+**** Riga commento  
+
+debug(enabled="NO")
+
+iniziali(title="Cancellazione record")
+
+        openform(program="opendele.exe" var1="?MK-KEY=<cobol>SECTION-WEB</cobol>?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ITEM=<cobol>MK-ITEM</cobol>&MK-FILE=<cobol>MK-FILE</cobol>")
+
+        pannello(title="Conferma cancellazione")        
+
+        intesta(other=",disabled:true")
+                     
+        frame(title="Cancellazione")
+        
+      
+            key()	
+            
+            keydelete()
+             
+        endframe()                   
+
+            
+        endpannello()
+
+
+        closeform()
+
+fine()
+            
