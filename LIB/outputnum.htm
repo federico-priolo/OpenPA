@@ -1,0 +1,23 @@
+************ edit numero
+
+<td style="{size} padding:-5px 0px;" >    
+     
+
+
+<input name="{name}" id="{name}" style="color:blue;"  class="easyui-numberspinner" data-options="readonly:true, iconCls:'icon-lock', required:false,label:'{label}',min:0,max:99999, labelPosition:'top' , width:'auto', width:'{width}' , value:
+'<cobol>{name}</cobol>'
+">
+
+
+
+</td>     
+************ edit end
+
+
+ 
+        
+<script>
+  $(document).ready(function() {
+    $("#{name}").next().find(".textbox-text").css("font-weight", "bold");
+  });
+</script>

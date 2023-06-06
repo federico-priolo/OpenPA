@@ -1,0 +1,73 @@
+************ keyback start
+
+
+ <div style="text-align:center;padding:15px 0">
+             
+            
+        <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>
+         
+		 
+	    <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>" class="easyui-linkbutton" data-options="iconCls:'icon-back'" style="padding:5px 0px;width:15%; margin-left:20px">Torna al menu</a> 
+ 
+
+		<a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-pdf1'" style="padding:5px 0px;width:15%; margin-left:20px" onclick="{name}toPdf()">PDF</a>
+				  
+
+            
+ </div>
+        
+       
+    
+<script>
+
+ function 
+  {name}toPdf() 
+  {
+  var data = $('#{name}').datagrid('getData');
+  var columns = $('#{name}').datagrid('getColumnFields'); // ottieni tutti i nomi delle colonne
+  var filteredBody = data.rows.map(function(row) {
+    return columns.map(function(column) {
+      return row[column];
+    });
+  });
+  var docDefinition = {
+    pageSize: 'A4',
+    pageOrientation: 'landscape',
+    content: [{
+      table: {
+        headerRows: 1,
+        body: [
+          columns, // usa l'array dei nomi delle colonne come intestazione
+          ...filteredBody
+        ]
+      }
+    }],
+    header: [{
+      columns: [
+        {
+          text: 'Ente:ISTITUTO ROMANO SAN MICHELE',
+          fontSize: 10,
+          bold: true,
+          margin: [20, 10, 0, 0]
+        },
+        {
+          text: 'Stampa tabella :- Anagrafica fornitori',
+          style: 'headerStyle',
+          alignment: 'center',
+          fontSize: 10,
+          margin: [0, 10, 10, 10]
+        }
+      ]
+    }],
+    styles: {
+      headerStyle: {
+        fontSize: 18,
+        bold: true
+      }
+    }
+  };
+  pdfMake.createPdf(docDefinition).open();
+}
+
+</script>

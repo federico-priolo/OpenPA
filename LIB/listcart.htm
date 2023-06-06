@@ -1,15 +1,17 @@
 
-        <table class="easyui-datagrid" title="{TITLE}" style="height:850px"       
+        <table class="easyui-datagrid" title="{TITLE}" style="height:auto, width:'100%'"       
                 name="{name}"
                 data-options="singleSelect:true,url:
                                    '<cobol>FILE-JSON-CART</cobol>'
                                     ,remoteSort:false
+									,striped:true 
+									,fitColumns:true
 				                 ,method:'get'">
             <thead>
                 <tr>
                     <th data-options="field:'DESC01',sortable:true">Giorno</th>
                     <th data-options="field:'DESC02',sortable:true">Profilo</th>
-                    <th data-options="field:'DESC03',width:'120PX',sortable:true">Orario</th>
+                    <th data-options="field:'DESC03',sortable:true">Orario</th>
                     <th data-options="field:'DESC04',align:'center',sortable:true">Dovuto</th>
                     <th data-options="field:'DESC05',align:'center',sortable:true">Lavoro</th>
                     <th data-options="field:'DESC06',align:'center',sortable:true">Debito</th>
@@ -20,6 +22,12 @@
                     <th data-options="field:'DESC11',sortable:true">Uscita</th>
                     <th data-options="field:'DESC12',sortable:true">Entrata</th>
                     <th data-options="field:'DESC13',sortable:true">Uscita</th>
+					<th data-options="field:'DESC14',sortable:true">Entrata</th>
+                    <th data-options="field:'DESC13',sortable:true">Uscita</th>
+                    <th data-options="field:'ELAB',sortable:true">Giustificativi</th>
+					<th data-options="field:'GIU',sortable:true">Richieste web</th>
+					<th data-options="field:'AUT',sortable:true">Straordinari</th>
+					
                     <th data-options="field:'STATO' ,align:'center',styler:stilestato{name},sortable:true">Stato</th>
                     
                     <th data-options="field:'MODIFICA',width:'auto',align:'center'">Modifica</th>

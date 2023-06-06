@@ -1,0 +1,25 @@
+<td style="{size} padding:-5px 0px;" >
+ 
+
+
+<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}" id="{name}"  style="width:auto;padding:5px;{size}" 
+data-options="{type} disabled:false, readonly:true, required:false,iconCls:'icon-lock', {other} value:'{value}'">
+
+
+
+</td>
+       
+       
+        <script>
+ 
+ $(document).ready(function() {
+  var id = "{name}_" + Math.floor(Math.random() * 1000); // genera un ID casuale con prefisso "{name}"
+  $("#{name}").attr("id", id); // imposta l'ID casuale per l'elemento con ID "name"
+  $("#" + id).next().find(".textbox-text").css("font-style", "italic"); // seleziona l'elemento con ID casuale e applica lo stile
+  $("#" + id).next().find(".textbox-text").css("color", "{color}");
+  $("#" + id).next().find(".textbox-text").css("background-color", "#D3D3D3");
+  
+  
+});
+
+</script>

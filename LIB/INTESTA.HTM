@@ -1,13 +1,15 @@
 ****** ****** intesta START
 
-<div style="width:'100%';height:'100%';padding:5px; background-color:#eceff1">
+<div style="width:'100%';height:'100%';padding:5px; background-color:#eceff1;background-image: linear-gradient(#eceff1 0%, #0066CC 100%)">
 
  <font color="blue"> 
  
     <fieldset><legend><strong>Dati di accesso</strong></legend>
-
+    
      
         <div style="padding:05px;margin:10px 0; ">
+
+
 
         <input class="easyui-textbox" label="Ente"  labelWidth="40px"  style="width:42%;height:34px;padding:5px;" data-options="editable:false, value:
         '<cobol>DESC-ENTE</cobol>'
@@ -28,34 +30,43 @@
          ,labelAlign:'center'"> 
         
         &nbsp 
-        <i class="fa-solid fa-hourglass-start fa-lg  "></i>
+        <i class="fa-solid fa-hourglass-start fa-lg  " title="Indica l'ora entro la quale se non presente attivita' viene effettuato il logout automatico.."></i>
         &nbsp&nbsp&nbsp 
    
         <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
                   class="easyui-linkbutton easyui-tooltip" 
                   title="ritorna al menu operatore"
                   data-options="iconCls:'icon-more' {Other1}" 
-                  style="padding:5px 0px;width:2%"></a>  
+                  style="float:right; padding:5px 0px;width:2%"></a>  
 
 
         <a href="openpa99.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
                   class="easyui-linkbutton easyui-tooltip" 
-                  title="Logout"
+                  title="Disconnette l'utente corrente"
                   data-options="iconCls:'icon-man1'" 
-                  style="padding:5px 0px;width:2%"></a>  
+                  style="float:right; padding:5px 0px;width:2%"></a>  
                   
                   
-        <a href="openpa09.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+        <a href="openexec.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=UT&MK-FUNZIONE=LO&MK-PAGE=NEWLOGIN.HTM"
                   class="easyui-linkbutton easyui-tooltip" 
                   title="Cambio password"
                   data-options="iconCls:'icon-configura'" 
-                  style="padding:5px 0px;width:2%"></a>  
+                  style="float:right; padding:5px 0px;width:2%"></a>  
+
+        <!-- <a href="openexec.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=UT&MK-FUNZIONE=LO&MK-PAGE=AGAINLOG.HTM" -->
+	    <a href="<cobol>PATH-PROC</cobol><cobol>PATH-FILE</cobol>/login.htm"
+		
+                  class="easyui-linkbutton easyui-tooltip" 
+                  title="effettua login nuovo utente"
+                  data-options="iconCls:'icon-man2'" 
+                  style="float:right; padding:5px 0px;width:2%"></a>  
+        
 
         <a href="openpa11.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
                   class="easyui-linkbutton easyui-tooltip" 
                   title="Gestione stampe differite"
                   data-options="iconCls:'icon-print', disabled:true" 
-                  style="padding:5px 0px;width:2%"></a>  
+                  style="float:right; padding:5px 0px;width:2%"></a>  
 
                             
 
@@ -65,14 +76,14 @@
                   title="ricarica il form"
                   onclick="return location.reload(true)" 
                   data-options="iconCls:'icon-reload'" 
-                  style="padding:5px 0px;width:2%"></a>
+                  style="float:right; padding:5px 0px;width:2%"></a>
 
                
         <a href="openpa88.exe?MK-PAGINA=<cobol>PAGINA-HTM</cobol>&MK-KEY=<cobol>SECTION-WEB</cobol>"
                   class="easyui-linkbutton easyui-tooltip" 
                   title="File pagina&nbsp <cobol>PAGINA-HTM</cobol>"
                   data-options="iconCls:'icon-rules', disabled:false" 
-                  style="padding:5px 0px;width:2%"></a>  
+                  style="float:right; padding:5px 0px;width:2%"></a>  
 
      
         
@@ -82,16 +93,19 @@
                   onclick="return confirm('Confermi la memorizzazione dei dati?')" 
                   type="submit"
                   data-options="iconCls:'icon-ok' {Other}" 
-                  style="padding:5px 0px;width:2%">
+                  style="float:right; padding:5px 0px;width:2%">
           
+			  
                   
         </div>
         
-        </font>
+        
             
         
                 
    </fieldset>
+   
+   </font>	
    
    </div>
    

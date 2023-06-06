@@ -2,10 +2,16 @@
  
 <font size="1"> 
 
-<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}"  style="width:auto;padding:5px;{size}" 
-data-options="{type} readonly:true, required:false, {other} value:'<cobol>{name}</cobol>' ">
+<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}"  id="{name}" style="width:auto;padding:5px;{size} " 
+data-options="{type} readonly:true, required:false,iconCls:'icon-lock', {other} value:'<cobol>{name}</cobol>' ">
 
 </font>
 
 </td>
        
+              
+<script>
+  $(document).ready(function() {
+    $("#{name}").next().find(".textbox-text").css("font-weight", "bold");
+  });
+</script>

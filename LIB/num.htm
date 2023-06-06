@@ -4,11 +4,27 @@
      
 
 
-<input name="{name}" style="color:blue;"  class="easyui-numberspinner" data-options="label:'{label}',min:0,max:99999, labelPosition:'top' , width:'auto', width:'{width}' , value:
+<input   class="easyui-numberspinner" name="{name}" id="{name}" data-options="label:'{label}',min:0,max:9999999, labelPosition:'top' , width:'auto', width:'{width}' , value:
 '<cobol>{name}</cobol>'
-">
+{other}">
 
 
 
 </td>     
 ************ edit end
+    
+                         
+<script>
+
+ $(document).ready(function() {
+  $('#{name}').numberspinner({
+    onChange: function() {
+      // find the input element and set its font weight to bold
+      $(this).next().find('input').css('font-weight', 'bold');
+      $(this).next().find('input').css('color', '{color}');
+    }
+  });
+});
+
+
+</script>

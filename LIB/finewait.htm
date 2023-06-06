@@ -1,0 +1,89 @@
+**************** fine START
+
+
+  </body>
+
+ <script>
+
+    $(function() {
+      var links = $(".easyui-menulink");
+	  
+      var loadingIcon = $('<i class="fa fa-spinner fa-spin" style="font-size: 40px; color:#0066cc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;"></i>');
+      $('body').append(loadingIcon);
+      links.click(function(event) {
+        event.preventDefault();
+        
+		loadingIcon.show();
+		
+		<!-- window.location.href = event.currentTarget.href; -->
+        
+		setTimeout(function() {
+          window.location.href = event.currentTarget.href;
+        }, 5);
+      });
+
+      window.addEventListener("load", function() {
+        loadingIcon.hide();
+      });
+    });
+  </script>
+  
+  
+<script>
+
+$(document).ajaxComplete(function() {
+  $('a').click(function(event) {
+    event.preventDefault();
+    var href = $(this).attr('href');
+    var loadingIcon = $('<i class="fa fa-spinner fa-spin" style="font-size: 40px; color:#0066cc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;"></i>');
+    $('body').append(loadingIcon);
+    loadingIcon.show();
+    setTimeout(function() {
+      window.location.href = href;
+    }, 5);
+  });
+});
+ 
+ </script>
+ 
+ 
+ <script>
+ 
+ $(function() {
+  var loadingIcon = $('<i class="fa fa-spinner fa-spin" style="font-size: 40px; color:#0066cc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;"></i>');
+  $('body').append(loadingIcon);
+
+  $(window).on('beforeunload', function() {
+    loadingIcon.show();
+  });
+
+  $(window).on('pageshow', function(event) {
+    if (event.originalEvent.persisted) {
+      loadingIcon.hide();
+    }
+  });
+
+  $('a').click(function(event) {
+    event.preventDefault();
+    var href = $(this).attr('href');
+    loadingIcon.show();
+    setTimeout(function() {
+      window.location.href = href;
+    }, 5);
+  });
+});
+
+ </script>
+ 
+  
+<!-- 	<script>
+	
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        <!-- }; -->
+    <!-- </script> -->
+   
+</html>
+
+**************** fine END

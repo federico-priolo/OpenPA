@@ -2,9 +2,25 @@
  
  
 
-<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}"  style="width:auto;padding:10px;{size}" 
+<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}" id="{name}"  style="width:auto;padding:10px;{size}" 
 data-options="{type} readonly:true, required:false, iconCls:'icon-lock', {other} value:'<cobol>{name}</cobol>' ">
 
 
 </td>
        
+       
+                    
+<script>
+
+  $(document).ready(function() {
+    $("#{name}").next().find(".textbox-text").css("font-weight", "bold");
+    
+    $("#{name}").next().find(".textbox-text").css("color", "{color}");
+    
+    
+    $("#{name}").next().find(".textbox-text").css("background-color", "{backcolor}");
+
+    
+    
+  });
+</script>

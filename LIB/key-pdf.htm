@@ -1,0 +1,65 @@
+************ save RITORNO
+
+
+ <div style="text-align:center;padding:15px 0">
+             
+ <a href="#" class="easyui-linkbutton"  onclick="exportCurrentPageToPDF()" data-options="iconCls:'icon-print'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">PDF</span></a>
+    
+  
+			
+ <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+    class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a> 
+            
+ <a href="#" class="easyui-linkbutton"  onclick="return location.reload(true)" data-options="iconCls:'icon-reload'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Ricarica</span></a> 
+      
+     
+
+      
+ </div>
+        
+<script>
+
+function generatePDF() {
+
+  var bodyContent = document.body.innerHTML;
+
+  var pdf = pdfMake.createPdf({
+    content: [
+      { text: bodyContent, style: 'body' }
+    ],
+    styles: {
+      body: {
+        fontSize: 12
+      }
+    }
+  });
+
+  pdf.print();
+}
+
+
+</script>
+<script>
+
+function exportCurrentPageToPDF() {
+  // Crea una nuova istanza di jsPDF
+  var pdf = new jsPDF('p', 'pt', 'letter');
+
+  // Prendi il contenuto della pagina HTML attuale
+  var source = document.body.innerHTML;
+
+  // Crea una nuova finestra con il contenuto della pagina HTML
+  var newWindow = window.open();
+  newWindow.document.write(source);
+
+  // Aspetta che il contenuto sia caricato completamente
+  newWindow.document.addEventListener('load', function () {
+    // Aggiungi il contenuto della nuova finestra al PDF
+    pdf.addHTML(newWindow.document.body, function () {
+      // Scarica il PDF
+      pdf.save('pagina_attuale.pdf');
+    });
+  });
+}
+</script>
+************ end save

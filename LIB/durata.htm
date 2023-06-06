@@ -1,0 +1,89 @@
+
+************ edit time
+ 
+<td style="{size} padding:-5px 0px;" >  
+
+<input class="easyui-timespinner"  labelposition="top"  label="{label}" id="{name}" name="{name}" prompt="{label}" style="width:auto;padding:10px;{size}" 
+data-options="{type} {other} readonly:true, iconCls:'icon-lock' , min:'{min}',max:'{max}', {other}  value:'<cobol>{name}</cobol>' ">
+        
+
+</td>  
+ 
+************ edit time
+
+
+<script>
+  
+    $(function () {
+      // Aggiungi gli eventi onSpinUp e onSpinDown ai campi "Dalle" e "Alle"
+      $('#{dalle}').timespinner({
+        onSpinUp: function () {
+          updateDuration();
+        },
+        onSpinDown: function () {
+          updateDuration();
+        },
+        onChange: function () {
+          updateDuration();
+        }
+		
+		
+      });
+      $('#{alle}').timespinner({
+        onSpinUp: function () {
+          updateDuration();
+        },
+        onSpinDown: function () {
+          updateDuration();
+        },
+		onChange: function () {
+          updateDuration();
+        }
+      });
+
+      function updateDuration() {
+	  
+        var dalleValue = $('#{dalle}').timespinner('getValue');
+        var alleValue = $('#{alle}').timespinner('getValue');
+
+        if (dalleValue && alleValue) {
+          var dalleTime = parseTime(dalleValue);
+          var alleTime = parseTime(alleValue);
+
+          if (dalleTime && alleTime && alleTime > dalleTime) {
+            var durationMs = alleTime - dalleTime;
+            var durationHours = Math.floor(durationMs / (1000 * 60 * 60));
+            var durationMinutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
+            var formattedDuration = ('0' + durationHours).slice(-2) + ':' + ('0' + durationMinutes).slice(-2);
+
+			<!-- alert('qui' + formattedDuration); -->
+      
+            $('#{name}').timespinner('setValue', formattedDuration);
+          } 
+		  else
+		  {
+            $('#{name}').timespinner('setValue', '');
+          }
+        } else
+		{
+          $('#{name}').timespinner('setValue', '');
+        }
+      }
+
+      function parseTime(timeString) {
+        var timeParts = timeString.split(':');
+        if (timeParts.length === 2) {
+          var hours = parseInt(timeParts[0]);
+          var minutes = parseInt(timeParts[1]);
+
+          if (!isNaN(hours) && !isNaN(minutes)) {
+            var date = new Date();
+            date.setHours(hours);
+            date.setMinutes(minutes);
+            return date;
+          }
+        }
+        return null;
+      }
+    });
+  </script>

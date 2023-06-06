@@ -1,0 +1,49 @@
+  <!-- Campo di input con icona di ricerca -->
+  
+   
+ <div style="display: inline-block;">
+	<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}" id="{name}" prompt="{label}" style="width:auto;padding:10px;{size} " 
+	data-options="{type} {CHAR} {OTHER} required:true,missingMessage:'Campo obbligatorio', {other} value:'<cobol>{name}</cobol>' ">
+  </div> 
+      <a href="OPENLIST.exe?MK-KEY=<cobol>SECTION-WEB</cobol>&MK-ENTITA=<cobol>MK-ENTITA</cobol>&MK-FUNZIONE=<cobol>MK-FUNZIONE</cobol>&MK-FIELD={name}"
+		id="link{name}" class="easyui-linkbutton" data-options="iconCls:'icon-search'">Comuni</a>
+		
+  <div style="display: inline-block;">
+	<input class="easyui-textbox"  labelposition="top"  label="Descrizione" name="{name}{name}" id="{name}{name}"  style="width:500px;padding:10px;" 
+	data-options="{other} value:'<cobol>{name}</cobol>' ">
+  </div>
+
+ <div style="display: inline-block;">
+	<input class="easyui-textbox"  labelposition="top"  label="Provincia" name="{name}{name}{name}" id="{name}{name}{name}"  style="width:100px;padding:10px;" 
+	data-options="{other} value:'<cobol>{name}</cobol>' ">
+  </div>
+  
+  <script>
+    $(function() {
+        $('#linkButton').click(function(e) {
+            e.preventDefault(); // Impedisce al link di eseguire l'azione predefinita di apertura
+            var url = $(this).attr('href'); // Ottieni l'URL dalla proprietà href dell'elemento
+            window.open(url, '_blank'); // Apre la pagina in una nuova scheda o finestra del browser
+        });
+    });
+</script>  
+  
+  
+
+<script>
+  $(document).ready(function() {
+    $("#{name}").next().find(".textbox-text").css("font-weight", "bold");
+	$("#{name}{name}").next().find(".textbox-text").css("font-weight", "bold");	
+	$("#{name}{name}{name}").next().find(".textbox-text").css("font-weight", "bold");	
+  });
+</script>
+
+
+<script>
+  
+  
+  $(document).ready(function() {
+    $("#{name}dialog").dialog('close');
+  });
+  
+  

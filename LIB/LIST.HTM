@@ -1,0 +1,115 @@
+  <!-- Campo di input con icona di ricerca -->
+  
+   
+ <div style="display: inline-block;">
+	<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}" id="{name}" prompt="{label}" style="width:auto;padding:10px;{size} " 
+	data-options="{type} {CHAR} {OTHER}  required:true,missingMessage:'Campo obbligatorio', {other} value:'<cobol>{name}</cobol>' ">
+  </div> 
+  
+  <div style="display: inline-block;">
+	<input class="easyui-textbox"  labelposition="top"  label="Descrizione riferimento" name="{name}{name}" id="{name}{name}"  style="width:500px;padding:10px;" 
+	data-options="{other} value:'<cobol>{name}</cobol>' ">
+
+</div>
+  
+
+<script>
+  $(document).ready(function() {
+    $("#{name}").next().find(".textbox-text").css("font-weight", "bold");
+  });
+</script>
+
+
+
+ <!-- Campo di input con icona di ricerca -->
+
+
+<!-- Dialog con il datagrid -->
+<div id="{name}dialog" class="easyui-dialog">
+  <div id="{name}dataGridContainer">
+    <table id="{name}dataGrid" class="easyui-datagrid" 
+	 
+                data-options="singleSelect:true,rownumbers:true,pagination:false,
+								   url: '/webcofin/<cobol>PATH-FILE</cobol>json/ark{file}.json',
+                                   remoteSort:false ,method:'get'">
+            <thead>
+                <tr>
+                    <th data-options="field:'CODICE',width:'25%',sortable:true">Codice</th>
+                    <th data-options="field:'DESCRIZ',width: '75%',sortable:true">Descrizione</th>
+                      
+               </tr>
+            </thead>
+        </table>
+         
+	
+	
+	
+	
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $("#{name}").next().find(".textbox-text").css("font-weight", "bold");
+  });
+
+  $(document).ready(function() {
+    $("#{name}dialog").dialog('close');
+  });
+  
+  
+
+
+  $("#{name}").textbox({
+    editable: false,
+    icons: [{
+      iconCls: 'icon-search',
+      iconAlign: 'right',
+      handler: function() {
+        $("#{name}dialog").dialog({
+          title: 'Ricerca',
+          modal: true,
+          left: $("#{name}").offset().left + $("#{name}").outerWidth() + 50,
+          top: $("#{name}").offset().top + 23,
+          buttons: [{
+            text: "Seleziona",
+            iconCls: "icon-ok",
+            position: "right",
+            handler: function() {
+              var selectedValue = $("#{name}dialog").data("selectedValue");
+			  var selectedDescriz = $("#{name}dataGrid").datagrid("getSelected")["DESCRIZ"];
+              $("#{name}").textbox("setValue", selectedValue);
+			  $("#prefix_file").textbox("setValue", selectedValue);
+			   $("#{name}{name}").textbox("setValue", selectedDescriz);
+			  
+              $("#{name}dialog").dialog("close");
+            }
+          }]
+        });
+      }
+    }]
+  });
+
+  $("#{name}dataGrid").datagrid({
+    width: 700,
+    height: 400,
+    remoteSort: false,
+    title: 'Seleziona il record di interesse',
+    singleSelect: true,
+    checkbox: false,
+   
+    onClickRow: function(index, row) {
+      $("#{name}dialog").data("selectedValue", row.CODICE);
+    },
+    onLoadSuccess: function() {
+      $("#{name}dataGrid").datagrid("selectRow", 0);
+    }
+  });
+
+  $(function() {
+    var dg = $('#{name}dataGrid').datagrid({
+      filterBtnIconCls: 'icon-filter'
+    });
+    dg.datagrid('enableFilter');
+  });
+</script>

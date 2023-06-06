@@ -1,0 +1,38 @@
+<td style="{size} padding:-5px 0px;" >
+ 
+
+<div style="display: inline-block; margin-right: 10px;">
+
+<input class="easyui-textbox"  labelposition="top"  label="{label}" name="{name}" id="{name}" prompt="{label}" style="width:auto;padding:10px;{size} " 
+data-options="{type} {CHAR} readonly:true, disabled:false, {other} value:'<cobol>{name}</cobol>' ">
+
+</div>
+
+<div style="display: inline-block; margin-right: 10px;">
+	
+<button  id="{Code}" name="{Code}" class="easyui-linkbutton"  onclick="return visualizzaFile_{Code}()" type="button" 
+			data-options="iconCls:'icon-search'" 
+			style="padding:5px 0px; margin-left:20px">Visualizza</button>	
+ 
+</div>
+ 
+
+
+</td>
+        
+<script type="text/javascript">
+
+
+function visualizzaFile_{Code}() {
+	var fullname = $('#{name}').textbox('getValue');
+	if (fullname.trim() !== '') {
+		var url = encodeURI(fullname);
+		window.open(url, '_blank');
+	}
+		else
+	{
+		alert('Non sono presenti dati da visualizzare !');
+	}
+}
+</script>
+ 
