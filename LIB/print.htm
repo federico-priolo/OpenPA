@@ -1,0 +1,180 @@
+************ keyback start
+
+
+ <div style="text-align:center;padding:15px 0">
+             
+            
+        <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>"
+                  class="easyui-linkbutton"  data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>
+         
+		 
+	    <a href="openpa00.exe?MK-KEY=<cobol>SECTION-WEB</cobol>" class="easyui-linkbutton" data-options="iconCls:'icon-back'" style="padding:5px 0px;width:15%; margin-left:20px">Torna al menu</a> 
+ 
+
+		<a href="#" class="easyui-linkbutton"  ID="idprintobject" name="idprintobject" onclick="printData()" data-options="iconCls:'icon-print'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Stampa</span></a> 
+ </div>
+
+<SCRIPT>
+
+
+
+function printData() {
+  if (confirm('Confermi la stampa dei dati?')) {
+    generatePDF();
+  }
+}
+
+</SCRIPT>
+
+<SCRIPT>
+ 
+function generatePDF() {
+  const doc = new jsPDF();
+  
+  
+  let outputFilename = "<COBOL>DOCUMENTO</COBOL>";
+  
+  fetch("<COBOL>SPECIFICHE</COBOL>", {cache: "no-cache"
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } 
+	  else 
+	  {
+        throw new Error(`Errore durante il caricamento del file specifiche.json. Codice errore: 
+			${response.status
+			} - 
+			${response.statusText
+			}`);
+      }
+    })
+    .then(data => {
+      data.forEach(record => {
+        const { 
+				instruction, params } = record;
+        switch (instruction) {
+          case "CONFIG":
+            try {
+              doc.setProperties({
+                orientation: params.orientation || "p",
+                title: params.title || "",
+                unit: params.unit || "mm"
+              });
+            } 
+			catch (error) 
+			{
+              alert(`Errore durante la configurazione: ${error
+			  }`);
+            }
+            break;
+		 
+         case "TEXT":
+  const textColor = params.color || "black";
+  const backgroundColor = params.background_color || "white";
+  doc.setFillColor(backgroundColor);
+  doc.setTextColor(textColor);
+  try {
+    const fontStyle = (params.bold && params.italic) ? "bolditalic" :
+                      (params.bold) ? "bold" :
+                      (params.italic) ? "italic" :
+                      "";
+    doc.setFont(params.font_name || "Courier New", fontStyle);
+    doc.setFontSize(params.font_size || 12);
+    doc.text(params.text, params.x || 10, params.y || 10, {
+      align: params.align || "left",
+      fillColor: backgroundColor
+    });
+  } 
+	catch (error) 
+  {
+    alert(`Errore durante l'impostazione del testo: ${error
+	}`);
+  }
+  break;
+		 
+		 
+          case "PAGE":
+            if (params.file) {
+              fetch(params.file)
+                .then(response => {
+                  if (response.ok) {
+                    return response.arrayBuffer();
+                  } 
+					else {
+                    throw new Error(`Errore durante il caricamento del file ${params.file
+					}. Codice errore: 
+					${response.status
+					} 
+					- ${response.statusText
+					}`);
+                  }
+                })
+                .then(arrayBuffer => {
+                  try {
+                    doc.addPage(arrayBuffer, params.format || "a4", params.compress || false);
+                  } 
+				    catch (error) {
+                    alert(`Errore durante l'aggiunta della pagina: ${error
+					}`);
+                  }
+                })
+                .catch(error => {
+                  alert(error.message);
+                });
+            } else 
+			{
+              try {
+                doc.addPage();
+              } 
+			    catch (error) {
+                alert(`Errore durante l'aggiunta della pagina: ${error
+				}`);
+              }
+            }
+            break;
+          case "OUTPUT":
+            outputFilename = params.file || "DOCUMENTO.PDF";
+            break;
+          default:
+            break;
+        }
+      });
+      try {
+        doc.save(outputFilename);
+      } 
+	  catch (error)
+	  {
+        alert(`Errore durante il salvataggio del file PDF: ${error
+		}`);
+      }
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+}
+    </SCRIPT>   
+    
+ <SCRIPT>
+  window.onload = function() {
+    fetch("<COBOL>SPECIFICHE</COBOL>", {
+			cache: "no-cache" })
+      .then(response => {
+         
+        if (response.ok) {
+          $('#idprintobject').linkbutton('enable');
+        } 
+		else
+		{
+          $('#idprintobject').linkbutton('disable');
+        }
+      })
+      .catch(() => {
+        $('#idprintobject').linkbutton('disable');
+      });
+  };
+</SCRIPT>
+
+
+ 
+ 

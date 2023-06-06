@@ -1,0 +1,137 @@
+<td style="{size} padding:-5px 0px;" >
+
+ 
+
+ <div style="width:'100%';height:'100%';padding:9px; background-color:#eceff1;background-image: linear-gradient(#abcdef 0%, #eceff1 100%)">
+ 
+    
+    <!-- <font color="blue"> -->
+    <!-- <fieldset><legend><strong>{title}</strong></legend> -->
+
+
+	<div style="margin:05px 0;"></div>
+       
+
+<!-- esempio: {type}= ",.doc" -->
+ <div style="display: inline-block; margin-right: 10px;">
+    <input class="easyui-textbox" labelposition="top" label="Prefisso" name="prefix_{name}" id="prefix_{name}"  
+    data-options="readonly:true,value:'<cobol>PREFISSO-FILE</cobol>' " style="width:auto;padding:10px">
+  </div>
+
+<div style="display: inline-block; margin-right: 10px;">
+<input class="easyui-filebox" name="{name}" id="{name}"  accept=".pdf,.txt,{type}" label="{label}" labelPosition="top" 
+	onChange="alert('Se corretto procedi ora con Carica....')"
+	buttonText="Clicca qui per selezionare il file..." 
+	data-options="prompt:'{label}...',buttonIcon:'icon-search',onClickButton: pulisci" 
+	style="width:800px;padding:10px;{size}">
+</div>
+
+<div style="display: inline-block; margin-right: 10px;">
+
+<button id="carica{name}" class="easyui-linkbutton" onclick="return conferma()" type="button" 
+	data-options="iconCls:'icon-configura'" 
+	style="padding:5px 0px; margin-left:20px">Carica</button>
+
+</div>
+
+
+ 
+ 
+
+<input type="hidden" class="easyui-textbox" labelposition="top"   name="fullname_{name}" id="fullname_{name}">
+ 
+ 
+ 
+   
+   <!-- </fieldset> -->
+   <!-- </font> -->
+  
+   </div>
+ 
+ 
+
+</td>
+
+<script> 
+$(function() {
+	// Disabilita il pulsante "Carica" all'avvio della pagina
+		$('#carica{name}').linkbutton('disable');
+	
+	
+	// Aggiunge un evento onChange all'elemento input di tipo "file"
+	$('input[type="file"]').on('change', function() {
+		// Abilita il pulsante "Carica" solo se è stato selezionato un file valido
+		if ($(this).val()) {
+			$('#carica{name}').linkbutton('enable');
+		} else 
+		{
+			$('#carica{name}').linkbutton('disable');
+		}
+	});
+});
+
+function pulisci() {
+
+	 
+	// Pulisce il campo input
+	 
+	
+	$('#{name}').textbox('clear');
+	     
+	$('#fullname_{name}').textbox('setValue', " ");
+	
+	$('#{dest}').textbox('setValue', " ");
+
+ 
+	// Disabilita il pulsante "Carica"
+	$('#carica{name}').linkbutton('disable');
+}
+</script>
+
+
+
+<script type="text/javascript">
+
+ 
+    function conferma() {
+    if (confirm("Confermi il caricamento dei dati?")) {
+        var prefix = ($('#prefix_{name}').val() || '').trim() || 'file';
+        var filename = $('#{name}').filebox('getValue').split('\\').pop();
+        var fullname = "/openpa/upload/" + prefix + '-' + filename;
+        $('#fullname_{name}').textbox('setValue', fullname);
+
+        $('#{dest}').textbox('setValue', fullname);
+		
+		$('#carica{name}').linkbutton('disable');
+
+        var formData = new FormData(document.getElementById('open_form'));
+        $.ajax({
+            url: '/openpa/upload.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Gestisci la risposta del server
+                alert('File caricato con successo');
+            },
+            error: function (xhr, status, error) {
+                // Gestisci eventuali errori
+                alert('Errore nel caricamento del file');
+            }
+        });
+
+        return true;
+    } 
+		else 
+	{
+        return false;
+    }
+}
+
+
+</script>
+
+
+
+ 

@@ -1,10 +1,39 @@
 <html>
 
 <script src="https://unpkg.com/hyperscript.org@0.0.4"></script>
-<p>
-  <input id="txtCel" type="number" _="on change set #txtFah.value to  ( 32 + (me.value * (9/5))).toFixed(1) "  value="0"> Celcius = 
-  <input id="txtFah" type="number"  _="on change set #txtCel.value to ((5/9) * (me.value - 32)).toFixed(1)" value="32"> Fahrenheit
-</p>
+
+
+
+<div>
+    <label >Make</label>
+    <select name="make" hx-get="/models" hx-target="#models" hx-indicator=".htmx-indicator">
+      <option value="audi">Audi</option>
+      <option value="toyota">Toyota</option>
+      <option value="bmw">BMW</option>
+    </select>
+  </div>
+  <div>
+  
+    <label>Model</label>
+    
+    <select id="models" name="model">
+      <option value="a1">A1</option>
+      <option value="a2">A2</option>
+      <option value="a3">A3</option>
+    
+    
+    </select> 
+    
+     <select id="models" name="toyota">
+      <option value="a1">B2</option>
+      <option value="a2">B3</option>
+      <option value="a3">B4</option>
+    
+    
+    </select> 
+    
+    
+</div>
 
 
 </html>

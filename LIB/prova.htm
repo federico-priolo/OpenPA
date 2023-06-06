@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title> </title>
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/demo/demo.css">
+    <script type="text/javascript" src="/openpa/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.texteditor.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/datagrid-export.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/datagrid-filter.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/pdfmake.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/vfs_fonts.js"></script>
+    <script type="text/javascript"src="/openpa/easyui/easyui-lang-it.js"></script>
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/print.min.css">
+    <script src="/openpa/easyui/print.min.js"></script>
+    <script src="/openpa/easyui/jspdf.min.js"></script>
+    <script src="/openpa/easyui/jspdf.plugin.autotable.min.js"></script>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.9/dist/jspdf.plugin.autotable.min.js"></script>         -->
+   <script type="text/javascript" src="/openpa/easyui/xlsx.full.min.js"></script>
+   <script type="text/javascript" src="/openpa/easyui/papaparse.min.js"></script>
+   <script type="text/javascript" src="/openpa/easyui/exceljs.min.js"></script>
+   <script type="text/javascript" src="/openpa/easyui/FileSaver.min.js"></script>
+   <!-- Include the JS for AG Grid -->
+
+   <link rel="stylesheet"
+
+    <!--  Font Awesome Solid + Brands -->
+    <link href="/openpa/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/openpa/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/openpa/fontawesome/css/solid.css" rel="stylesheet">
+<script type="text/javascript">
+    $(function(){
+    $('#open_form').on('submit', function(e){
+    if ($(this).form('validate')){
+     return true;
+     }
+        return false;
+    })
+    })
+</script>
+</head>
+ <body id="paginahtml" style="background-color:#eceff1;">
+<div class="easyui-panel" title="Causali" data-options="iconCls:'icon-more',collapsible:false,minimizable:false,modal:true,maximizable:true"
+               style="  background-color:#0066cc; width:'100%';height:'850PX';padding:05px;margin:06px 0;  ">
+    <div style="width:'100%';height:'100%';padding:9px; background-color:#eceff1;background-image: linear-gradient(#abcdef 0%, #eceff1 100%)">
+    <font color="blue">
+    <fieldset><legend><strong>Regole generali</strong></legend>
+                <div style="margin:05px 0;"></div>
+  <input class="easyui-checkbox" name="AUT-CAUS" id="AUT-CAUS" value="S" type="checkbox" labelposition="top"
+  label="Stampa su cartellino">
+  <!--N  questa riga va lasciata qui viene processata da makeform lib -->
+  <span class="traffic-light" id="traffic-AUT-CAUS">
+    <img class="red-light" src="/openpa/images/semaforo-rosso.png" width="60" height="80" style="display: block;">
+    <img class="green-light" src="/openpa/images/semaforo-verde.png" width="60" height="80" style="display: none;">
+  </span>
+  <script>
+    $(document).ready(function() {
+      $('#AUT-CAUS').on('change', function() {
+          alert('checked');
+        var checkbox = $(this);
+        var span = checkbox.parent().find('span#traffic-' + 'AUT-CAUS');
+        var redLight = span.find('.red-light');
+        var greenLight = span.find('.green-light');
+        if (checkbox.prop('checked')) {
+          redLight.hide();
+          greenLight.show();
+        }
+           else
+           {
+          redLight.show();
+          greenLight.hide();
+        }
+      });
+    });
+  </script>
+   </fieldset>
+   </font>
+   </div>
+   </div>

@@ -21,7 +21,16 @@
                     panelHeight: '400px',
                     label: '{label}',
                     formatter: formatItem{name},
-                    labelPosition: 'top'
+                    labelPosition: 'top',
+					
+					onLoadSuccess:function(data) 
+					{
+					  if (data.length > 0) 
+					  {
+					  $(this).combobox('setValue', data[0].ID);
+					  }
+					}
+					
                     ">
 
 <i class="fa-solid fa-user fa-lg"></i>
@@ -35,6 +44,13 @@
                     '<span style="color:#888">' +  "badge n." + '<font color="red">' + row.BADGE + '</font></span>';
             return s;
         }
+		
+		
+		 
+		
+		
+		
+		
     </script>
 			
 </td>     

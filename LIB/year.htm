@@ -3,7 +3,7 @@
 <td style="{size} padding:-5px 0px;" >    
      
 
-<input name="{name}" style="color:blue;" class="easyui-numberspinner" data-options="label:'{label}',min:{from},max:{to}, labelPosition:'top' , width:'auto', width:'{width}' , value:
+<input name="{name}" style="color:blue;"  id="{name}"  class="easyui-numberspinner" data-options="label:'{label}',min:{from},max:{to}, labelPosition:'top' , width:'auto', width:'{width}' , value:
 '<cobol>{name}</cobol>'
 ">
 
@@ -12,3 +12,19 @@
 
 
 ************ edit year
+
+                        
+<script>
+
+ $(document).ready(function() {
+  $('#{name}').numberspinner({
+    onChange: function() {
+      // find the input element and set its font weight to bold
+      $(this).next().find('input').css('font-weight', 'bold');
+      $(this).next().find('input').css('color', '{color}');
+    }
+  });
+});
+
+
+</script>

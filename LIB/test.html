@@ -1,0 +1,70 @@
+<script type="text/javascript">
+
+function mostraAnteprima() {
+  // Recupera l'URL completo del file caricato dal campo nascosto "fullname_{name}"
+  var url = $('#fullname_{name}').val();
+  // Imposta l'attributo "src" dell'iframe con l'URL del file caricato
+  $('#anteprima_frame').attr('src', url);
+}
+
+$(function() {
+  // Disabilita il pulsante "Carica" all'avvio della pagina
+  $('#carica{name}').linkbutton('disable');
+  // Aggiunge un evento onChange all'elemento input di tipo "file"
+  $('input[type="file"]').on('change', function() {
+    // Abilita il pulsante "Carica" solo se è stato selezionato un file valido
+    if ($(this).val()) {
+      $('#carica{name}').linkbutton('enable');
+    } else {
+      $('#carica{name}').linkbutton('disable');
+    }
+  });
+});
+
+function pulisci() {
+  // Pulisce il campo input
+  $('#{name}').textbox('clear');
+  $('#fullname_{name}').textbox('setValue', " ");
+  $('#{dest}').textbox('setValue', " ");
+  // Disabilita il pulsante "Carica"
+  $('#carica{name}').linkbutton('disable');
+}
+
+function conferma() {
+  if (confirm("Confermi il caricamento dei dati?")) {
+    var prefix = ($('#prefix_{name}').val() || '').trim() || 'file';
+    var filename = $('#{name}').filebox('getValue').split('\\').pop();
+    var fullname = "/openpa/upload/" + prefix + '-' + filename;
+    $('#fullname_{name}').textbox('setValue', fullname);
+    $('#{dest}').textbox('setValue', fullname);
+    $('#carica{name}').linkbutton('disable');
+    // Aggiungi il controllo sull'estensione del file
+    if (filename.endsWith('.pdf') || filename.endsWith('.jpg') || filename.endsWith('.jpeg') || filename.endsWith('.png')) {
+      var formData = new FormData(document.getElementById('open_form'));
+      $.ajax({
+        url: '/openpa/upload.php',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          // Gestisci la risposta del server
+          alert('File caricato con successo');
+        },
+        error: function (xhr, status, error) {
+          // Gestisci eventuali errori
+          alert('Errore nel caricamento del file');
+        }
+      });
+      return true;
+    } else {
+      // Mostra un messaggio di errore se il file non è un'immagine o un file PDF
+      alert('Il file deve essere un PDF o un\'immagine (JPG, JPEG o PNG)');
+      return false;
+    }
+  } else {
+    return false;
+  }
+}
+
+</script>

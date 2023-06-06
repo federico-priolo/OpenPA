@@ -1,0 +1,64 @@
+<td style="{size} padding:-5px 0px;">
+
+
+
+
+  
+<!-- <cobol>{name}</cobol>  questa riga va lasciata qui viene processata da makeform lib      legge il valore se "S" lo riporta come CHECKED in makeform -->
+
+   <input class="easyui-checkbox" name="{name}"  id="{name}"  value="S"  width="{width}" labelWidth="{width}" labelposition="top"
+    <cobol>CHECKED</cobol>
+   label="{label}">
+
+<!-- default={default}  questa riga va lasciata qui viene processata da makeform lib -->   
+
+   
+  
+  <span class="traffic-light" id="traffic-{name}">
+  <img class="red-light" src="/openpa/images/semaforo-rosso.png" width="45" height="70" style="display: block; margin-right: 20px; margin-top: 10px; border: 2px solid black;">
+  <img class="green-light" src="/openpa/images/semaforo-verde.png" width="45" height="70" style="display: block; margin-right: 20px;margin-top: 10px; border: 2px solid black;">
+</span>
+ 
+  <script>
+  
+    $(document).ready(function() {
+      
+	  var opts = $('#{name}').checkbox('options');
+	   if (opts.checked) {
+        // Visualizza l'immagine verde e nasconde quella rossa
+        $('#traffic-{name} .green-light').show();
+        $('#traffic-{name} .red-light').hide();
+      }
+	  else {
+        // Visualizza l'immagine rossa e nasconde quella verde
+        $('#traffic-{name} .red-light').show();
+        $('#traffic-{name} .green-light').hide();
+      }
+   
+	  
+	  $('#{name}').next().on('click', function(){
+	  
+	  <!-- alert('checked'); -->
+	  
+	  var opts = $('#{name}').checkbox('options');
+	  
+	     if (opts.checked) {
+        // Visualizza l'immagine verde e nasconde quella rossa
+        $('#traffic-{name} .green-light').show();
+        $('#traffic-{name} .red-light').hide();
+      }
+	  else {
+        // Visualizza l'immagine rossa e nasconde quella verde
+        $('#traffic-{name} .red-light').show();
+        $('#traffic-{name} .green-light').hide();
+      }
+   
+
+		});
+});
+
+</script>
+  
+ 
+ </td>
+ 

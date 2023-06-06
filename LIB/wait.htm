@@ -1,0 +1,32 @@
+  
+<script>
+
+$(function() {
+  $('a').click(function(event) {
+    var link = $(this);
+
+    if (link.hasClass('disabled')) {
+      // Il link è già stato cliccato e disabilitato
+      event.preventDefault();
+      return;
+    }
+	 
+    // Disabilita il link
+    link.addClass('disabled');
+	
+		
+		<!-- alert('disabilitato'); -->
+		
+    // Esegui l'operazione desiderata
+    // ...
+
+    // Quando la pagina corrente viene caricata di nuovo, riabilita il link
+    $(window).on('load', function() {
+      link.removeClass('disabled');
+    });
+  });
+});
+ 
+ 
+ 
+</script>
