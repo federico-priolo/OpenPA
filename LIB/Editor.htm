@@ -1,0 +1,65 @@
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+
+
+            <select class="easyui-combogrid" id="IDEditorCombogrid" name="EditorCombogrid" style="{size}" data-options="
+		   remoteSort:false,            
+           editable:false,
+           required:true,
+           {other}
+			panelWidth: 1500,
+                    idField: 'CODICE',
+                    textField: 'DESCRIZ',
+                    url: '/openpa/<cobol>PATH-FILE</cobol>json/ark{file}.json',
+                    method: 'get',
+                    columns: [[
+                        {{field:'CODICE',title:'Codice',width:'50%',sortable:true}},
+                        {{field:'DESCRIZ',title:'Descrizione',width:'50%',sortable:true}}
+                                    ]],
+                    fitColumns: true,
+                    label: '{label}',labelWidth:'{width}',
+                    labelPosition: 'left', 
+					labelPosition: 'top'
+                ">
+            </select>
+ 
+
+<button class="easyui-linkbutton" onclick="readFile()" data-options="iconCls:'icon-rules'">Carica</button>
+
+            
+<button class="easyui-linkbutton" onclick="saveFile()" data-options="iconCls:'icon-save'">Salva</button>
+
+	<div style="text-align:left;padding:02px 0"></div> 
+    <br>
+
+
+<div id="editor" style="width:'100%';height:900px;"></div>
+
+<script>
+    var editor = ace.edit("editor");
+    // Imposta la dimensione del carattere a 22px
+    editor.setFontSize("22px");
+
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/javascript");
+
+   
+
+    function readFile() {
+        const fileName = $('#IDEditorCombogrid').combogrid('getText');
+        $.post('/webcofin/readFile.php', {{ 'fileName': fileName }}, function(data) {{
+            editor.setValue(data);
+        }}).fail(function() {{
+            alert('Errore nella lettura del file.');
+        });
+    }
+
+    function saveFile() {
+        const fileName = $('#IDEditorCombogrid').combogrid('getText');
+        const fileContent = editor.getValue();
+        $.post('/webcofin/saveFile.php', {{ 'fileName': fileName, 'content': fileContent }}, function(data) {{
+            alert(data);
+        }}).fail(function() {{
+            alert('Errore nel salvataggio del file.');
+        });
+    }
+</script>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+       <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+       <meta http-equiv="pragma" content="no-cache">
+       <meta http-equiv="expires" content="0">
+    <title> </title>
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/demo/demo.css">
+    <script type="text/javascript" src="/openpa/easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/jquery.texteditor.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/datagrid-export.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/datagrid-filter.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/pdfmake.min.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/vfs_fonts.js"></script>
+    <script type="text/javascript" src="/openpa/easyui/easyui-lang-it.js"></script>
+    <link rel="stylesheet" type="text/css" href="/openpa/easyui/print.min.css">
+    <script src="/openpa/easyui/print.min.js"></script>
+    <script src="/openpa/easyui/jspdf.min.js"></script>
+    <script src="/openpa/easyui/jspdf.plugin.autotable.min.js"></script>
+   <!-- <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.5.9/dist/jspdf.plugin.autotable.min.js"></script>         -->
+   <script type="text/javascript" src="/openpa/easyui/xlsx.full.min.js"></script>
+   <script type="text/javascript" src="/openpa/easyui/papaparse.min.js"></script>
+   <script type="text/javascript" src="/openpa/easyui/exceljs.min.js"></script>
+   <script type="text/javascript" src="/openpa/easyui/FileSaver.min.js"></script>
+   <!-- Include the JS for AG Grid -->
+   <script src="/openpa/easyui/ag-grid-community.min.js"></script>
+   <!-- Include the core CSS, this is needed by the grid -->
+   <link rel="stylesheet"
+     href="/openpa/easyui/ag-grid.css"/>
+   <!-- Include the theme CSS, only need to import the theme you are going to use -->
+   <link rel="stylesheet"
+     href="/openpa/easyui/ag-theme-alpine.css"/>
+    <!--  Font Awesome Solid + Brands -->
+    <link href="/openpa/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/openpa/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/openpa/fontawesome/css/solid.css" rel="stylesheet">
+<script type="text/javascript">
+    $(function(){
+    $('#open_form').on('submit', function(e){
+    if ($(this).form('validate')){
+     return true;
+     }
+        return false;
+    })
+    })
+</script>
+<script type="text/javascript">
+        function myformatter(date){
+            var y = date.getFullYear();
+            var m = date.getMonth()+1;
+            var d = date.getDate();
+            return (d<10?('0'+d):d)+'/'+(m<10?('0'+m):m)+'/'+y;
+        }
+        function myparser(s){
+            if (!s) return new Date();
+            var ss = (s.split('/'));
+            var d = parseInt(ss[0],10);
+            var m = parseInt(ss[1],10);
+            var y = parseInt(ss[2],10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+                return new Date(y,m-1,d);
+            } else
+            {
+                return new Date();
+            }
+        }
+</script>
+</head>
+ <body id="paginahtml" style="background-color:#eceff1;">
+<div class="easyui-dialog" title="Esito salvataggio dati per :- Gruppi abilitazioni utenti"  data-options="iconCls:'icon-save',collapsible:false,minimizable:false,modal:true,maximizable:true"
+               style="  background-color:#0066cc; width:'600px';height:'1200px';padding:05px;margin:06px 0;top:0;  ">
+<div style="width:'100%';height:'100%';padding:5px; background-color:#eceff1;background-image: linear-gradient(#eceff1 0%, #0066CC 100%)">
+ <font color="blue">
+    <fieldset><legend><strong>Dati di accesso</strong></legend>
+        <div style="padding:05px;margin:10px 0; ">
+        <input class="easyui-textbox" label="Ente"  labelWidth="40px"  style="width:42%;height:34px;padding:5px;" data-options="editable:false, value:
+        'ISTITUTO ROMANO SAN MICHELE'
+        ">
+        <input class="easyui-textbox" label="Utente" labelWidth="60px" style="width:15%;height:34px;padding:10px;" data-options="editable:false, value:
+        'ADMIN'
+         ,labelAlign:'center'">
+        <input class="easyui-textbox" label="Data" labelWidth="40px"  style="width:11%;height:34px;padding:10px;" data-options="editable:false, value:
+         '27/06/2023'
+         ,labelAlign:'center'">
+        <input class="easyui-textbox"   label="Logout"  labelWidth="60px" style="width:9%;height:34px;padding:10px;" data-options="editable:false, value:
+        '13:33'
+         ,labelAlign:'center'">
+        &nbsp
+        <i class="fa-solid fa-hourglass-start fa-lg  " title="Indica l'ora entro la quale se non presente attivita' viene effettuato il logout automatico.."></i>
+        &nbsp&nbsp&nbsp
+        <a href="openpa00.exe?MK-KEY=2023062710032830"
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="ritorna al menu operatore"
+                  data-options="iconCls:'icon-more' "
+                  style="float:right; padding:5px 0px;width:2%"></a>
+        <a href="openpa99.exe?MK-KEY=2023062710032830"
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="Disconnette l'utente corrente"
+                  data-options="iconCls:'icon-man1'"
+                  style="float:right; padding:5px 0px;width:2%"></a>
+        <a href="openexec.exe?MK-KEY=2023062710032830&MK-ENTITA=UT&MK-FUNZIONE=LO&MK-PAGE=NEWLOGIN.HTM"
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="Cambio password"
+                  data-options="iconCls:'icon-configura'"
+                  style="float:right; padding:5px 0px;width:2%"></a>
+        <!-- <a href="openexec.exe?MK-KEY=2023062710032830&MK-ENTITA=UT&MK-FUNZIONE=LO&MK-PAGE=AGAINLOG.HTM" -->
+           <a href="/WEBCOFIN/FILES//login.htm"
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="effettua login nuovo utente"
+                  data-options="iconCls:'icon-man2'"
+                  style="float:right; padding:5px 0px;width:2%"></a>
+        <a href="openpa11.exe?MK-KEY=2023062710032830"
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="Gestione stampe differite"
+                  data-options="iconCls:'icon-print', disabled:true"
+                  style="float:right; padding:5px 0px;width:2%"></a>
+        <a href="#"
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="ricarica il form"
+                  onclick="return location.reload(true)"
+                  data-options="iconCls:'icon-reload'"
+                  style="float:right; padding:5px 0px;width:2%"></a>
+        <a href="openpa88.exe?MK-PAGINA=TEMPLATE\CONFERMA.HTM&MK-KEY=2023062710032830"
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="File pagina&nbspTEMPLATE\CONFERMA.HTM"
+                  data-options="iconCls:'icon-rules', disabled:false"
+                  style="float:right; padding:5px 0px;width:2%"></a>
+        <button
+                  class="easyui-linkbutton easyui-tooltip"
+                  title="Salva"
+                  onclick="return confirm('Confermi la memorizzazione dei dati?')"
+                  type="submit"
+                  data-options="iconCls:'icon-ok',disabled:true"
+                  style="float:right; padding:5px 0px;width:2%">
+        </div>
+   </fieldset>
+   </font>
+   </div>
+    <div style="width:'100%';height:'100%';padding:2px; background-color:#eceff1;background-image: linear-gradient(#abcdef 0%, #eceff1 100%)">
+    <font color="blue">
+    <fieldset><legend><strong>- Gruppi abilitazioni utenti</strong></legend>
+                <div style="margin:05px 0;"></div>
+       <div style="text-align:left;padding:02px 0"></div>
+    <h4>          </h4>
+&nbsp
+&nbsp
+&nbsp
+<i class="fa-solid fa-pen-to-square fa-lg fa-2xl  " style="color: ;"></i>
+&nbsp
+&nbsp
+&nbsp
+<input class="easyui-textbox"  labelposition="top"  label="Messaggio operazione" name="MESSAGGIO" id="MESSAGGIO"  style="width:auto;padding:10px;width:1300px;"
+data-options="  readonly:true, required:false, iconCls:'icon-lock',  value:'MEMORIZZATA TABELLA' ">
+<script>
+  $(document).ready(function() {
+    $("#MESSAGGIO").next().find(".textbox-text").css("font-weight", "bold");
+    $("#MESSAGGIO").next().find(".textbox-text").css("color", " ");
+    $("#MESSAGGIO").next().find(".textbox-text").css("background-color", " ");
+  });
+</script>
+       <div style="text-align:left;padding:02px 0"></div>
+    <h4>          </h4>
+&nbsp
+&nbsp
+&nbsp
+<i class="fa-solid fa-comments fa-lg fa-2xl  " style="color: ;"></i>
+&nbsp
+&nbsp
+&nbsp
+<input class="easyui-textbox"  labelposition="top"  label="dettaglio operazione" name="MESSAGGIO1" id="MESSAGGIO1"  style="width:auto;padding:10px;width:1300px;"
+data-options="  readonly:true, required:false, iconCls:'icon-lock',  value:'ENTE:01 CODICE:000012' ">
+<script>
+  $(document).ready(function() {
+    $("#MESSAGGIO1").next().find(".textbox-text").css("font-weight", "bold");
+    $("#MESSAGGIO1").next().find(".textbox-text").css("color", " ");
+    $("#MESSAGGIO1").next().find(".textbox-text").css("background-color", " ");
+  });
+</script>
+       <div style="text-align:left;padding:02px 0"></div>
+    <h4>          </h4>
+&nbsp
+&nbsp
+&nbsp
+<i class="fa-solid fa-thumbs-up fa-lg fa-2xl  " style="color: ;"></i>
+&nbsp
+&nbsp
+&nbsp
+<input class="easyui-textbox"  labelposition="top"  label="note integrative operazione" name="MESSAGGIO2" id="MESSAGGIO2"  style="width:auto;padding:10px;width:1300px;"
+data-options="  readonly:true, required:false, iconCls:'icon-lock',  value:'UTENTE AGGIORNAMENTO RECORD ADMIN' ">
+<script>
+  $(document).ready(function() {
+    $("#MESSAGGIO2").next().find(".textbox-text").css("font-weight", "bold");
+    $("#MESSAGGIO2").next().find(".textbox-text").css("color", " ");
+    $("#MESSAGGIO2").next().find(".textbox-text").css("background-color", " ");
+  });
+</script>
+       <div style="text-align:left;padding:02px 0"></div>
+    <h4>          </h4>
+<input name="MK-KEY" size="1" style="visibility: hidden" value="2023062710032830">
+   </fieldset>
+   </font>
+   </div>
+ <div style="text-align:center;padding:15px 0">
+<a href="opentabe.exe?MK-KEY=2023062710032830&MK-ENTITA=TA&MK-FUNZIONE=03" class="easyui-linkbutton" data-options="iconCls:'icon-back'" style="padding:5px 0px;width:25%; margin-left:20px"> <span style="font-size:14px;">Indietro</span></a>
+           <a href="openpa00.exe?MK-KEY=2023062710032830" class="easyui-linkbutton" data-options="iconCls:'icon-undo'" style="padding:5px 0px;width:15%; margin-left:20px">Torna al menu</a>
+           <a href="#" class="easyui-linkbutton"  ID="idprintobject" name="idprintobject" onclick="printData()" data-options="iconCls:'icon-print'" style="padding:5px 0px;width:15%; margin-left:20px"> <span style="font-size:14px;">Stampa</span></a>
+ </div>
+<SCRIPT>
+function printData() {
+  if (confirm('Confermi la stampa dei dati?')) {
+    generatePDF();
+  }
+}
+</SCRIPT>
+<SCRIPT>
+function generatePDF() {
+  const doc = new jsPDF();
+  let outputFilename = "";
+  fetch("", {cache: "no-cache"
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+         else
+         {
+        throw new Error(`Errore durante il caricamento del file specifiche.json. Codice errore:
+               ${response.status
+               } -
+               ${response.statusText
+               }`);
+      }
+    })
+    .then(data => {
+      data.forEach(record => {
+        const {
+                   instruction, params } = record;
+        switch (instruction) {
+          case "CONFIG":
+            try {
+              doc.setProperties({
+                orientation: params.orientation || "p",
+                title: params.title || "",
+                unit: params.unit || "mm"
+              });
+            }
+               catch (error)
+               {
+              alert(`Errore durante la configurazione: ${error
+                 }`);
+            }
+            break;
+         case "TEXT":
+  const textColor = params.color || "black";
+  const backgroundColor = params.background_color || "white";
+  doc.setFillColor(backgroundColor);
+  doc.setTextColor(textColor);
+  try {
+    const fontStyle = (params.bold && params.italic) ? "bolditalic" :
+                      (params.bold) ? "bold" :
+                      (params.italic) ? "italic" :
+                      "";
+    doc.setFont(params.font_name || "Courier New", fontStyle);
+    doc.setFontSize(params.font_size || 12);
+    doc.text(params.text, params.x || 10, params.y || 10, {
+      align: params.align || "left",
+      fillColor: backgroundColor
+    });
+  }
+       catch (error)
+  {
+    alert(`Errore durante l'impostazione del testo: ${error
+       }`);
+  }
+  break;
+          case "PAGE":
+            if (params.file) {
+              fetch(params.file)
+                .then(response => {
+                  if (response.ok) {
+                    return response.arrayBuffer();
+                  }
+                       else {
+                    throw new Error(`Errore durante il caricamento del file ${params.file
+                       }. Codice errore:
+                       ${response.status
+                       }
+                       - ${response.statusText
+                       }`);
+                  }
+                })
+                .then(arrayBuffer => {
+                  try {
+                    doc.addPage(arrayBuffer, params.format || "a4", params.compress || false);
+                  }
+                       catch (error) {
+                    alert(`Errore durante l'aggiunta della pagina: ${error
+                       }`);
+                  }
+                })
+                .catch(error => {
+                  alert(error.message);
+                });
+            } else
+               {
+              try {
+                doc.addPage();
+              }
+                   catch (error) {
+                alert(`Errore durante l'aggiunta della pagina: ${error
+                   }`);
+              }
+            }
+            break;
+          case "OUTPUT":
+            outputFilename = params.file || "DOCUMENTO.PDF";
+            break;
+          default:
+            break;
+        }
+      });
+      try {
+        doc.save(outputFilename);
+      }
+         catch (error)
+         {
+        alert(`Errore durante il salvataggio del file PDF: ${error
+           }`);
+      }
+    })
+    .catch(error => {
+      alert(error.message);
+    });
+}
+    </SCRIPT>
+ <SCRIPT>
+  window.onload = function() {
+    fetch("", {
+               cache: "no-cache" })
+      .then(response => {
+        if (response.ok) {
+          $('#idprintobject').linkbutton('enable');
+        }
+           else
+           {
+          $('#idprintobject').linkbutton('disable');
+        }
+      })
+      .catch(() => {
+        $('#idprintobject').linkbutton('disable');
+      });
+  };
+</SCRIPT>
+   </div>
+  </body>
+ <script>
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+           };
+ </script>
+ <script>
+  $(function() {
+  var links = $(".easyui-menulink");
+  var loadingIcon = $('<i class="fa fa-spinner fa-spin" style="font-size: 40px; color:#0066cc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;"></i>');
+  $('body').append(loadingIcon);
+  links.click(function(event) {
+    event.preventDefault();
+    loadingIcon.show();
+    setTimeout(function() {
+      window.location.href = event.currentTarget.href;
+    }, 5);
+  });
+  window.addEventListener("load", function() {
+    loadingIcon.hide();
+  });
+  window.onbeforeunload = function() {
+    loadingIcon.show();
+  };
+});
+  </script>
+ <script>
+    // Disabilita il reload della pagina su qualsiasi azione di aggiornamento
+    window.onbeforeunload = function() {
+      return false;
+    };
+  </script>
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var links = document.querySelectorAll('a.easyui-menulink');
+    links.forEach(function(link) {
+      var dataOptions = link.getAttribute('data-options');
+      if (dataOptions && dataOptions.includes('disabled:true')) {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+        });
+      }
+    });
+  });
+</script>
+</html>

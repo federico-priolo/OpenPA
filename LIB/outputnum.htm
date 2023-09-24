@@ -4,7 +4,7 @@
      
 
 
-<input name="{name}" id="{name}" style="color:blue;"  class="easyui-numberspinner" data-options="readonly:true, iconCls:'icon-lock', required:false,label:'{label}',min:0,max:99999, labelPosition:'top' , width:'auto', width:'{width}' , value:
+<input name="{name}" id="{name}" style="text-align: right; color:blue;"  class="easyui-numberspinner" data-options="readonly:true, iconCls:'icon-lock', required:false,label:'{label}',min:0,max:99999, labelPosition:'top' , width:'auto', width:'{width}' , value:
 '<cobol>{name}</cobol>'
 ">
 
@@ -16,8 +16,22 @@
 
  
         
+<!-- <script> -->
+  <!-- $(document).ready(function() { -->
+    <!-- $("#{name}").next().find(".textbox-text").css("font-weight", "bold"); -->
+  <!-- }); -->
+<!-- </script> -->
+
 <script>
-  $(document).ready(function() {
-    $("#{name}").next().find(".textbox-text").css("font-weight", "bold");
-  });
+ 
+ $(document).ready(function() {
+  var id = "{name}_" + Math.floor(Math.random() * 1000); // genera un ID casuale con prefisso "{name}"
+  $("#{name}").attr("id", id); // imposta l'ID casuale per l'elemento con ID "name"
+  $("#" + id).next().find(".textbox-text").css("font-weight", "bold"); // seleziona l'elemento con ID casuale e applica lo stile
+  $("#" + id).next().find(".textbox-text").css("color", "{color}");
+  $("#" + id).next().find(".textbox-text").css("background-color", "{backcolor}");
+  
+  
+});
+
 </script>

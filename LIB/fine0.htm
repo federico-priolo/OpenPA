@@ -1,0 +1,78 @@
+**************** fine START
+ 
+
+
+
+  
+ <script>
+	
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+		};    
+ </script> 
+  
+    
+ 
+  
+ <script>
+  
+  
+  $(function() {
+  var links = $(".easyui-menulink");
+
+  var loadingIcon = $('<i class="fa fa-spinner fa-spin" style="font-size: 40px; color:#0066cc; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;"></i>');
+  $('body').append(loadingIcon);
+
+  links.click(function(event) {
+    event.preventDefault();
+    loadingIcon.show();
+    setTimeout(function() {
+      window.location.href = event.currentTarget.href;
+    }, 5);
+  });
+
+  window.addEventListener("load", function() {
+    loadingIcon.hide();
+  });
+
+  window.onbeforeunload = function() {
+    loadingIcon.show();
+  };
+});
+
+  </script>
+  
+ <script>
+    // Disabilita il reload della pagina su qualsiasi azione di aggiornamento
+    window.onbeforeunload = function() {
+      return false;
+    };
+  </script>
+ 
+   
+ 
+ <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var links = document.querySelectorAll('a.easyui-menulink');
+
+    links.forEach(function(link) {
+      var dataOptions = link.getAttribute('data-options');
+
+      if (dataOptions && dataOptions.includes('disabled:true')) {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+        });
+      }
+    });
+  });
+</script>
+
+   
+</body>
+   
+   
+   
+</html>
+
+**************** fine END

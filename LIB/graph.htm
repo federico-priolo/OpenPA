@@ -1,0 +1,54 @@
+<TD>
+
+   <!-- graph(name="BAR1" label="Analisi Operatori" labels="'pippo,'pluto'" data="12,33" type="bar") -->
+
+
+<div style="width: {width}; margin: auto;">
+    <canvas id="{name}"></canvas>
+</div>
+
+  <script type="text/javascript" src="/openpa/easyui/chart.js"></script>
+
+<script>
+
+ 
+
+    function initializeChart{name}() {
+        
+
+        // Dati per il grafico
+        var data = {
+            labels: [{labels}],
+            label:'{label}',
+            datasets: [{
+                data: [{data}],
+                backgroundColor: ['#FF6384', '#36A2EB', '#4CAF50','#EF6384', '#16A2EB', '#CCAF50','#DE6384', '#3FB2EB' ]
+            }]
+        };
+
+        // Configurazione del grafico
+        var options = {
+            responsive: true,
+            maintainAspectRatio: false
+        };
+
+ 
+
+      // Otteniamo il riferimento al canvas
+            var ctx = document.getElementById('{name}').getContext('2d');
+
+            // Crea il grafico a barre
+            var barChart = new Chart(ctx, {
+                type: '{type}',
+                data: data,
+                options: options
+            });
+        }
+
+    // Chiamare questa funzione per inizializzare il grafico
+    initializeChart{name}();
+
+</script>
+
+
+</TD>

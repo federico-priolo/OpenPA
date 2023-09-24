@@ -1,0 +1,55 @@
+ 
+ 
+
+                         
+<script>
+
+ $(document).ready(function() {
+  $('#{valore1}').numberspinner({
+    onChange: function() {
+
+		 
+      // find the input element and set its font weight to bold
+       calculateTotal ();
+    }
+  });
+
+  $('#{valore2}').numberbox({
+    onChange: function() {
+
+	 
+      // find the input element and set its font weight to bold
+       calculateTotal ();
+    }
+  });
+
+ function calculateTotal() {
+ 
+	var calcolaChecked = $('#FLAG1-XX').checkbox('options').checked;
+	
+	if (!calcolaChecked) {
+ 
+	var quantita = $('#{valore1}').numberspinner('getValue');
+
+    var listino = $('#{valore2}').numberbox('getValue');
+
+    var importoTotale = quantita * listino;
+
+    $('#{valore3}').numberbox('setValue', importoTotale);
+ 
+
+	$("#" + "{valore1}").next().find(".textbox-text").css("font-weight", "bold"); // Seleziona l'elemento con l'ID originale e applica lo stile
+	$("#" + "{valore2}").next().find(".textbox-text").css("font-weight", "bold"); // Seleziona l'elemento con l'ID originale e applica lo stile
+	$("#" + "{valore3}").next().find(".textbox-text").css("font-weight", "bold"); // Seleziona l'elemento con l'ID originale e applica lo stile
+    
+  }
+
+   }
+
+
+});
+
+</script>
+
+
+ 

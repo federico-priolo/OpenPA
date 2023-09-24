@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Generazione di PDF con pdf-lib</title>
+</head>
+
+<body>
+    <h1>Generazione di PDF con pdf-lib</h1>
+    <p>Clicca sul pulsante per generare il PDF:</p>
+    <button onclick="generatePDF()">Genera PDF</button>
+
+    <!-- Importazione della libreria pdf-lib da CDN -->
+    <script src="/OPENPA/easyui/pdf-lib.js"></script>
+
+    <script>
+        async function generatePDF() {
+            const { PDFDocument, rgb, StandardFonts } = PDFLib;
+
+
+			const pdfDoc = await PDFDocument.create();
+            const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+          
+            let currentFont = helveticaFont; // Font predefinito
+
+    
+
+            let outputFilename = "DOCUMENTO.PDF";
+            let previewPdfDataUri = null;
+
+            fetch("specifiche2.json", { cache: "no-cache" })
+                .then(response => response.json())
+                .then(async data => {
+                    for (const record of data) {
+                        const { instruction, params } = record;
+
+                        switch (instruction) {
+                            case "TEXT":
+                                const page = pdfDoc.getPages()[pdfDoc.getPages().length - 1];
+                                const color = params.color ? rgb(...params.color) : rgb(0, 0, 0);
+                                page.drawText(params.text || "", {
+                                    x: params.x || 0,
+                                    y: params.y || 0,
+                                    size: params.font_size || 10,
+                                    font: currentFont,  
+                                    color: color
+                                });
+                                break;
+
+
+						     
+								  case "FONT":
+                                        let selectedFont = params.font || "helvetica"; // Default font is Helvetica
+        
+                                        if (selectedFont === "timesRoman") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.TimesRoman).catch(() => helveticaFont);
+                                        } else if (selectedFont === "courier") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.Courier).catch(() => helveticaFont);
+                                        } else if (selectedFont === "helvetica") {
+                                            currentFont = helveticaFont;
+                                        } else if (selectedFont === "symbol") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.Symbol).catch(() => helveticaFont);
+                                        } else if (selectedFont === "zapfDingbats") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.ZapfDingbats).catch(() => helveticaFont);
+                                        } else if (selectedFont === "timesBold") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.TimesBold).catch(() => helveticaFont);
+                                        } else if (selectedFont === "timesItalic") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.TimesItalic).catch(() => helveticaFont);
+                                        } else if (selectedFont === "timesBoldItalic") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.TimesBoldItalic).catch(() => helveticaFont);
+                                        } else if (selectedFont === "courierBold") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.CourierBold).catch(() => helveticaFont);
+                                        } else if (selectedFont === "courierOblique") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.CourierOblique).catch(() => helveticaFont);
+                                        } else if (selectedFont === "courierBoldOblique") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.CourierBoldOblique).catch(() => helveticaFont);
+                                        } else if (selectedFont === "helveticaBold") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold).catch(() => helveticaFont);
+                                        } else if (selectedFont === "helveticaOblique") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.HelveticaOblique).catch(() => helveticaFont);
+                                        } else if (selectedFont === "helveticaBoldOblique") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.HelveticaBoldOblique).catch(() => helveticaFont);
+                                        } else if (selectedFont === "symbol") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.Symbol).catch(() => helveticaFont);
+                                        } else if (selectedFont === "zapfDingbats") {
+                                            currentFont = await pdfDoc.embedFont(StandardFonts.ZapfDingbats).catch(() => helveticaFont);
+                                        } else {
+                                            currentFont = helveticaFont;
+                                        }
+                                break;                        
+
+
+
+                            case "IMAGE":
+                                if (params.url) {
+                                    const imageBytes = await fetch(params.url).then(res => res.arrayBuffer());
+                                    const image = await pdfDoc.embedPng(imageBytes);
+                                    const page = pdfDoc.getPages()[pdfDoc.getPages().length - 1];
+                                    page.drawImage(image, {
+                                        x: params.x || 0,
+                                        y: params.y || 0,
+                                        width: params.width || image.width,
+                                        height: params.height || image.height
+                                    });
+                                } else {
+                                    console.warn(`URL dell'immagine non fornito`);
+                                }
+                                break;
+
+                            case "PAGE":
+                                if (params.file) {
+                                    const existingPdfBytes = await fetch(params.file).then(res => res.arrayBuffer());
+                                    const existingPdfDoc = await PDFDocument.load(existingPdfBytes);
+                                    const copiedPages = await pdfDoc.copyPages(existingPdfDoc, existingPdfDoc.getPageIndices());
+                                    copiedPages.forEach(page => pdfDoc.addPage(page));
+                                } else {
+                                    let pageSize = getPageSize(params.size, params.orientation);
+                                    pdfDoc.addPage(pageSize);
+                                }
+                                break;
+
+                            case "OUTPUT":
+                                outputFilename = params.file || outputFilename;
+                                if (params.preview) {
+                                    previewPdfDataUri = 'data:application/pdf;base64,' + btoa(String.fromCharCode(...new Uint8Array(await pdfDoc.save())));
+                                }
+                                break;
+
+                            default:
+                                console.warn(`Istruzione non riconosciuta: ${instruction}`);
+                        }
+                    }
+
+                    if (previewPdfDataUri) {
+                        const iframe = document.createElement('iframe');
+                        iframe.src = previewPdfDataUri;
+                        iframe.width = '100%';
+                        iframe.height = '600px';
+                        document.body.appendChild(iframe);
+                    } else {
+                        const pdfBytes = await pdfDoc.save();
+                        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = outputFilename;
+                        link.click();
+                    }
+
+                })
+                .catch(error => {
+                    console.error("Errore:", error.message);
+                });
+        }
+
+        function getPageSize(size, orientation) {
+            switch (size) {
+                case 'A3':
+                    return orientation === 'landscape' ? [1191, 842] : [842, 1191];
+                case 'A4':
+                default:
+                    return orientation === 'landscape' ? [842, 595] : [595, 842];
+            }
+        }
+    </script>
+</body>
+
+</html>

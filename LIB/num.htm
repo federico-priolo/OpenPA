@@ -1,10 +1,12 @@
 ************ edit numero
 
+<!-- <div style="display: inline-block;"> -->
+
 <td style="{size} padding:-5px 0px;" >    
      
 
 
-<input   class="easyui-numberspinner" name="{name}" id="{name}" data-options="label:'{label}',min:0,max:9999999, labelPosition:'top' , width:'auto', width:'{width}' , value:
+<input   class="easyui-numberspinner" style="text-align: right" name="{name}" id="{name}" data-options="label:'{label}', labelPosition:'top' , width:'auto', width:'{width}' , value:
 '<cobol>{name}</cobol>'
 {other}">
 
@@ -12,13 +14,15 @@
 
 </td>     
 ************ edit end
-    
+  <!-- </div>   -->
                          
 <script>
 
  $(document).ready(function() {
   $('#{name}').numberspinner({
     onChange: function() {
+
+		 
       // find the input element and set its font weight to bold
       $(this).next().find('input').css('font-weight', 'bold');
       $(this).next().find('input').css('color', '{color}');

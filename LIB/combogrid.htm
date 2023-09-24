@@ -4,7 +4,13 @@
 
 
 
-            <select class="easyui-combogrid" name="{name}" id="name="ID{name}" style="{size}" data-options="value:
+            ************ start combogrid
+ 
+<td style="{size} padding:5px 0px;" >  
+
+
+
+            <select class="easyui-combogrid" name="{name}" id="ID{name}" style="{size}" data-options="value:
 		  '<cobol>{name}</cobol>'
 		   ,remoteSort:false, 
 					{required}
@@ -28,11 +34,11 @@
     
 </td>			        
 
-            <script>
+            <!-- <script> -->
             
-                $('#ID{name}').combogrid('reload');       
+                <!-- $('#ID{name}').combogrid('reload');        -->
 
-            </script>
+            <!-- </script> -->
 
 
             <!-- <script> -->
@@ -49,12 +55,15 @@
 <script>
  
  $(document).ready(function() {
-  var id = "{name}_" + Math.floor(Math.random() * 1000); // genera un ID casuale con prefisso "{name}"
-  $("#{name}").attr("id", id); // imposta l'ID casuale per l'elemento con ID "name"
-  $("#" + id).next().find(".text").css("font-weight", "bold"); // seleziona l'elemento con ID casuale e applica lo stile
-  $("#" + id).next().find(".combogrid-text").css("color", "{color}");
-  $("#" + id).next().find(".combogrid-text").css("background-color", "{backcolor}");
-  
+
+
+   
+   $("#" + "ID{name}").next().find(".combogrid-text").css("font-weight", "bold");
+   $("#" + "ID{name}").next().find(".combogrid-text").css("color", "{color}");
+   $("#" + "ID{name}").next().find(".combogrid-text").css("background-color", "{backcolor}");
+
+
+ 
   
 });
 

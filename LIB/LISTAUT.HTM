@@ -1,0 +1,249 @@
+    <div style="margin:20px 0;">
+        <!-- <a href="javascript:;" class="easyui-linkbutton" onclick="$('#dg').datagrid('toExcel','estrazione.xls')">Excel</a> -->
+        <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit'" onclick="exportToExcel()">Excel</a>
+        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-document'"  onclick="exportToCSV()">CSV</a>
+        <!-- <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-print'" onclick="$('#dg').datagrid('print','DataGrid')">Stampa</a> -->
+        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-print'" onclick="stampa()">Stampa</a>
+        <a href="javascript:;" class="easyui-linkbutton" data-options="iconCls:'icon-pdf1'" onclick="toPdf()">PDF</a>
+        
+
+    </div>
+
+    
+
+        <table  id="dg" class="easyui-datagrid" title="Elementi" style="width:'100%';height:450px"
+            
+
+                data-options="singleSelect:true,rownumbers:true,pagination:false
+								,url:
+                                   '<cobol>FILE-JSON</cobol>'
+                                   <!-- '/openpa/temp/ARKJSON.json' -->
+                                    ,remoteSort:false
+                          
+				                 ,method:'get'">
+            <thead>
+                <tr>
+                    <th data-options="field:'ELEMENTO',width:'11%',sortable:true">Codice</th>
+                    <th data-options="field:'DESC',width:'65%',sortable:true">Descrizione</th>
+                    <th data-options="field:'DESC1',width:'15%',sortable:true">RESPONSABILE</th>
+                    <!-- <th data-options="field:'DESC2',width:'1%',sortable:true"> Elemento 2</th> -->
+                    <th data-options="field:'MODIFICA',width:'3%',align:'center'">Mod.</th>
+                    <th data-options="field:'CANCELLA',width:'3%',align:'center'">Canc.</th>                             
+                    <th data-options="field:'COPIA',width:'1%',align:'center'"></th>                              
+               </tr>
+            </thead>
+        </table>
+    
+    <script>
+    
+	   <!-- $(function() { -->
+        <!-- var dg = $('#dg').datagrid({ -->
+            <!-- filterBtnIconCls: 'icon-filter', -->
+            <!-- }); -->
+        <!-- dg.datagrid('enableFilter'); -->
+		
+		<!-- dg.datagrid('removeFilterRule', 'MODIFICA'); -->
+		<!-- dg.datagrid('removeFilterRule', 'CANCELLA'); -->
+		<!-- dg.datagrid('removeFilterRule', 'COPIA'); -->
+	 
+        <!-- }); -->
+ 
+	 
+$(document).ready(function() {
+  $('#dg').datagrid({
+    filterBtnIconCls: 'icon-filter'
+  });
+
+  $('#dg').datagrid('enableFilter');
+
+  
+});
+
+
+
+    </script>
+
+     
+    <script>
+    
+    
+        
+   
+function toPdf(){
+  var data = $('#dg').datagrid('getData'); // ottenere solo i dati filtrati
+  var filteredBody = data.rows.map(function(row) {
+    return [row.ELEMENTO, row.DESC, row.DESC1, row.DESC2]; // escludere le ultime tre colonne
+  });
+  var docDefinition = {
+    pageSize: 'A4',
+    pageOrientation: 'landscape',
+    content: [{
+      table: {
+        headerRows: 1,
+        widths: ['15%', 'auto', 'auto', 'auto'],
+        body: [ // aggiungi l'array per l'intestazione della colonna
+          ['Elemento', 'Descrizione', 'dato1', 'dato2'], // intestazione delle colonne
+          ...filteredBody // corpo della tabella
+        ]
+      }
+    }],
+    // aggiungi l'header a due sezioni
+    header: [
+      {
+        columns: [
+          {
+            text: 'Ente:<cobol>DESC-ENTE</cobol>',
+            fontSize: 10,
+            bold: true,
+            margin: [20, 10, 0, 0] //imposta il margine in alto a sinistra
+          },
+          {
+            text: 'Stampa tabella :<cobol>MENU</cobol>',
+            style: 'headerStyle',
+            alignment: 'center',
+            fontSize: 10,
+            margin: [0, 10, 10, 10] //imposta il margine in alto a destra
+          }
+        ]
+      }
+    ],
+    styles: {
+      headerStyle: {
+        fontSize: 18,
+        bold: true
+      }
+    }
+  };
+  pdfMake.createPdf(docDefinition).open();
+}
+
+</script> 
+
+<script> 
+
+function getTableData() {
+  var rows = $('#dg').datagrid('getRows');
+  if (rows.length == 0) {
+    alert('Non ci sono record da esportare.');
+    return [];
+  }
+
+  // Crea un array di oggetti rappresentanti i dati della tabella
+  var data = rows.map(function(row) {
+    return {
+      ELEMENTO: row.ELEMENTO,
+      DESC: row.DESC,
+      DESC1: row.DESC1,
+      DESC2: row.DESC2
+    };
+  });
+
+  return data;
+}
+
+function exportToExcel() {
+  var data = getTableData();
+  if (data.length == 0) {
+    return;
+  }
+
+  // Definisci le colonne
+  var columns = [
+    { header: 'Codice', key: 'ELEMENTO' },
+    { header: 'Descrizione', key: 'DESC' },
+    { header: 'Elemento 1', key: 'DESC1' },
+    { header: 'Elemento 2', key: 'DESC2' }
+  ];
+
+  // Crea un nuovo workbook e worksheet
+  var workbook = XLSX.utils.book_new();
+  var worksheet = XLSX.utils.json_to_sheet(data, { header: columns });
+
+  // Aggiungi il worksheet al workbook
+  XLSX.utils.book_append_sheet(workbook, worksheet, 'Elementi');
+
+  // Salva il file Excel
+  XLSX.writeFile(workbook, 'tabella<cobol>MENU</cobol>.xlsx');
+}
+
+function exportToCSV() {
+  var data = getTableData();
+  if (data.length == 0) {
+    return;
+  }
+
+  // Crea un nuovo worksheet utilizzando la libreria SheetJS
+  var worksheet = XLSX.utils.json_to_sheet(data);
+
+  // Converti il worksheet in un file CSV utilizzando la libreria PapaParse
+  var csv = Papa.unparse(worksheet);
+
+  // Crea un link per scaricare il file CSV
+  var link = document.createElement('a');
+  link.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv));
+  link.setAttribute('download', 'tabella<cobol>MENU</cobol>.csv');
+  link.click();
+}
+
+
+</script> 
+
+<script> 
+
+ 
+function stampa() {
+  var data = $('#dg').datagrid('getData');
+  var filteredBody = data.rows.map(function(row) {
+    return [row.ELEMENTO, row.DESC, row.DESC1, row.DESC2];
+  });
+  var tableContent = '<table><thead><tr><th>Elemento</th><th>Descrizione</th><th>dato1</th><th>dato2</th></tr></thead><tbody>';
+  filteredBody.forEach(function(row) {
+    tableContent += '<tr>';
+    row.forEach(function(cell) {
+      tableContent += '<td style="border:1px solid black;padding:3px;">' + cell + '</td>';
+    });
+    tableContent += '</tr>';
+  });
+  tableContent += '</tbody></table>';
+  var printWindow = window.open('', '', 'height=400,width=800');
+  printWindow.document.write('<html><head><title>Tabella</title></head><body>');
+  printWindow.document.write(tableContent);
+  printWindow.document.write('</body></html>');
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+  printWindow.close();
+}
+</script>
+ 
+<script>
+// Aggiorna il campo numrecord con il numero di record nel combo grid
+function updateNumRecord() {
+
+  
+  var numRecords = $('#dg').datagrid('getRows').length;
+  
+  $('#numrecord').textbox('setValue', numRecords);
+  
+  
+}
+
+
+</script>
+
+<script>
+// Chiamare la funzione updateNumRecord() all'avvio della pagina per aggiornare il numero di record
+$(document).ready(function() {
+	
+  
+  updateNumRecord();
+});
+
+// Aggiornare il numero di record dopo il caricamento dei dati nel combo grid
+$('#dg').datagrid({
+  onLoadSuccess: function(data) {
+    updateNumRecord();
+  }
+});
+
+</script>

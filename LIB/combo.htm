@@ -6,7 +6,7 @@
                      <!-- '<cobol>{name}</cobol>' -->
 
  
-            <input class="easyui-combobox" style="{size}" name="{name}"
+            <input class="easyui-combobox" style="{size}" name="{name}" id="{name}"
                    
                    data-options="showItemIcon: true, data:[
                        {item}  
@@ -43,11 +43,49 @@
                     editable: false,
                     panelHeight: 'auto',
                     label: '{label}',
-                    labelPosition: 'top'
 					{required}
+					{action}
+                    labelPosition: 'top'
+					
                     ">
              
 			
 </td>     
      
 ************ end combo
+
+<!-- <script> -->
+    <!-- $(document).ready(function () { -->
+        <!-- // Trova il combobox EasyUI utilizzando il suo ID -->
+        <!-- var comboBox = $('#{name}'); -->
+
+        <!-- // Verifica se l'elemento è effettivamente un combobox EasyUI -->
+        <!-- if (comboBox.hasClass('easyui-combobox')) { -->
+            <!-- // Verifica se ci sono elementi nel combobox -->
+            <!-- if (comboBox.combobox('getData').length > 0) { -->
+                <!-- // Imposta il valore selezionato sul primo elemento -->
+                <!-- comboBox.combobox('select', comboBox.combobox('getData')[0].value); -->
+            <!-- } -->
+        <!-- } -->
+    <!-- }); -->
+<!-- </script> -->
+
+<script>
+    $(document).ready(function () {
+        // Trova il combobox EasyUI utilizzando il suo ID
+        var comboBox = $('#{name}');
+        // Verifica se l'elemento è effettivamente un combobox EasyUI
+        if (comboBox.hasClass('easyui-combobox')) {
+            // Verifica se un elemento è già stato selezionato nella definizione del combo
+            if (!comboBox.combobox('getValue')) {
+               
+            if (comboBox.combobox('getData').length > 0) {
+                // Imposta il valore selezionato sul primo elemento
+                comboBox.combobox('select', comboBox.combobox('getData')[0].value);
+            }
+
+
+            }
+        }
+    });
+</script>

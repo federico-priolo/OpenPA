@@ -1,0 +1,27 @@
+************ edit numeric
+
+<td style="{size} padding:-5px 0px;" >  
+ 
+
+<input class="easyui-numberbox"  labelposition="top"  label="{label}" name="{name}"  id="{name}" prompt="{label}" style="text-align: right;width:auto;padding:10px;{size}" 
+data-options="{type} {other} missingMessage:'Campo obbligatorio', precision:5,groupSeparator:'.',decimalSeparator:',',prefix:'€',value:'<cobol>{name}</cobol>' ">
+
+
+</td>  
+ 
+************ edit numeric
+
+
+<script>
+ 
+ 
+
+  $(document).ready(function() {
+    $("#" + "{name}").next().find(".textbox-text").css("font-weight", "bold"); // Seleziona l'elemento con l'ID originale e applica lo stile
+    $("#" + "{name}").next().find(".textbox-text").css("color", "{color}");
+    $("#" + "{name}").next().find(".textbox-text").css("background-color", "{backcolor}");
+  });
+
+ 
+ 
+</script>

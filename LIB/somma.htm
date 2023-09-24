@@ -1,0 +1,16 @@
+<script>
+  $(document).ready(function() {
+    $('#NUM3-XX').numberspinner({
+      onChange: function() {
+
+        // calculate the new value for IMPORTO3-XX
+        var num3 = parseFloat($(this).numberspinner('getValue'));
+        var import2 = parseFloat($('#IMPORTO2-XX').numberbox('getValue'));
+        var importo3 = num3 * import2;
+
+        // set the new value for IMPORTO3-XX
+        $('#IMPORTO3-XX').numberbox('setValue', importo3.toFixed(2));
+      }
+    });
+  });
+</script>

@@ -1,0 +1,220 @@
+************ start location
+
+<div style="display: inline-block;">
+ 
+<td style="{size} padding:5px 0px;" >  
+
+
+
+            <select class="easyui-combogrid" name="PROV-{name}" id="PROV-{name}" style="{size}" data-options="value:
+		  '<cobol>PROV-{name}</cobol>'
+		   ,remoteSort:false, 
+					{required}
+
+			panelWidth: 500,
+                    idField: 'CODICE',
+                    textField: 'DESCRIZ',
+                    
+		    url: '/openpa/<cobol>PATH-FILE</cobol>json/ark30.json',
+                    method: 'get',
+                    columns: [[
+                        {{field:'CODICE',title:'Codice',width:'20%',sortable:true}},
+                        {{field:'DESCRIZ',title:'Descrizione',width:'80%',sortable:true}}
+                                    ]],
+                    fitColumns: true,
+                    label: 'Provincia&nbsp {label}',labelWidth:'{width}',
+                    labelPosition: 'left', 
+					labelPosition: 'top',
+					onChange: onProvinceChange
+                ">
+            </select>
+    
+</td>			        
+
+ </div>
+
+
+
+
+<div style="display: inline-block;">
+ 
+<td style="{size} padding:5px 0px;" >  
+
+
+
+            <select class="easyui-combobox" name="COMUNE-{name}" id="COMUNE-{name}" style="{size}" data-options="required:true,url:
+					'/openpa/<cobol>PATH-FILE</cobol>json/arkcomuni-xx.json',
+					method:'get',
+                    {required}
+					panelWidth: 500,
+                    valueField: 'CODICE',
+                    textField: 'DESCRIZ',
+                    label: 'Comune&nbsp {label}',
+					labelWidth:'{width}',
+                    labelPosition: 'left', 
+					labelPosition: 'top'
+                ">
+            </select>
+    
+</td>			        
+
+ </div>
+
+
+
+
+
+<div style="display: inline-block;">
+ 
+<td style="{size} padding:5px 0px;" >  
+
+
+
+            <select class="easyui-combobox" name="COMUNE-{name}" id="COMUNE-{name}" style="{size}" data-options="required:true,url:
+					'/openpa/<cobol>PATH-FILE</cobol>json/arkcomuni-xx.json',
+					method:'get',
+					panelWidth: 500,
+                    valueField: 'CODICE',
+                    textField: 'DESCRIZ',
+                    label: 'Comune&nbsp {label}',
+					labelWidth:'{width}',
+                    labelPosition: 'left', 
+					labelPosition: 'top'
+                ">
+            </select>
+    
+</td>			        
+
+ </div>
+
+
+<script>
+ 
+ $(document).ready(function() {
+  
+
+    $("#" + "COMUNE-{name}").next().find(".text").css("font-weight", "bold"); // Seleziona l'elemento con l'ID originale e applica lo stile
+    $("#" + "COMUNE-{name}").next().find(".combogrid-text").css("color", "{color}");
+    $("#" + "COMUNE-{name}").next().find(".combogrid-text").css("background-color", "{backcolor}");
+
+  
+});
+
+</script>
+     
+ 
+
+
+
+
+<script>
+ 
+ $(document).ready(function() {
+  
+
+    $("#" + "PROV-{name}").next().find(".text").css("font-weight", "bold"); // Seleziona l'elemento con l'ID originale e applica lo stile
+    $("#" + "PROV-{name}").next().find(".combogrid-text").css("color", "{color}");
+    $("#" + "PROV-{name}").next().find(".combogrid-text").css("background-color", "{backcolor}");
+
+  
+});
+
+</script>
+
+ <script>
+function oldonProvinceChange(value) {
+    var newUrl = '/openpa/<cobol>PATH-FILE</cobol>json/arkcomuni-' + value + '.json';
+    
+
+    var combobox = $("#" + "COMUNE-{name}");
+	combobox.combobox('clear');
+    var options = combobox.combobox('options');
+    options.url = newUrl;
+    combobox.combobox('reload');
+
+    var urlOption = options.url;
+    console.log("URL del widget: " + urlOption);
+}
+</script>
+
+<script>
+function onProvinceChange(value) {
+
+    var newUrl = '/openpa/<cobol>PATH-FILE</cobol>json/arkcomuni-' + value + '.json';
+    var defaultUrl = '/openpa/<cobol>PATH-FILE</cobol>json/arkcomuni-xx.json';
+
+    var combobox = $("#" + "COMUNE-{name}");
+    var options = combobox.combobox('options');
+    options.url = newUrl;
+
+    // Effettua il clear e carica i dati dal nuovo URL
+    $.getJSON(newUrl)
+        .done(function(data) {
+            <!-- combobox.combobox('clear'); -->
+            combobox.combobox('reload'); // Usa 'reload' invece di 'loadData'
+
+            var urlOption = options.url;
+            console.log("URL del widget: " + urlOption);
+        })
+        .fail(function() {
+
+			options.url = defaultUrl;
+            <!-- combobox.combobox('clear'); -->
+            combobox.combobox('reload');
+
+            console.log("Caricato il record di default.");
+        });
+}
+</script>
+ 
+
+
+     
+
+<script>
+
+$(document).ready(function() {
+    // Interceptar l'evento onchange dell'elemento select con ID "COMUNE-{name}"
+    $("#" + "COMUNE-{name}").combobox({
+        onChange: function(Value,) {
+            
+
+		var urlOption = $(this).combobox('options').url;
+            // Mostrare l'URL tramite un alert
+            console.log("URL del widget: " + urlOption);
+      
+        }
+    });
+});
+</script>
+ 
+
+
+<script>
+function scrollToTargetValue(targetValue) {
+    var combobox = $("#COMUNE-{name}");
+    var targetIndex = -1;
+
+    // Trova l'indice dell'elemento con il valore target nei dati del combobox
+    combobox.combobox('reload'); // Ricarica i dati (potrebbe non essere necessario)
+    var data = combobox.combobox('getData'); // Ottieni i dati del combobox
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].CODICE === targetValue) {
+            targetIndex = i; // Trovato l'indice corrispondente
+            break;
+        }
+    }
+
+    // Ora puoi utilizzare scrollTo se hai trovato l'indice
+    if (targetIndex !== -1) {
+        combobox.combobox('scrollTo', targetIndex);
+    } else {
+        console.log("Valore non trovato nei dati del combobox.");
+    }
+}
+
+
+var targetValue = "<cobol>COMUNE-{name}</cobol>"; // Valore del campo CODICE da cercare
+scrollToTargetValue(targetValue);
+
+</script>

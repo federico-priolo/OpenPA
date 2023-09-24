@@ -1,0 +1,35 @@
+
+<script>
+    function LeggiFile(filename) {
+
+
+     // Verifica se il nome del file è definito
+        if (!filename) {
+            console.error('Nome del file non dichiarato.');
+            alert('Nome del file non dichiarato.');
+            return; // Esci dalla funzione
+        }
+
+      fetch(filename)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nella lettura archivio di aiuto');
+            }
+            return response.text();
+        })
+        .then(text => {
+            speakText(text);
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            const predefinedText = "spiegazione non disponibile.";
+            speakText(predefinedText);
+        });
+    }
+    
+    function speakText(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+    }
+</script>
+       

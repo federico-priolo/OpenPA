@@ -3,13 +3,15 @@
 
 
 
-  <input class="easyui-checkbox" data-options="disabled:true" name="{name}" id="{name}" value="{value}" type="checkbox" labelposition="top"
-  <cobol>{name}{value}</cobol>
-  label="{label}">
   
-  <!-- <cobol>{name}</cobol>  questa riga va lasciata qui viene processata da makeform lib -->                               
-  <!-- default={default}  questa riga va lasciata qui viene processata da makeform lib -->   
-  
+<!-- <cobol>{name}</cobol>  questa riga va lasciata qui viene processata da makeform lib      legge il valore se "S" lo riporta come CHECKED in makeform -->
+
+   <input class="easyui-checkbox" name="{name}"  disabled="true" id="{name}"  value="S"  width="{width}" labelWidth="{width}" labelposition="top"
+    <cobol>CHECKED</cobol>
+   label="{label}">
+
+<!-- default={default}  questa riga va lasciata qui viene processata da makeform lib -->   
+
    
   
   <span class="traffic-light" id="traffic-{name}">

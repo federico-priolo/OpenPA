@@ -1,0 +1,254 @@
+		
+		<table id="{name}" style="width:100%;" title="Turnazione" 
+					iconCls="icon-edit" 
+					rownumbers="true"
+					autosave="true"
+					url="{json}"
+					singleSelect="true">
+			<thead>
+				<tr>
+					
+					
+					<th field="NOMINATIVO" width="220">NOMINATIVO</th>
+					<th field="01" editor="textbox"><cobol>GG01</cobol></th>
+					<th field="02" editor="textbox"><cobol>GG02</cobol></th>
+					<th field="03" editor="textbox"><cobol>GG03</cobol></th>
+					<th field="04" editor="textbox"><cobol>GG04</cobol></th>
+					<th field="05" editor="textbox"><cobol>GG05</cobol></th>
+					<th field="06" editor="textbox"><cobol>GG06</cobol></th>
+					<th field="07" editor="textbox"><cobol>GG07</cobol></th>
+					<th field="08" editor="textbox"><cobol>GG08</cobol></th>
+					<th field="09" editor="textbox"><cobol>GG09</cobol></th>
+					<th field="10" editor="textbox"><cobol>GG10</cobol></th>
+					<th field="11" editor="textbox"><cobol>GG11</cobol></th>
+					<th field="12" editor="textbox"><cobol>GG12</cobol></th>
+					<th field="13" editor="textbox"><cobol>GG13</cobol></th>
+					<th field="14" editor="textbox"><cobol>GG14</cobol></th>
+					<th field="15" editor="textbox"><cobol>GG15</cobol></th>
+					<th field="16" editor="textbox"><cobol>GG16</cobol></th>
+					<th field="17" editor="textbox"><cobol>GG17</cobol></th>
+					<th field="18" editor="textbox"><cobol>GG18</cobol></th>
+					<th field="19" editor="textbox"><cobol>GG19</cobol></th>
+					<th field="20" editor="textbox"><cobol>GG20</cobol></th>
+					<th field="21" editor="textbox"><cobol>GG21</cobol></th>
+					<th field="22" editor="textbox"><cobol>GG22</cobol></th>
+					<th field="23" editor="textbox"><cobol>GG23</cobol></th>
+					<th field="24" editor="textbox"><cobol>GG24</cobol></th>
+					<th field="25" editor="textbox"><cobol>GG25</cobol></th>
+					<th field="26" editor="textbox"><cobol>GG26</cobol></th>
+					<th field="27" editor="textbox"><cobol>GG27</cobol></th>
+					<th field="28" editor="textbox"><cobol>GG28</cobol></th>
+					<th field="29" editor="textbox"><cobol>GG29</cobol></th>
+					<th field="30" editor="textbox"><cobol>GG30</cobol></th>
+					<th field="31" editor="textbox"><cobol>GG31</cobol></th>
+					
+					
+
+				</tr>
+			</thead>
+			<tbody>
+ 
+ 
+	
+</tbody>
+ 			 
+</table>
+
+ <script>
+
+ 
+var selectedMainGridField = ""; 
+var selectedMainGridIndex = ""; 
+
+
+    $(function() {
+        $('#{name}').edatagrid({
+
+    onAfterEdit: function(index, row, changes) {
+  
+		 
+
+      saveDataOnServer();
+    },
+
+    onChange: function(index, row, changes) {
+
+	 
+		 
+      saveDataOnServer();
+    },
+
+ 
+  });
+    
+   
+    $("#{name}dialog").dialog('close');
+   
+ $("#{name}dataGrid").datagrid({
+  onDblClickRow: function(index, row) {
+    var selectedRow = $("#{name}dataGrid").datagrid("getSelected");
+
+    if (selectedRow) {
+      var selectedValue = selectedRow.CODICE; // Supponendo che "CODICE" sia il campo univoco per identificare il record.
+
+      
+	
+
+      // Aggiorna la cella nel datagrid principale con il valore selezionato.
+      $("#{name}").datagrid("updateRow", {
+        index: selectedMainGridIndex , 
+        row: {
+          [selectedMainGridField]: selectedValue
+        }
+      });
+
+		saveDataOnServer();
+
+      // Chiudi il dialogo.
+      $("#{name}dialog").dialog("close");
+    }
+  }
+});
+
+ 
+$("#{name}").datagrid({
+  onDblClickCell: function(index, field, value) {
+    // Apri il dialogo al doppio click su una cella.
+
+ if (field !== "NOMINATIVO") { // Controlla se il campo non è "NOMINATIVO"
+
+		<!-- alert('index: ' + index + ', field: ' + field + ', value: ' + value); -->
+
+	selectedMainGridField = field; // Salva il campo selezionato
+    selectedMainGridIndex = index ; 				
+
+	$("#{name}dataGrid").datagrid("load");
+
+    $("#{name}dialog").dialog({
+      title: 'Ricerca orari',
+      modal: true,
+      <!-- left: event.pageX + 10, -->
+      <!-- top: event.pageY + 10, -->
+
+	  left: Math.min(event.clientX + 10, window.innerWidth - 760), // Limita il lato sinistro
+		top: Math.min(event.clientY + 10, window.innerHeight - 460), // Limita il lato superiore
+
+
+
+	  width: 760, // Set the width of the dialog
+      height: 460, // Set the height of the dialog
+      buttons: [{
+        text: "Seleziona",
+        iconCls: "icon-ok",
+		position: "left",
+        handler: function() {
+          // Ottieni il record selezionato nel dialogo.
+          var selectedRow = $("#{name}dataGrid").datagrid("getSelected");
+          if (selectedRow) {
+            var selectedValue = selectedRow.CODICE; // Supponendo che "CODICE" sia il campo univoco per identificare il record.
+            var selectedDescriz = selectedRow.DESCRIZ; // Supponendo che "DESCRIZ" sia il campo con la descrizione del record.
+            
+            // Imposta i valori selezionati nella cella del datagrid.
+            $("#{name}").datagrid("updateRow", {
+              index: index,
+              row: {
+                [field]: selectedValue
+              }
+            });
+
+          		saveDataOnServer();
+
+
+            // Chiudi il dialogo.
+            $("#{name}dialog").dialog("close");
+          }
+        }
+      }]
+    });
+	}
+  },
+ 
+
+
+});
+
+ $("#{name}dataGrid").datagrid({
+	rownumbers: false,
+    width: 800,
+    height: 400,
+    remoteSort: false,
+    title: 'Seleziona il record di interesse',
+    singleSelect: true,
+    checkbox: false,
+   
+    onClickRow: function(index, row) {
+      $("#{name}dialog").data("selectedValue", row.CODICE);
+    },
+    onLoadSuccess: function() {
+      $("#{name}dataGrid").datagrid("selectRow", 0);
+    }
+  });
+
+  $(function() {
+    var dg = $('#{name}dataGrid').datagrid({
+      filterBtnIconCls: 'icon-filter'
+    });
+    dg.datagrid('enableFilter');
+  });
+
+
+
+});
+ 
+
+ function saveDataOnServer() {
+    var url = $('#{name}').datagrid('options').url;
+
+	 <!-- alert('stiamo salvando ' + url ); -->
+
+    $.ajax({
+     
+	  <!-- url: '/openpa/opentest.exe', -->
+	  url: '/openpa/save_turni.php',
+
+      method: 'POST',
+      data: {
+        filePath: url,
+	 	<!-- 'SECTION-WEB':'<cobol>SECTION-WEB</cobol>', -->
+        jsonData: JSON.stringify($('#{name}').datagrid('getRows')) 
+
+      },
+      success: function(response) {
+        <!-- alert('dati salvati risposta del server:\n' + response); -->
+      },
+      error: function(xhr, status, error) {
+        alert('Errore durante il salvataggio dei dati:', error +  xhr + status );
+      }
+    });
+  }
+ 
+</script>
+ 
+<div id="{name}dialog" class="easyui-dialog">
+  <div id="{name}dataGridContainer">
+    <table id="{name}dataGrid" class="easyui-datagrid" 
+	 
+                data-options="singleSelect:true,rownumbers:true,pagination:false,
+								   url: '/openpa/<cobol>PATH-FILE</cobol>json/ark{file}.json',
+                                   remoteSort:false ,method:'get'">
+            <thead>
+                <tr>
+                    <th data-options="field:'CODICE',width:'100px',sortable:true">Codice</th>
+                    <th data-options="field:'DESCRIZ',width:'600px',sortable:true">Descrizione</th>
+                      
+               </tr>
+            </thead>
+    </table>
+  
+	
+	
+  </div>
+</div>
+ 
+
+  
